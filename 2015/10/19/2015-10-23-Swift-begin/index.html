@@ -45,22 +45,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
+<meta name="description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
 
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
+哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 - 错误处理">
-<meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-study-error/index.html">
+<meta property="og:title" content="Swift笔记 - 序">
+<meta property="og:url" content="http://yoursite.com/2015/10/19/2015-10-23-Swift-begin/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
+<meta property="og:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
 
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
-<meta property="og:updated_time" content="2015-10-23T08:20:06.000Z">
+哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta property="og:updated_time" content="2015-10-23T08:47:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 - 错误处理">
-<meta name="twitter:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
+<meta name="twitter:title" content="Swift笔记 - 序">
+<meta name="twitter:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
 
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
+哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -72,7 +72,7 @@
 
 
 
-  <title> Swift笔记 - 错误处理 | TBXark </title>
+  <title> Swift笔记 - 序 | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -197,7 +197,7 @@
             
             
               
-                Swift笔记 - 错误处理
+                Swift笔记 - 序
               
             
           </h1>
@@ -206,8 +206,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T14:55:54+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-10-19T15:10:10+08:00" content="2015-10-19">
+              2015-10-19
             </time>
           </span>
 
@@ -230,17 +230,14 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="try-catch">try-catch</h1><p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try</p>
+        <span itemprop="articleBody"><h2 id="开始">开始</h2><p>移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.<br>当我对自习每天的学习还算满意的时候,我看到了一句话</p>
+<blockquote>
+<p>哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对他人才华有着高明判断力的君主，他并不这样认为。于是他随意指着绑在周围的战驴说：“亲爱的将军，好好看看这些驴子，它们至少参加过20次战役，可它们仍然是驴子。”<br>然后,我就开始想,我是不是真的尽全力了呢,虽然我每天都有在学习,但是依然没有走出 Objective-C 的温室.Swift 刚出的时候我一直已其不稳定为借口而没去学习,Swift 2.0出来以后,依然没有太大的吸引力让我去学习.<br>但是我意识到这都是借口,然后我就开始了我的 Swift 学习之旅</p>
+</blockquote>
+<h2 id="过程">过程</h2><p>我大概花了4天的空闲时间将 &lt;<the swift="" programming="" language="">&gt; 学习完,作为一个资深 Objective-C 的编程人员,没有了 Runtime 简直像程序员没有了键盘,虽然 Swift 有很多新特性可以作为 KVC,和 KVO 的替代.但是灵活性还有待提高.在学完基础语法之后,我感觉还需要提高,于是买了 王巍 (<a href="http://swifter.tips/author/onevcat/" target="_blank" rel="external">@ONEVCAT</a>) 的 &lt;&lt;<a href="http://swifter.tips" target="_blank" rel="external">SWIFT 100个 必备 TIPS</a>)&gt;&gt;, 之后的笔记都是在看这本书的途中写的.部分内容也是摘抄自该书.在这里做一个统一的引用说明</the></p>
+<h2 id="最后">最后</h2><p>Swift 是一门很有意思的语言,但是由于它的安全性少了很多灵活的乐趣.最近还有一个比较热门的 React Native 现在好像只能用纯 js 编辑,不能和原生进行混编,这对于企业开发似乎不太现实.所以还不打算开始学习.<br>Swift 之后,打算开始用 Swift 学写一些酷炫一点的动画控件,作为 Swift 学习的巩固.</p>
 <hr>
-<p>2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制<br>但是我们可以采用下列方法解决,创建一个泛型枚举作为容器<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt;&#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Success</span>(<span class="constant">T</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Error</span>(<span class="constant">NSError</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeAsyncThing()-&gt; <span class="constant">Result</span>&lt;<span class="constant">String</span>&gt;&#123;</span><br><span class="line">    <span class="regexp">//</span>处理一些非同步的事情</span><br><span class="line">    var asyncResult = <span class="literal">false</span></span><br><span class="line">    let asyncValue : <span class="constant">String</span>? = <span class="literal">nil</span></span><br><span class="line">    let asyncError : <span class="constant">NSError</span>? = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">if</span> asyncResult&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Success</span>(asyncValue!)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Error</span>(asyncError!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>3 . 对于可以忽视错误类型的异常可以采用 if+可选绑定 进行,对于保证不会出错的也可以采用!进行强制解析<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="type">CommonError</span> : <span class="type">ErrorType</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Error</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Warning</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeThingMayBeWrong(success:<span class="type">Bool</span>) throws -&gt; <span class="type">String</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> success&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Success"</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        throw <span class="type">CommonError</span>.<span class="type">Error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//<span class="number">1</span>. 强制解析:保证不发生错误情况下使用,当抛出错误时应用会崩溃</span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>! doSomeThingMayBeWrong(<span class="literal">true</span>)</span><br><span class="line">print(<span class="literal">result</span>)</span><br><span class="line"></span><br><span class="line">//<span class="number">2</span>. 可选绑定</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>? doSomeThingMayBeWrong(<span class="literal">false</span>)&#123;</span><br><span class="line">    print(<span class="literal">result</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br><span class="line">//<span class="type">Success</span></span><br><span class="line">//<span class="type">Error</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>4 . 在可以 throw 的方法中永远不能返回一个可选类型,因为结合 try? 使用的话会产生双重 Optional<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">methodThrowsWhenPassingNegative1</span><span class="params">(number: Int)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">Error</span>.<span class="type">Negative</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> number == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里 num 在解包后仍然是一个可选类型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> num = <span class="keyword">try</span>? methodThrowsWhenPassingNegative1(<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(num.<span class="keyword">dynamicType</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"failed"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h1 id="断言">断言</h1><p>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func assert<span class="function"><span class="params">(<span class="property">@autoclosure</span> condition: () -&gt; Bool,</span><br><span class="line">            <span class="property">@autoclosure</span> _ message: () -&gt; String = <span class="keyword">default</span>,</span><br><span class="line">                              file: StaticString = <span class="keyword">default</span>,</span><br><span class="line">                              line: UInt = <span class="keyword">default</span>)</span></span></span><br></pre></td></tr></table></figure></p>
-<p>#fatalError<br>在调试时我们可以使用断言来排除类似s数组越界问题，但是断言只会在 Debug 环境中有效，而在 Release 编译中所有的断言都将被禁用。在遇到确实因为输入的错误无法使程序继续运行的时候，我们一般考虑以产生致命错误 (fatalError) 的方式来终止程序<br><code>@noreturn</code> 表示这个函数可以不要返回值,因为程序整个都将终止。这可以帮助编译器进行一些检查，比如在某些需要返回值的 switch 语句中，我们只希望被 switch 的内容在某些范围内，那么我们在可以在不属于这些范围的 default 块里直接写 fatalError 而不再需要指定返回值<br>假如父类中有必须重写的方法,可以用<code>fatalError</code> 来标识提醒重写</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@noreturn</span> func <span class="function">fatalError</span>(<span class="variable">@autoclosure</span> <span class="attribute">message</span>: () -&gt; String = default,</span><br><span class="line">                                          <span class="attribute">file</span>: StaticString = default,</span><br><span class="line">                                          <span class="attribute">line</span>: UInt = default</span><br></pre></td></tr></table></figure>
+<p>TBXar</p>
 </span>
       
     </div>
@@ -258,16 +255,12 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/22/2015-10-23-Swift-higher-order-functions/" rel="next" title="Swift笔记 - 高阶函数">
-                <i class="fa fa-chevron-left"></i> Swift笔记 - 高阶函数
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/23/2015-10-23-Swift-multithreading/" rel="prev" title="Swift笔记 - 多线程">
-                Swift笔记 - 多线程 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/20/2015-10-23-Swift-class-protocol/" rel="prev" title="Swift笔记 - 类与协议">
+                Swift笔记 - 类与协议 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -375,7 +368,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#try-catch"><span class="nav-number">1.</span> <span class="nav-text">try-catch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#断言"><span class="nav-number">2.</span> <span class="nav-text">断言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
