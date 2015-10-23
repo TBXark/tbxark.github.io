@@ -53,7 +53,7 @@
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="LOCK1. Objective-C 版本 @synchronized，这个关键字可以用来修饰一个变量，并为其自动加上和解除互斥锁。这样，可以保证变量在作用范围内不会被其他线程改变。
 写法1:12345- (void)myMethod:(id)anObj &amp;#123;    @synchronized(anObj) &amp;#123;        // 在括号内 anObj 不会被其他线程改变">
-<meta property="og:updated_time" content="2015-10-23T08:19:39.000Z">
+<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 多线程">
 <meta name="twitter:description" content="LOCK1. Objective-C 版本 @synchronized，这个关键字可以用来修饰一个变量，并为其自动加上和解除互斥锁。这样，可以保证变量在作用范围内不会被其他线程改变。
@@ -142,22 +142,42 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -208,6 +228,21 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -331,17 +366,17 @@
           </div>
 
           <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">0</span>
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            
+            <a href="/tags">
               <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

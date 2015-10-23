@@ -55,7 +55,7 @@
 <meta property="og:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
 
 2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
-<meta property="og:updated_time" content="2015-10-23T08:20:06.000Z">
+<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 错误处理">
 <meta name="twitter:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
@@ -145,22 +145,42 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -211,6 +231,21 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -339,17 +374,17 @@
           </div>
 
           <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">0</span>
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            
+            <a href="/tags">
               <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

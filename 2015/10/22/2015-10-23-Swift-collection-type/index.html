@@ -55,7 +55,7 @@ swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型
 <meta property="og:description" content="集合类型值类型与应用类型
 swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.
 原来 Foundation 框">
-<meta property="og:updated_time" content="2015-10-23T08:21:15.000Z">
+<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 集合类型">
 <meta name="twitter:description" content="集合类型值类型与应用类型
@@ -145,22 +145,42 @@ swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -211,6 +231,21 @@ swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -391,17 +426,17 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
           </div>
 
           <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">0</span>
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            
+            <a href="/tags">
               <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

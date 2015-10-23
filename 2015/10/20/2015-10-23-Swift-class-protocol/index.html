@@ -53,7 +53,7 @@
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.
 结论如">
-<meta property="og:updated_time" content="2015-10-23T08:20:46.000Z">
+<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 类与协议">
 <meta name="twitter:description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.
@@ -142,22 +142,42 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -208,6 +228,21 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -341,17 +376,17 @@
           </div>
 
           <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">0</span>
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            
+            <a href="/tags">
               <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>
