@@ -46,27 +46,24 @@
 
 
 <meta name="description" content="1. 自动闭包@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。
-###例子:自定义逻辑与运算符
-infix operator ||| { associativity left precedence 140}
+例子:自定义逻辑与运算符infix operator ||| { associativity left precedence 140}
 1.使用自动闭包版
-12345678func ||| (@autoclosure left:()-&amp;gt;Bool,@autoclosure rig">
+12345678func ||| (@autoclosure left:()-&amp;gt;Bool,@autoclosure right:(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 闭包">
 <meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-closure/index.html">
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="1. 自动闭包@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。
-###例子:自定义逻辑与运算符
-infix operator ||| { associativity left precedence 140}
+例子:自定义逻辑与运算符infix operator ||| { associativity left precedence 140}
 1.使用自动闭包版
-12345678func ||| (@autoclosure left:()-&amp;gt;Bool,@autoclosure rig">
-<meta property="og:updated_time" content="2015-10-23T07:53:12.000Z">
+12345678func ||| (@autoclosure left:()-&amp;gt;Bool,@autoclosure right:(">
+<meta property="og:updated_time" content="2015-10-23T08:20:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 闭包">
 <meta name="twitter:description" content="1. 自动闭包@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。
-###例子:自定义逻辑与运算符
-infix operator ||| { associativity left precedence 140}
+例子:自定义逻辑与运算符infix operator ||| { associativity left precedence 140}
 1.使用自动闭包版
-12345678func ||| (@autoclosure left:()-&amp;gt;Bool,@autoclosure rig">
+12345678func ||| (@autoclosure left:()-&amp;gt;Bool,@autoclosure right:(">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -237,8 +234,7 @@ infix operator ||| { associativity left precedence 140}
 
       
         <span itemprop="articleBody"><h2 id="1-_自动闭包">1. 自动闭包</h2><p><strong>@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。</strong></p>
-<p>###<strong>例子:</strong>自定义逻辑与运算符</p>
-<pre><code><span class="keyword">infix</span> <span class="keyword">operator</span> ||| { <span class="keyword">associativity</span> <span class="keyword">left</span> <span class="keyword">precedence</span> <span class="number">140</span>}
+<h3 id="例子:自定义逻辑与运算符"><strong>例子:</strong>自定义逻辑与运算符</h3><pre><code><span class="keyword">infix</span> <span class="keyword">operator</span> ||| { <span class="keyword">associativity</span> <span class="keyword">left</span> <span class="keyword">precedence</span> <span class="number">140</span>}
 </code></pre><p>1.<strong>使用自动闭包版</strong></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> ||| <span class="params">(@autoclosure <span class="keyword">left</span>:<span class="params">()</span></span></span>-&gt;<span class="type">Bool</span>,<span class="preprocessor">@autoclosure</span> <span class="keyword">right</span>:()-&gt;<span class="type">Bool</span>) -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">left</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">right</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2.<strong>不使用闭包版</strong></p>
@@ -374,7 +370,7 @@ infix operator ||| { associativity left precedence 140}
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-_自动闭包"><span class="nav-number">1.</span> <span class="nav-text">1. 自动闭包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-_自动闭包"><span class="nav-number">1.</span> <span class="nav-text">1. 自动闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子:自定义逻辑与运算符"><span class="nav-number">1.1.</span> <span class="nav-text">例子:自定义逻辑与运算符</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

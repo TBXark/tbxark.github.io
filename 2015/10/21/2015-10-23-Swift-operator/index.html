@@ -45,19 +45,19 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="#函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
-#运算符函数类和结构可以为现有的操作符">
+<meta name="description" content="函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
+运算符函数类和结构可以为现有的操作符提供">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 运算符">
 <meta property="og:url" content="http://yoursite.com/2015/10/21/2015-10-23-Swift-operator/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="#函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
-#运算符函数类和结构可以为现有的操作符">
-<meta property="og:updated_time" content="2015-10-23T07:49:07.000Z">
+<meta property="og:description" content="函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
+运算符函数类和结构可以为现有的操作符提供">
+<meta property="og:updated_time" content="2015-10-23T08:21:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 运算符">
-<meta name="twitter:description" content="#函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
-#运算符函数类和结构可以为现有的操作符">
+<meta name="twitter:description" content="函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
+运算符函数类和结构可以为现有的操作符提供">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -227,8 +227,8 @@
       
 
       
-        <span itemprop="articleBody"><p>#函数格式<br><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
-<p>#运算符函数<br>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
+        <span itemprop="articleBody"><h1 id="函数格式">函数格式</h1><p><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
+<h1 id="运算符函数">运算符函数</h1><p>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
 <ol>
 <li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>
 <li>运算符命名 : 自定义运算符可以由以下其中之一的 ASCII 字符<code>/</code>、<code>=</code>、<code>-</code>、<code>+</code>、<code>!</code>、<code>*</code>、<code>%</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>?</code> 以及 <code>~</code>, 或者后面语法中规定的任一个 Unicode 字符开始。在第一个字符之后，允许使用组合型 Unicode 字符。也可以使用两个或者多个的点号来自定义运算符（比如, ….）。虽然可以自定义包含问号?的运算符，但是这个运算符不能只包含单独的一个问号。</li>
@@ -369,7 +369,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义运算符格式"><span class="nav-number">1.</span> <span class="nav-text">自定义运算符格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子_通过自定义运算符实现正则判断"><span class="nav-number">1.1.</span> <span class="nav-text">例子 通过自定义运算符实现正则判断</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数格式"><span class="nav-number">1.</span> <span class="nav-text">函数格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符函数"><span class="nav-number">2.</span> <span class="nav-text">运算符函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义运算符格式"><span class="nav-number">2.1.</span> <span class="nav-text">自定义运算符格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子_通过自定义运算符实现正则判断"><span class="nav-number">2.1.1.</span> <span class="nav-text">例子 通过自定义运算符实现正则判断</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

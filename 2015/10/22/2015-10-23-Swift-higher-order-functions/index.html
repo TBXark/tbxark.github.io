@@ -51,7 +51,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/10/22/2015-10-23-Swift-higher-order-functions/index.html">
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="延迟计算在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行123456789101112131415161718192021let data = 1...3let result = data.lazy.map &amp;#123;    (i: Int) -&amp;gt; Int in    print(&quot;正在处理 \(i)&quot;)    return i * 2&amp;#125;print(">
-<meta property="og:updated_time" content="2015-10-23T07:49:07.000Z">
+<meta property="og:updated_time" content="2015-10-23T08:20:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 高阶函数">
 <meta name="twitter:description" content="延迟计算在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行123456789101112131415161718192021let data = 1...3let result = data.lazy.map &amp;#123;    (i: Int) -&amp;gt; Int in    print(&quot;正在处理 \(i)&quot;)    return i * 2&amp;#125;print(">
@@ -225,20 +225,30 @@
 
       
         <span itemprop="articleBody"><h2 id="延迟计算"><strong>延迟计算</strong></h2><p>在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = <span class="number">1</span>...<span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = data.lazy.map &#123;</span><br><span class="line">    (i: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></span><br><span class="line">    print(<span class="string">"正在处理 \(i)"</span>)</span><br><span class="line">    <span class="keyword">return</span> i * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"准备访问结果"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="literal">result</span> &#123;</span><br><span class="line">    print(<span class="string">"操作后结果为 \(i)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"操作完毕"</span>)</span><br><span class="line">//准备访问结果</span><br><span class="line">//正在处理 <span class="number">1</span></span><br><span class="line">//操作后结果为 <span class="number">2</span></span><br><span class="line">//正在处理 <span class="number">2</span></span><br><span class="line">//操作后结果为 <span class="number">4</span></span><br><span class="line">//正在处理 <span class="number">3</span></span><br><span class="line">//操作后结果为 <span class="number">6</span></span><br><span class="line">//操作完毕</span><br></pre></td></tr></table></figure></p>
-<p>##<strong>高阶函数</strong></p>
-<pre><code>var <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>]
+<h2 id="高阶函数"><strong>高阶函数</strong></h2><pre><code>var <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>]
 var muArray = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]
-</code></pre><p>####1. Short:排序<br>    var sortArray = array.sort({$0&gt;$1})<br>    //print(sortArray)<br>    //[6, 5, 4, 3, 2, 1, 0]</p>
-<pre><code>//InPlace:无返回值,直接改变当前实例
+</code></pre><h4 id="1-_Short:排序">1. Short:排序</h4><pre><code>var sortArray = <span class="keyword">array</span>.sort({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
+//print(sortArray)
+//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
+
+
+//InPlace:无返回值,直接改变当前实例
 var sortInPlaceArray = <span class="keyword">array</span>
 sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
 //print(sortInPlaceArray)
 //[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
-</code></pre><p>####2. Map:转换<br>    var mapArry = array.map {“No.” + String($0)}<br>    //print(mapArry)<br>    //[“No.1”, “No.2”, “No.3”, “No.4”, “No.5”, “No.6”, “No.0”]</p>
-<p>####3. Filter:过滤<br>    var filterArray = array.filter {($0%2 == 0)}<br>    //print(filterArray)<br>    //[2, 4, 6, 0]</p>
-<p>####4. Reduce:归纳<br>    var reduceArray = array.reduce(“”, combine: {$0+”.”+String($1)})<br>    //print(reduceArray)<br>    //.1.2.3.4.5.6.0</p>
-<p>####5. Flatten<br>    var flattenArray =  muArray.flatten()<br>    print(flattenArray)</p>
-</span>
+</code></pre><h4 id="2-_Map:转换">2. Map:转换</h4><pre><code>var mapArry = <span class="keyword">array</span>.<span class="keyword">map</span> {<span class="string">"No."</span> + String(<span class="variable">$0</span>)}
+//print(mapArry)
+//[<span class="string">"No.1"</span>, <span class="string">"No.2"</span>, <span class="string">"No.3"</span>, <span class="string">"No.4"</span>, <span class="string">"No.5"</span>, <span class="string">"No.6"</span>, <span class="string">"No.0"</span>]
+</code></pre><h4 id="3-_Filter:过滤">3. Filter:过滤</h4><pre><code>var filterArray = <span class="keyword">array</span>.filter {(<span class="variable">$0</span><span class="decorator">%2</span> == <span class="number">0</span>)}
+//print(filterArray)
+//[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">0</span>]
+</code></pre><h4 id="4-_Reduce:归纳">4. Reduce:归纳</h4><pre><code>var reduceArray = <span class="keyword">array</span>.reduce(<span class="string">""</span>, combine: {<span class="variable">$0</span>+<span class="string">"."</span>+String(<span class="variable">$1</span>)})
+//print(reduceArray)
+//.<span class="number">1.2</span>.<span class="number">3.4</span>.<span class="number">5.6</span>.<span class="number">0</span>
+</code></pre><h4 id="5-_Flatten">5. Flatten</h4><pre><code><span class="tag">var</span> flattenArray =  muArray.<span class="function"><span class="title">flatten</span><span class="params">()</span></span>
+<span class="function"><span class="title">print</span><span class="params">(flattenArray)</span></span>
+</code></pre></span>
       
     </div>
 
@@ -372,7 +382,7 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟计算"><span class="nav-number">1.</span> <span class="nav-text">延迟计算</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟计算"><span class="nav-number">1.</span> <span class="nav-text">延迟计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶函数"><span class="nav-number">2.</span> <span class="nav-text">高阶函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_Short:排序"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. Short:排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-_Map:转换"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. Map:转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-_Filter:过滤"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. Filter:过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-_Reduce:归纳"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. Reduce:归纳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-_Flatten"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. Flatten</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

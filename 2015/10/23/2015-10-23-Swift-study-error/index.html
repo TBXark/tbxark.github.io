@@ -45,25 +45,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="#try-catch
-1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
+<meta name="description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
 
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt">
+2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 错误处理">
 <meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-study-error/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="#try-catch
-1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
+<meta property="og:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
 
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt">
-<meta property="og:updated_time" content="2015-10-23T07:49:07.000Z">
+2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
+<meta property="og:updated_time" content="2015-10-23T08:20:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 错误处理">
-<meta name="twitter:description" content="#try-catch
-1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
+<meta name="twitter:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
 
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt">
+2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -233,8 +230,7 @@
       
 
       
-        <span itemprop="articleBody"><p>#try-catch</p>
-<p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try</p>
+        <span itemprop="articleBody"><h1 id="try-catch">try-catch</h1><p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try</p>
 <hr>
 <p>2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制<br>但是我们可以采用下列方法解决,创建一个泛型枚举作为容器<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt;&#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Success</span>(<span class="constant">T</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Error</span>(<span class="constant">NSError</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeAsyncThing()-&gt; <span class="constant">Result</span>&lt;<span class="constant">String</span>&gt;&#123;</span><br><span class="line">    <span class="regexp">//</span>处理一些非同步的事情</span><br><span class="line">    var asyncResult = <span class="literal">false</span></span><br><span class="line">    let asyncValue : <span class="constant">String</span>? = <span class="literal">nil</span></span><br><span class="line">    let asyncError : <span class="constant">NSError</span>? = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">if</span> asyncResult&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Success</span>(asyncValue!)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Error</span>(asyncError!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
@@ -242,7 +238,7 @@
 <hr>
 <p>4 . 在可以 throw 的方法中永远不能返回一个可选类型,因为结合 try? 使用的话会产生双重 Optional<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">methodThrowsWhenPassingNegative1</span><span class="params">(number: Int)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">Error</span>.<span class="type">Negative</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> number == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里 num 在解包后仍然是一个可选类型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> num = <span class="keyword">try</span>? methodThrowsWhenPassingNegative1(<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(num.<span class="keyword">dynamicType</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"failed"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>#断言<br>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func assert<span class="function"><span class="params">(<span class="property">@autoclosure</span> condition: () -&gt; Bool,</span><br><span class="line">            <span class="property">@autoclosure</span> _ message: () -&gt; String = <span class="keyword">default</span>,</span><br><span class="line">                              file: StaticString = <span class="keyword">default</span>,</span><br><span class="line">                              line: UInt = <span class="keyword">default</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+<h1 id="断言">断言</h1><p>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func assert<span class="function"><span class="params">(<span class="property">@autoclosure</span> condition: () -&gt; Bool,</span><br><span class="line">            <span class="property">@autoclosure</span> _ message: () -&gt; String = <span class="keyword">default</span>,</span><br><span class="line">                              file: StaticString = <span class="keyword">default</span>,</span><br><span class="line">                              line: UInt = <span class="keyword">default</span>)</span></span></span><br></pre></td></tr></table></figure></p>
 <p>#fatalError<br>在调试时我们可以使用断言来排除类似s数组越界问题，但是断言只会在 Debug 环境中有效，而在 Release 编译中所有的断言都将被禁用。在遇到确实因为输入的错误无法使程序继续运行的时候，我们一般考虑以产生致命错误 (fatalError) 的方式来终止程序<br><code>@noreturn</code> 表示这个函数可以不要返回值,因为程序整个都将终止。这可以帮助编译器进行一些检查，比如在某些需要返回值的 switch 语句中，我们只希望被 switch 的内容在某些范围内，那么我们在可以在不属于这些范围的 default 块里直接写 fatalError 而不再需要指定返回值<br>假如父类中有必须重写的方法,可以用<code>fatalError</code> 来标识提醒重写</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@noreturn</span> func <span class="function">fatalError</span>(<span class="variable">@autoclosure</span> <span class="attribute">message</span>: () -&gt; String = default,</span><br><span class="line">                                          <span class="attribute">file</span>: StaticString = default,</span><br><span class="line">                                          <span class="attribute">line</span>: UInt = default</span><br></pre></td></tr></table></figure>
 </span>
@@ -379,7 +375,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#try-catch"><span class="nav-number">1.</span> <span class="nav-text">try-catch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#断言"><span class="nav-number">2.</span> <span class="nav-text">断言</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
