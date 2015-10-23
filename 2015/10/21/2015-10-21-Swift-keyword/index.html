@@ -45,22 +45,19 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta name="description" content="indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
+123456789101112131415161718192021//包含相关值的递归枚举indirect enum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 - 序">
-<meta property="og:url" content="http://yoursite.com/2015/10/19/2015-10-23-Swift-begin/index.html">
+<meta property="og:title" content="Swift笔记 - 关键字">
+<meta property="og:url" content="http://yoursite.com/2015/10/21/2015-10-21-Swift-keyword/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta property="og:description" content="indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
+123456789101112131415161718192021//包含相关值的递归枚举indirect enum">
 <meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 - 序">
-<meta name="twitter:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta name="twitter:title" content="Swift笔记 - 关键字">
+<meta name="twitter:description" content="indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
+123456789101112131415161718192021//包含相关值的递归枚举indirect enum">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -72,7 +69,7 @@
 
 
 
-  <title> Swift笔记 - 序 | TBXark </title>
+  <title> Swift笔记 - 关键字 | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -217,7 +214,7 @@
             
             
               
-                Swift笔记 - 序
+                Swift笔记 - 关键字
               
             
           </h1>
@@ -226,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-19T15:10:10+08:00" content="2015-10-19">
-              2015-10-19
+            <time itemprop="dateCreated" datetime="2015-10-21T15:07:42+08:00" content="2015-10-21">
+              2015-10-21
             </time>
           </span>
 
@@ -265,15 +262,14 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="开始">开始</h2><p>移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.<br>当我对自习每天的学习还算满意的时候,我看到了一句话</p>
+        <span itemprop="articleBody"><h1 id="indirect">indirect</h1><p>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含相关值的递归枚举</span></span><br><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">LinkList</span>&lt;<span class="title">Element</span>:<span class="title">Comparable</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Empty</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Node</span>(<span class="type">Element</span>,<span class="type">LinkList</span>&lt;<span class="type">Element</span>&gt;)</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">printList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Node</span>(value,node):</span><br><span class="line">            <span class="built_in">print</span>(value)</span><br><span class="line">            <span class="keyword">switch</span> node&#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Node</span>(<span class="number">_</span>, <span class="number">_</span>):</span><br><span class="line">                node.printList()</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Empty</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> .<span class="type">Empty</span>:<span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">1</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">2</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">3</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">4</span>, <span class="type">LinkList</span>.<span class="type">Empty</span>))))</span><br><span class="line">list.printList()</span><br></pre></td></tr></table></figure>
+<h1 id="Where">Where</h1><p>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
 <blockquote>
-<p>哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对他人才华有着高明判断力的君主，他并不这样认为。于是他随意指着绑在周围的战驴说：“亲爱的将军，好好看看这些驴子，它们至少参加过20次战役，可它们仍然是驴子。”</p>
+<p>模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配</p>
+<h3 id="使用场景">使用场景</h3><h4 id="1-_Switch">1. Switch</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="string">"A111"</span>,<span class="string">"A222"</span>,<span class="string">"B111"</span>,<span class="string">"B222"</span>,<span class="string">"C111"</span>,<span class="string">"C222"</span>]</span><br><span class="line">nums.forEach &#123;</span><br><span class="line">    <span class="keyword">switch</span> $<span class="number">0</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"A"</span>):<span class="built_in">print</span>(<span class="string">"A"</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"B"</span>):<span class="built_in">print</span>(<span class="string">"B"</span>)</span><br><span class="line">    <span class="keyword">default</span>:<span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//C111</span></span><br><span class="line"><span class="comment">//C222</span></span><br></pre></td></tr></table></figure>
 </blockquote>
-<p>然后,我就开始想,我是不是真的尽全力了呢,虽然我每天都有在学习,但是依然没有走出 Objective-C 的温室.Swift 刚出的时候我一直已其不稳定为借口而没去学习,Swift 2.0出来以后,依然没有太大的吸引力让我去学习.<br>但是我意识到这都是借口,然后我就开始了我的 Swift 学习之旅</p>
-<h2 id="过程">过程</h2><p>我大概花了4天的空闲时间将 <strong>“The Swift Programming Language”</strong> 学习完,作为一个资深 Objective-C 的编程人员,没有了 Runtime 简直像程序员没有了键盘,虽然 Swift 有很多新特性可以作为 KVC,和 KVO 的替代.但是灵活性还有待提高.在学完基础语法之后,我感觉还需要提高,于是买了 王巍 (<a href="http://swifter.tips/author/onevcat/" target="_blank" rel="external">@ONEVCAT</a>) 的 <strong>“<a href="http://swifter.tips" target="_blank" rel="external">SWIFT 100个 必备 TIPS</a>“</strong>, 之后的笔记都是在看这本书的途中写的.部分内容也是摘抄自该书.在这里做一个统一的引用说明</p>
-<h2 id="最后">最后</h2><p>Swift 是一门很有意思的语言,但是由于它的安全性少了很多灵活的乐趣.最近还有一个比较热门的 React Native 现在好像只能用纯 js 编辑,不能和原生进行混编,这对于企业开发似乎不太现实.所以还不打算开始学习.<br>Swift 之后,打算开始用 Swift 学写一些酷炫一点的动画控件,作为 Swift 学习的巩固.</p>
-<hr>
-<p>TBXark</p>
+<h4 id="2-_if">2. if</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dict : NSDictionary = [<span class="string">"key"</span>:<span class="string">"value"</span>,<span class="string">"key2"</span>:<span class="string">"values"</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">value</span> :NSString = dict[<span class="string">"key"</span>] <span class="keyword">as</span>? NSString <span class="keyword">where</span> <span class="keyword">value</span>.isEqualToString(<span class="string">"value"</span>)&#123;</span><br><span class="line">    print(<span class="string">"Same"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Not Same"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -291,12 +287,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/20/2015-10-20-Swift-class-protocol/" rel="next" title="Swift笔记 - 类与协议">
+                <i class="fa fa-chevron-left"></i> Swift笔记 - 类与协议
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/20/2015-10-23-Swift-class-protocol/" rel="prev" title="Swift笔记 - 类与协议">
-                Swift笔记 - 类与协议 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/21/2015-10-21-Swift-operator/" rel="prev" title="Swift笔记 - 运算符">
+                Swift笔记 - 运算符 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -404,7 +404,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#indirect"><span class="nav-number">1.</span> <span class="nav-text">indirect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Where"><span class="nav-number">2.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">2.0.1.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_Switch"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">1. Switch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-_if"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">2. if</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

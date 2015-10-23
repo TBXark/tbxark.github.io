@@ -45,16 +45,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="延迟计算在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行123456789101112131415161718192021let data = 1...3let result = data.lazy.map &amp;#123;    (i: Int) -&amp;gt; Int in    print(&quot;正在处理 \(i)&quot;)    return i * 2&amp;#125;print(">
+<meta name="description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
+
+哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 - 高阶函数">
-<meta property="og:url" content="http://yoursite.com/2015/10/22/2015-10-23-Swift-higher-order-functions/index.html">
+<meta property="og:title" content="Swift笔记 - 序">
+<meta property="og:url" content="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="延迟计算在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行123456789101112131415161718192021let data = 1...3let result = data.lazy.map &amp;#123;    (i: Int) -&amp;gt; Int in    print(&quot;正在处理 \(i)&quot;)    return i * 2&amp;#125;print(">
+<meta property="og:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
+
+哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
 <meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 - 高阶函数">
-<meta name="twitter:description" content="延迟计算在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行123456789101112131415161718192021let data = 1...3let result = data.lazy.map &amp;#123;    (i: Int) -&amp;gt; Int in    print(&quot;正在处理 \(i)&quot;)    return i * 2&amp;#125;print(">
+<meta name="twitter:title" content="Swift笔记 - 序">
+<meta name="twitter:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
+
+哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +72,7 @@
 
 
 
-  <title> Swift笔记 - 高阶函数 | TBXark </title>
+  <title> Swift笔记 - 序 | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -211,7 +217,7 @@
             
             
               
-                Swift笔记 - 高阶函数
+                Swift笔记 - 序
               
             
           </h1>
@@ -220,8 +226,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-22T15:11:31+08:00" content="2015-10-22">
-              2015-10-22
+            <time itemprop="dateCreated" datetime="2015-10-19T15:10:10+08:00" content="2015-10-19">
+              2015-10-19
             </time>
           </span>
 
@@ -259,31 +265,16 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="延迟计算"><strong>延迟计算</strong></h2><p>在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = <span class="number">1</span>...<span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = data.lazy.map &#123;</span><br><span class="line">    (i: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></span><br><span class="line">    print(<span class="string">"正在处理 \(i)"</span>)</span><br><span class="line">    <span class="keyword">return</span> i * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"准备访问结果"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="literal">result</span> &#123;</span><br><span class="line">    print(<span class="string">"操作后结果为 \(i)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"操作完毕"</span>)</span><br><span class="line">//准备访问结果</span><br><span class="line">//正在处理 <span class="number">1</span></span><br><span class="line">//操作后结果为 <span class="number">2</span></span><br><span class="line">//正在处理 <span class="number">2</span></span><br><span class="line">//操作后结果为 <span class="number">4</span></span><br><span class="line">//正在处理 <span class="number">3</span></span><br><span class="line">//操作后结果为 <span class="number">6</span></span><br><span class="line">//操作完毕</span><br></pre></td></tr></table></figure></p>
-<h2 id="高阶函数"><strong>高阶函数</strong></h2><pre><code>var <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>]
-var muArray = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]
-</code></pre><h4 id="1-_Short:排序">1. Short:排序</h4><pre><code>var sortArray = <span class="keyword">array</span>.sort({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
-//print(sortArray)
-//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
-
-
-//InPlace:无返回值,直接改变当前实例
-var sortInPlaceArray = <span class="keyword">array</span>
-sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
-//print(sortInPlaceArray)
-//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
-</code></pre><h4 id="2-_Map:转换">2. Map:转换</h4><pre><code>var mapArry = <span class="keyword">array</span>.<span class="keyword">map</span> {<span class="string">"No."</span> + String(<span class="variable">$0</span>)}
-//print(mapArry)
-//[<span class="string">"No.1"</span>, <span class="string">"No.2"</span>, <span class="string">"No.3"</span>, <span class="string">"No.4"</span>, <span class="string">"No.5"</span>, <span class="string">"No.6"</span>, <span class="string">"No.0"</span>]
-</code></pre><h4 id="3-_Filter:过滤">3. Filter:过滤</h4><pre><code>var filterArray = <span class="keyword">array</span>.filter {(<span class="variable">$0</span><span class="decorator">%2</span> == <span class="number">0</span>)}
-//print(filterArray)
-//[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">0</span>]
-</code></pre><h4 id="4-_Reduce:归纳">4. Reduce:归纳</h4><pre><code>var reduceArray = <span class="keyword">array</span>.reduce(<span class="string">""</span>, combine: {<span class="variable">$0</span>+<span class="string">"."</span>+String(<span class="variable">$1</span>)})
-//print(reduceArray)
-//.<span class="number">1.2</span>.<span class="number">3.4</span>.<span class="number">5.6</span>.<span class="number">0</span>
-</code></pre><h4 id="5-_Flatten">5. Flatten</h4><pre><code><span class="tag">var</span> flattenArray =  muArray.<span class="function"><span class="title">flatten</span><span class="params">()</span></span>
-<span class="function"><span class="title">print</span><span class="params">(flattenArray)</span></span>
-</code></pre></span>
+        <span itemprop="articleBody"><h2 id="开始">开始</h2><p>移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.<br>当我对自习每天的学习还算满意的时候,我看到了一句话</p>
+<blockquote>
+<p>哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对他人才华有着高明判断力的君主，他并不这样认为。于是他随意指着绑在周围的战驴说：“亲爱的将军，好好看看这些驴子，它们至少参加过20次战役，可它们仍然是驴子。”</p>
+</blockquote>
+<p>然后,我就开始想,我是不是真的尽全力了呢,虽然我每天都有在学习,但是依然没有走出 Objective-C 的温室.Swift 刚出的时候我一直已其不稳定为借口而没去学习,Swift 2.0出来以后,依然没有太大的吸引力让我去学习.<br>但是我意识到这都是借口,然后我就开始了我的 Swift 学习之旅</p>
+<h2 id="过程">过程</h2><p>我大概花了4天的空闲时间将 <strong>“The Swift Programming Language”</strong> 学习完,作为一个资深 Objective-C 的编程人员,没有了 Runtime 简直像程序员没有了键盘,虽然 Swift 有很多新特性可以作为 KVC,和 KVO 的替代.但是灵活性还有待提高.在学完基础语法之后,我感觉还需要提高,于是买了 王巍 (<a href="http://swifter.tips/author/onevcat/" target="_blank" rel="external">@ONEVCAT</a>) 的 <strong>“<a href="http://swifter.tips" target="_blank" rel="external">SWIFT 100个 必备 TIPS</a>“</strong>, 之后的笔记都是在看这本书的途中写的.部分内容也是摘抄自该书.在这里做一个统一的引用说明</p>
+<h2 id="最后">最后</h2><p>Swift 是一门很有意思的语言,但是由于它的安全性少了很多灵活的乐趣.最近还有一个比较热门的 React Native 现在好像只能用纯 js 编辑,不能和原生进行混编,这对于企业开发似乎不太现实.所以还不打算开始学习.<br>Swift 之后,打算开始用 Swift 学写一些酷炫一点的动画控件,作为 Swift 学习的巩固.</p>
+<hr>
+<p>TBXark</p>
+</span>
       
     </div>
 
@@ -300,16 +291,12 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/22/2015-10-23-Swift-collection-type/" rel="next" title="Swift笔记 - 集合类型">
-                <i class="fa fa-chevron-left"></i> Swift笔记 - 集合类型
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/23/2015-10-23-Swift-study-error/" rel="prev" title="Swift笔记 - 错误处理">
-                Swift笔记 - 错误处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/20/2015-10-20-Swift-class-protocol/" rel="prev" title="Swift笔记 - 类与协议">
+                Swift笔记 - 类与协议 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -417,7 +404,7 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟计算"><span class="nav-number">1.</span> <span class="nav-text">延迟计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶函数"><span class="nav-number">2.</span> <span class="nav-text">高阶函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_Short:排序"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. Short:排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-_Map:转换"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. Map:转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-_Filter:过滤"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. Filter:过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-_Reduce:归纳"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. Reduce:归纳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-_Flatten"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. Flatten</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
