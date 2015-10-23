@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Swift 学习笔记," />
 
 
 
@@ -50,7 +50,7 @@
 2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型枚举作为容器12345678910111213141516enum Result&amp;lt;T&amp;gt;&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 错误处理">
-<meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-study-error/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-error-control/index.html">
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
 
@@ -232,6 +232,21 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -267,21 +282,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Swift-学习笔记/" rel="tag">#Swift 学习笔记</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/22/2015-10-22-Swift-higher-order-functions/" rel="next" title="Swift笔记 - 高阶函数">
-                <i class="fa fa-chevron-left"></i> Swift笔记 - 高阶函数
+              <a href="/2015/10/23/2015-10-23-Swift-study-error/" rel="next" title="Swift笔记 - 错误处理">
+                <i class="fa fa-chevron-left"></i> Swift笔记 - 错误处理
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/23/2015-10-23-Swift-error-control/" rel="prev" title="Swift笔记 - 错误处理">
-                Swift笔记 - 错误处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/23/2015-10-23-Swift-multithreading/" rel="prev" title="Swift笔记 - 多线程">
+                Swift笔记 - 多线程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
