@@ -192,82 +192,6 @@
             
             
               
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-optional-type/" itemprop="url">
-                  Swift笔记 可选类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:22:13+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="可选链">可选链</h2><h3 id="在可选链中调用函数">在可选链中调用函数</h3><p>当可选链的结尾是一个函数的时候,这个函数的返回值也是一个可选类型,即使这个函数的返回值是 void(空元组),通过判断函数的返回值是否为空可以判断函数是否被执行,<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name : <span class="type">String</span></span><br><span class="line">    <span class="keyword">init</span>(name:<span class="type">String</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">play</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"play <span class="subst">\(name)</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> toy : <span class="type">Toy</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pet : <span class="type">Pet</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> xiaoming = <span class="type">Child</span>()</span><br><span class="line">xiaoming.pet = <span class="type">Pet</span>()</span><br><span class="line"><span class="comment">//xiaoming.pet?.toy = Toy(name: "Car")</span></span><br><span class="line"><span class="comment">//xiaoming.pet?.toy?.play()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//闭包中的判断,即返回一个可选的空元组</span></span><br><span class="line"><span class="keyword">var</span> playClosure = &#123;(child:<span class="type">Child</span>) -&gt;()? <span class="keyword">in</span></span><br><span class="line">    child.pet?.toy?.play()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> isPlay :() = xiaoming.pet?.toy?.play()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Somthing Play"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Nothing Play"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-closure/" itemprop="url">
                   Swift笔记 - 闭包
                 </a>
@@ -314,269 +238,6 @@
 <p>2.<strong>不使用闭包版</strong></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> ||| <span class="params">( <span class="keyword">left</span>:Bool, <span class="keyword">right</span>:Bool)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">left</span> || <span class="keyword">right</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3.<strong>测试</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="keyword">if</span> (++a &gt; <span class="number">2</span>) ||| (++a &gt; <span class="number">2</span>)&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"a= <span class="subst">\(a)</span>"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"a= <span class="subst">\(a)</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1.使用闭包: a = 3</span></span><br><span class="line"><span class="comment">//2.不使用闭包: a = 4</span></span><br><span class="line"><span class="comment">//结论: 使用闭包可以减少(延迟)计算,使得计算在真正需要的时候才使用</span></span><br></pre></td></tr></table></figure></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-operator/" itemprop="url">
-                  Swift笔记 - 运算符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:13:55+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>#函数格式<br><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
-<p>#运算符函数<br>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
-<ol>
-<li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>
-<li>运算符命名 : 自定义运算符可以由以下其中之一的 ASCII 字符<code>/</code>、<code>=</code>、<code>-</code>、<code>+</code>、<code>!</code>、<code>*</code>、<code>%</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>?</code> 以及 <code>~</code>, 或者后面语法中规定的任一个 Unicode 字符开始。在第一个字符之后，允许使用组合型 Unicode 字符。也可以使用两个或者多个的点号来自定义运算符（比如, ….）。虽然可以自定义包含问号?的运算符，但是这个运算符不能只包含单独的一个问号。</li>
-</ol>
-<h2 id="自定义运算符格式">自定义运算符格式</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="keyword">operator</span> &lt;运算符&gt; &#123;</span><br><span class="line">	<span class="keyword">associativity</span> &lt;结合方向&gt;(<span class="keyword">left</span>,<span class="keyword">right</span>,<span class="keyword">none</span>)</span><br><span class="line">	<span class="keyword">precedence</span> &lt;优先级&gt;(乘除<span class="number">150</span>,加减<span class="number">140</span>)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="func"><span class="keyword">func</span> <span class="generics">&lt;运算符&gt;</span> <span class="params">(<span class="keyword">left</span> : &lt;左&gt; ,<span class="keyword">right</span> : &lt;右&gt;)</span></span> -&gt; &lt;返回值&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;返回值&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="例子_通过自定义运算符实现正则判断"><strong>例子</strong> 通过自定义运算符实现正则判断</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">RegexMode</span> : <span class="title">String</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Mail</span> = <span class="string">"^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]&#123;2,6&#125;)$"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RegexHelper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> regex: <span class="type">NSRegularExpression</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="number">_</span> pattern: <span class="type">String</span>) <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> regex = <span class="type">NSRegularExpression</span>(pattern: pattern,options: .<span class="type">CaseInsensitive</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">match</span><span class="params">(input: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> matches = regex.matchesInString(input,</span><br><span class="line">            options: [],</span><br><span class="line">            range: <span class="type">NSMakeRange</span>(<span class="number">0</span>, input.characters.<span class="built_in">count</span>))</span><br><span class="line">        <span class="keyword">return</span> matches.<span class="built_in">count</span> &gt; <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> =~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> ==~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> =~ <span class="params">(resource : String ,regx : String)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">RegexHelper</span>(regx).match(resource)</span><br><span class="line">    &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> ==~ <span class="params">(resource : String ,regx : RegexMode)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> resource =~ regx.rawValue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"vfanx@qq.com"</span> ==~ <span class="type">RegexMode</span>.<span class="type">Mail</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"有效的邮箱地址"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-higher-order-functions/" itemprop="url">
-                  Swift笔记 - 高阶函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:11:31+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="延迟计算"><strong>延迟计算</strong></h2><p>在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = <span class="number">1</span>...<span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = data.lazy.map &#123;</span><br><span class="line">    (i: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></span><br><span class="line">    print(<span class="string">"正在处理 \(i)"</span>)</span><br><span class="line">    <span class="keyword">return</span> i * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"准备访问结果"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="literal">result</span> &#123;</span><br><span class="line">    print(<span class="string">"操作后结果为 \(i)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"操作完毕"</span>)</span><br><span class="line">//准备访问结果</span><br><span class="line">//正在处理 <span class="number">1</span></span><br><span class="line">//操作后结果为 <span class="number">2</span></span><br><span class="line">//正在处理 <span class="number">2</span></span><br><span class="line">//操作后结果为 <span class="number">4</span></span><br><span class="line">//正在处理 <span class="number">3</span></span><br><span class="line">//操作后结果为 <span class="number">6</span></span><br><span class="line">//操作完毕</span><br></pre></td></tr></table></figure></p>
-<p>##<strong>高阶函数</strong></p>
-<pre><code>var <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>]
-var muArray = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]
-</code></pre><p>####1. Short:排序<br>    var sortArray = array.sort({$0&gt;$1})<br>    //print(sortArray)<br>    //[6, 5, 4, 3, 2, 1, 0]</p>
-<pre><code>//InPlace:无返回值,直接改变当前实例
-var sortInPlaceArray = <span class="keyword">array</span>
-sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
-//print(sortInPlaceArray)
-//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
-</code></pre><p>####2. Map:转换<br>    var mapArry = array.map {“No.” + String($0)}<br>    //print(mapArry)<br>    //[“No.1”, “No.2”, “No.3”, “No.4”, “No.5”, “No.6”, “No.0”]</p>
-<p>####3. Filter:过滤<br>    var filterArray = array.filter {($0%2 == 0)}<br>    //print(filterArray)<br>    //[2, 4, 6, 0]</p>
-<p>####4. Reduce:归纳<br>    var reduceArray = array.reduce(“”, combine: {$0+”.”+String($1)})<br>    //print(reduceArray)<br>    //.1.2.3.4.5.6.0</p>
-<p>####5. Flatten<br>    var flattenArray =  muArray.flatten()<br>    print(flattenArray)</p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-class-protocol/" itemprop="url">
-                  Swift笔记 - 类与协议
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:10:10+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="可选协议/协议拓展">可选协议/协议拓展</h2><p><code>MyProtocol</code> 协议中<code>func requiredMethod()</code> 是在协议声明的时候定义的,但是<code>MyProtocol</code> 对其有一个默认实现,而<code>func optionalMethod()</code> 是在拓展中实现的,必须要有一个默认实现. 当<code>TestClass</code> 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.</p>
-<h4 id="结论如下"><strong>结论如下</strong></h4><ul>
-<li>如果类型推断得到的是实际的类型<ul>
-<li>那么类型中的实现将被调用；如果类型中没有实现的话，那么接口扩展中的默认实现将被使用</li>
-</ul>
-</li>
-<li>如果类型推断得到的是接口，而不是实际类型<ul>
-<li>并且方法在接口中进行了定义，那么类型中的实现将被调用；如果类型中没有实现，那么接口扩展中的默认实现被使用</li>
-<li>否则 (也就是方法没有在接口中定义)，扩展中的默认实现将被调用</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">MyProtocol</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">requiredMethod</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MyProtocol</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">requiredMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Origin Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">optionalMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Optional Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> : <span class="title">MyProtocol</span> </span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">requiredMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Rewrite Require Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">optionalMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Rewrite Optional Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> temp = <span class="type">TestClass</span>() <span class="keyword">as</span> <span class="type">MyProtocol</span></span><br><span class="line">temp.requiredMethod() <span class="comment">//Rewrite Require Method</span></span><br><span class="line">temp.optionalMethod() <span class="comment">//Optional Method</span></span><br></pre></td></tr></table></figure>
-<h2 id="类型/协议_转换">类型/协议 转换</h2><p>###<strong>通用代码</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Study</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">NSStudy</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">NSString</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> : <span class="title">Study</span>,<span class="title">NSStudy</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">sayName</span><span class="params">(name:String)</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Father : "</span>+name)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"HelloWord"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">NSString</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">NSString</span>(string: <span class="string">"HelloWord"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>: <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">sayName</span><span class="params">(name:String)</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Son : "</span>+name)</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="func"><span class="keyword">func</span> <span class="title">gotoSchool</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Go to school"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="操作符">操作符</h3><p>####1. 判断 <strong>是否为某个类或为某个类的子类</strong> 或 <strong>是否遵守某个协议</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">var</span> man:Father = <span class="function"><span class="title">Son</span><span class="params">()</span></span></span><br><span class="line"><span class="tag">var</span> isSon = man is Son          <span class="comment">//true</span></span><br><span class="line"><span class="tag">var</span> canStudy = man is Study     <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
-<p>####2. 将某个类转换成另外一个类, 或者假设其遵守某个方法<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//转换为某个类</span></span><br><span class="line"><span class="keyword">if</span> let success:() = (<span class="keyword">man</span> <span class="keyword">as</span>? Son)?.gotoSchool()&#123;</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"Success"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"Fail"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行不同协议中的同名方法</span></span><br><span class="line"><span class="keyword">var</span> str = (<span class="keyword">man</span> <span class="keyword">as</span> NSStudy).helloWord()</span><br><span class="line"><span class="keyword">if</span> str is NSString&#123;</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"Is NSString"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
             
           </span>
@@ -703,8 +364,8 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
             
             
               
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-keyword/" itemprop="url">
-                  Swift笔记 关键字
+                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-multithreading/" itemprop="url">
+                  Swift笔记 - 多线程
                 </a>
               
             
@@ -714,7 +375,7 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:07:42+08:00" content="2015-10-23">
+            <time itemprop="dateCreated" datetime="2015-10-23T15:03:30+08:00" content="2015-10-23">
               2015-10-23
             </time>
           </span>
@@ -741,14 +402,15 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
         
           <span itemprop="articleBody">
             
-              <p>#indirect<br>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含相关值的递归枚举</span></span><br><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">LinkList</span>&lt;<span class="title">Element</span>:<span class="title">Comparable</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Empty</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Node</span>(<span class="type">Element</span>,<span class="type">LinkList</span>&lt;<span class="type">Element</span>&gt;)</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">printList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Node</span>(value,node):</span><br><span class="line">            <span class="built_in">print</span>(value)</span><br><span class="line">            <span class="keyword">switch</span> node&#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Node</span>(<span class="number">_</span>, <span class="number">_</span>):</span><br><span class="line">                node.printList()</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Empty</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> .<span class="type">Empty</span>:<span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">1</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">2</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">3</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">4</span>, <span class="type">LinkList</span>.<span class="type">Empty</span>))))</span><br><span class="line">list.printList()</span><br></pre></td></tr></table></figure>
-<p>#Where<br>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
-<blockquote>
-<p>模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配</p>
-<h3 id="使用场景">使用场景</h3><h4 id="1-_Switch">1. Switch</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="string">"A111"</span>,<span class="string">"A222"</span>,<span class="string">"B111"</span>,<span class="string">"B222"</span>,<span class="string">"C111"</span>,<span class="string">"C222"</span>]</span><br><span class="line">nums.forEach &#123;</span><br><span class="line">    <span class="keyword">switch</span> $<span class="number">0</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"A"</span>):<span class="built_in">print</span>(<span class="string">"A"</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"B"</span>):<span class="built_in">print</span>(<span class="string">"B"</span>)</span><br><span class="line">    <span class="keyword">default</span>:<span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//C111</span></span><br><span class="line"><span class="comment">//C222</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="2-_if">2. if</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dict : NSDictionary = [<span class="string">"key"</span>:<span class="string">"value"</span>,<span class="string">"key2"</span>:<span class="string">"values"</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">value</span> :NSString = dict[<span class="string">"key"</span>] <span class="keyword">as</span>? NSString <span class="keyword">where</span> <span class="keyword">value</span>.isEqualToString(<span class="string">"value"</span>)&#123;</span><br><span class="line">    print(<span class="string">"Same"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Not Same"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              <p>#LOCK</p>
+<h3 id="1-_Objective-C_版本">1. Objective-C 版本</h3><p> <code>@synchronized</code>，这个关键字可以用来修饰一个变量，并为其自动加上和解除互斥锁。这样，可以保证变量在作用范围内不会被其他线程改变。</p>
+<h4 id="写法1:"><strong>写法1</strong>:</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">-</span> (void)<span class="tag">myMethod</span>:(id)<span class="tag">anObj</span> &#123;</span><br><span class="line">    <span class="variable">@synchronized</span>(anObj) &#123;</span><br><span class="line">        <span class="comment">// 在括号内 anObj 不会被其他线程改变</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>由于@synchronized的实际作用如下</p>
+<h4 id="写法2:"><strong>写法2</strong>:</h4><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="pp">- <span class="params">(void)</span>myMethod:<span class="params">(id)</span>anObj &#123;</span><br><span class="line">	objc_sync_enter<span class="params">(an<span class="variable">Obj</span>)</span></span><br><span class="line">       // 在 enter 和 exit 之间 anObj 不会被其他线程改变</span><br><span class="line">	objc_sync_exit<span class="params">(an<span class="variable">Obj</span>)</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>###2. Swift 版本<br>然后由于<code>@synchronized</code>在swift中已经取消,所以我们可以使用写法2来写,为了方便使用,可以采用闭包封装<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func synchronized<span class="function"><span class="params">(lockObject:AnyObject?,closure:()-&gt;())</span>&#123;</span><br><span class="line">	<span class="title">objc_sync_enter</span><span class="params">(lockObject)</span></span><br><span class="line">	<span class="title">closure</span><span class="params">()</span></span><br><span class="line">	<span class="title">objc_sync_exit</span><span class="params">(lockObject)</span></span><br><span class="line">&#125;</span><br><span class="line">//调用时可以采用尾随闭包</span><br><span class="line"><span class="title">var</span> <span class="title">str</span> = "<span class="title">HelloWord</span>"</span><br><span class="line"><span class="title">synchronized</span><span class="params">(str)</span>&#123;</span><br><span class="line">       // 在闭包内<span class="title">str</span>不会被其他线程改变</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>#GCD</p>
+<h3 id="GCD_延时实例">GCD 延时实例</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">typealias <span class="type">Task</span> = (cancel : <span class="type">Bool</span>) -&gt; <span class="type">Void</span></span><br><span class="line"></span><br><span class="line">func dispatch_task_delay(queue:dispatch_queue_t,time:<span class="type">NSTimeInterval</span>, task:dispatch_block_t) -&gt;  <span class="type">Task</span>? &#123;</span><br><span class="line"></span><br><span class="line">    func dispatch_later(<span class="keyword">block</span>:dispatch_block_t) &#123;</span><br><span class="line">        dispatch_after(dispatch_time(<span class="type">DISPATCH_TIME_NOW</span>,<span class="type">Int64</span>(time * <span class="type">Double</span>(<span class="type">NSEC_PER_SEC</span>))),queue,<span class="keyword">block</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 实际输入的需要执行的闭包</span><br><span class="line">    <span class="keyword">var</span> closure: dispatch_block_t? = task</span><br><span class="line">    //需要返回的闭包的应用</span><br><span class="line">    <span class="keyword">var</span> <span class="literal">result</span>: <span class="type">Task</span>?</span><br><span class="line"></span><br><span class="line">    //参数为 <span class="type">Bool</span> 返回值为空的闭包队列实际加载的闭包,作为实际返回值,捕获了实际需要执行的闭包,同时也捕获了自身</span><br><span class="line">    <span class="keyword">let</span> delayedClosure: <span class="type">Task</span> = &#123; cancel -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> internalClosure = closure &#123;</span><br><span class="line">            <span class="keyword">if</span> (cancel == <span class="literal">false</span>) &#123;</span><br><span class="line">                dispatch_async(queue, internalClosure);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        closure = <span class="keyword">nil</span></span><br><span class="line">        <span class="literal">result</span> = <span class="keyword">nil</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="literal">result</span> = delayedClosure</span><br><span class="line"></span><br><span class="line">    //函数体实际执行的代码,</span><br><span class="line">    dispatch_later &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> delayedClosure = <span class="literal">result</span> &#123;</span><br><span class="line">            delayedClosure(cancel: <span class="literal">false</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">result</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func dispatch_task_delay_main(time:<span class="type">NSTimeInterval</span>, task:dispatch_block_t) -&gt; <span class="type">Task</span>? &#123;</span><br><span class="line">    <span class="keyword">return</span> dispatch_task_delay(dispatch_get_main_queue(), time: time, task: task)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func dispatch_task_cancel(task:<span class="type">Task</span>?) &#123;</span><br><span class="line">    task?(cancel: <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
             
           </span>
         
@@ -785,7 +447,183 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
             
             
               
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-collection-type/" itemprop="url">
+                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-study-error/" itemprop="url">
+                  Swift笔记 - 错误处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-23T14:55:54+08:00" content="2015-10-23">
+              2015-10-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>#try-catch</p>
+<p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try</p>
+<hr>
+<p>2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制<br>但是我们可以采用下列方法解决,创建一个泛型枚举作为容器<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt;&#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Success</span>(<span class="constant">T</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Error</span>(<span class="constant">NSError</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeAsyncThing()-&gt; <span class="constant">Result</span>&lt;<span class="constant">String</span>&gt;&#123;</span><br><span class="line">    <span class="regexp">//</span>处理一些非同步的事情</span><br><span class="line">    var asyncResult = <span class="literal">false</span></span><br><span class="line">    let asyncValue : <span class="constant">String</span>? = <span class="literal">nil</span></span><br><span class="line">    let asyncError : <span class="constant">NSError</span>? = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">if</span> asyncResult&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Success</span>(asyncValue!)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Error</span>(asyncError!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>3 . 对于可以忽视错误类型的异常可以采用 if+可选绑定 进行,对于保证不会出错的也可以采用!进行强制解析<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="type">CommonError</span> : <span class="type">ErrorType</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Error</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Warning</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeThingMayBeWrong(success:<span class="type">Bool</span>) throws -&gt; <span class="type">String</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> success&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Success"</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        throw <span class="type">CommonError</span>.<span class="type">Error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//<span class="number">1</span>. 强制解析:保证不发生错误情况下使用,当抛出错误时应用会崩溃</span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>! doSomeThingMayBeWrong(<span class="literal">true</span>)</span><br><span class="line">print(<span class="literal">result</span>)</span><br><span class="line"></span><br><span class="line">//<span class="number">2</span>. 可选绑定</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>? doSomeThingMayBeWrong(<span class="literal">false</span>)&#123;</span><br><span class="line">    print(<span class="literal">result</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br><span class="line">//<span class="type">Success</span></span><br><span class="line">//<span class="type">Error</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>4 . 在可以 throw 的方法中永远不能返回一个可选类型,因为结合 try? 使用的话会产生双重 Optional<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">methodThrowsWhenPassingNegative1</span><span class="params">(number: Int)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">Error</span>.<span class="type">Negative</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> number == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里 num 在解包后仍然是一个可选类型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> num = <span class="keyword">try</span>? methodThrowsWhenPassingNegative1(<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(num.<span class="keyword">dynamicType</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"failed"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>#断言<br>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func assert<span class="function"><span class="params">(<span class="property">@autoclosure</span> condition: () -&gt; Bool,</span><br><span class="line">            <span class="property">@autoclosure</span> _ message: () -&gt; String = <span class="keyword">default</span>,</span><br><span class="line">                              file: StaticString = <span class="keyword">default</span>,</span><br><span class="line">                              line: UInt = <span class="keyword">default</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>#fatalError<br>在调试时我们可以使用断言来排除类似s数组越界问题，但是断言只会在 Debug 环境中有效，而在 Release 编译中所有的断言都将被禁用。在遇到确实因为输入的错误无法使程序继续运行的时候，我们一般考虑以产生致命错误 (fatalError) 的方式来终止程序<br><code>@noreturn</code> 表示这个函数可以不要返回值,因为程序整个都将终止。这可以帮助编译器进行一些检查，比如在某些需要返回值的 switch 语句中，我们只希望被 switch 的内容在某些范围内，那么我们在可以在不属于这些范围的 default 块里直接写 fatalError 而不再需要指定返回值<br>假如父类中有必须重写的方法,可以用<code>fatalError</code> 来标识提醒重写</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@noreturn</span> func <span class="function">fatalError</span>(<span class="variable">@autoclosure</span> <span class="attribute">message</span>: () -&gt; String = default,</span><br><span class="line">                                          <span class="attribute">file</span>: StaticString = default,</span><br><span class="line">                                          <span class="attribute">line</span>: UInt = default</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/22/2015-10-23-Swift-higher-order-functions/" itemprop="url">
+                  Swift笔记 - 高阶函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-22T15:11:31+08:00" content="2015-10-22">
+              2015-10-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="延迟计算"><strong>延迟计算</strong></h2><p>在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = <span class="number">1</span>...<span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = data.lazy.map &#123;</span><br><span class="line">    (i: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></span><br><span class="line">    print(<span class="string">"正在处理 \(i)"</span>)</span><br><span class="line">    <span class="keyword">return</span> i * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"准备访问结果"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="literal">result</span> &#123;</span><br><span class="line">    print(<span class="string">"操作后结果为 \(i)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"操作完毕"</span>)</span><br><span class="line">//准备访问结果</span><br><span class="line">//正在处理 <span class="number">1</span></span><br><span class="line">//操作后结果为 <span class="number">2</span></span><br><span class="line">//正在处理 <span class="number">2</span></span><br><span class="line">//操作后结果为 <span class="number">4</span></span><br><span class="line">//正在处理 <span class="number">3</span></span><br><span class="line">//操作后结果为 <span class="number">6</span></span><br><span class="line">//操作完毕</span><br></pre></td></tr></table></figure></p>
+<p>##<strong>高阶函数</strong></p>
+<pre><code>var <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>]
+var muArray = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]
+</code></pre><p>####1. Short:排序<br>    var sortArray = array.sort({$0&gt;$1})<br>    //print(sortArray)<br>    //[6, 5, 4, 3, 2, 1, 0]</p>
+<pre><code>//InPlace:无返回值,直接改变当前实例
+var sortInPlaceArray = <span class="keyword">array</span>
+sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
+//print(sortInPlaceArray)
+//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
+</code></pre><p>####2. Map:转换<br>    var mapArry = array.map {“No.” + String($0)}<br>    //print(mapArry)<br>    //[“No.1”, “No.2”, “No.3”, “No.4”, “No.5”, “No.6”, “No.0”]</p>
+<p>####3. Filter:过滤<br>    var filterArray = array.filter {($0%2 == 0)}<br>    //print(filterArray)<br>    //[2, 4, 6, 0]</p>
+<p>####4. Reduce:归纳<br>    var reduceArray = array.reduce(“”, combine: {$0+”.”+String($1)})<br>    //print(reduceArray)<br>    //.1.2.3.4.5.6.0</p>
+<p>####5. Flatten<br>    var flattenArray =  muArray.flatten()<br>    print(flattenArray)</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/22/2015-10-23-Swift-collection-type/" itemprop="url">
                   Swift学习笔记 - 集合类型
                 </a>
               
@@ -796,8 +634,8 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:05:16+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-10-22T15:05:16+08:00" content="2015-10-22">
+              2015-10-22
             </time>
           </span>
 
@@ -922,8 +760,8 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
             
             
               
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-multithreading/" itemprop="url">
-                  Swift笔记 - 多线程
+                <a class="post-title-link" href="/2015/10/21/2015-10-23-Swift-optional-type/" itemprop="url">
+                  Swift笔记 可选类型
                 </a>
               
             
@@ -933,8 +771,8 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:03:30+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-10-21T15:22:13+08:00" content="2015-10-21">
+              2015-10-21
             </time>
           </span>
 
@@ -960,14 +798,7 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
         
           <span itemprop="articleBody">
             
-              <p>#LOCK</p>
-<h3 id="1-_Objective-C_版本">1. Objective-C 版本</h3><p> <code>@synchronized</code>，这个关键字可以用来修饰一个变量，并为其自动加上和解除互斥锁。这样，可以保证变量在作用范围内不会被其他线程改变。</p>
-<h4 id="写法1:"><strong>写法1</strong>:</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">-</span> (void)<span class="tag">myMethod</span>:(id)<span class="tag">anObj</span> &#123;</span><br><span class="line">    <span class="variable">@synchronized</span>(anObj) &#123;</span><br><span class="line">        <span class="comment">// 在括号内 anObj 不会被其他线程改变</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
-<p>由于@synchronized的实际作用如下</p>
-<h4 id="写法2:"><strong>写法2</strong>:</h4><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="pp">- <span class="params">(void)</span>myMethod:<span class="params">(id)</span>anObj &#123;</span><br><span class="line">	objc_sync_enter<span class="params">(an<span class="variable">Obj</span>)</span></span><br><span class="line">       // 在 enter 和 exit 之间 anObj 不会被其他线程改变</span><br><span class="line">	objc_sync_exit<span class="params">(an<span class="variable">Obj</span>)</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>###2. Swift 版本<br>然后由于<code>@synchronized</code>在swift中已经取消,所以我们可以使用写法2来写,为了方便使用,可以采用闭包封装<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func synchronized<span class="function"><span class="params">(lockObject:AnyObject?,closure:()-&gt;())</span>&#123;</span><br><span class="line">	<span class="title">objc_sync_enter</span><span class="params">(lockObject)</span></span><br><span class="line">	<span class="title">closure</span><span class="params">()</span></span><br><span class="line">	<span class="title">objc_sync_exit</span><span class="params">(lockObject)</span></span><br><span class="line">&#125;</span><br><span class="line">//调用时可以采用尾随闭包</span><br><span class="line"><span class="title">var</span> <span class="title">str</span> = "<span class="title">HelloWord</span>"</span><br><span class="line"><span class="title">synchronized</span><span class="params">(str)</span>&#123;</span><br><span class="line">       // 在闭包内<span class="title">str</span>不会被其他线程改变</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>#GCD</p>
-<h3 id="GCD_延时实例">GCD 延时实例</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">typealias <span class="type">Task</span> = (cancel : <span class="type">Bool</span>) -&gt; <span class="type">Void</span></span><br><span class="line"></span><br><span class="line">func dispatch_task_delay(queue:dispatch_queue_t,time:<span class="type">NSTimeInterval</span>, task:dispatch_block_t) -&gt;  <span class="type">Task</span>? &#123;</span><br><span class="line">    </span><br><span class="line">    func dispatch_later(<span class="keyword">block</span>:dispatch_block_t) &#123;</span><br><span class="line">        dispatch_after(dispatch_time(<span class="type">DISPATCH_TIME_NOW</span>,<span class="type">Int64</span>(time * <span class="type">Double</span>(<span class="type">NSEC_PER_SEC</span>))),queue,<span class="keyword">block</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 实际输入的需要执行的闭包</span><br><span class="line">    <span class="keyword">var</span> closure: dispatch_block_t? = task</span><br><span class="line">    //需要返回的闭包的应用</span><br><span class="line">    <span class="keyword">var</span> <span class="literal">result</span>: <span class="type">Task</span>?</span><br><span class="line">    </span><br><span class="line">    //参数为 <span class="type">Bool</span> 返回值为空的闭包队列实际加载的闭包,作为实际返回值,捕获了实际需要执行的闭包,同时也捕获了自身</span><br><span class="line">    <span class="keyword">let</span> delayedClosure: <span class="type">Task</span> = &#123; cancel -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> internalClosure = closure &#123;</span><br><span class="line">            <span class="keyword">if</span> (cancel == <span class="literal">false</span>) &#123;</span><br><span class="line">                dispatch_async(queue, internalClosure);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        closure = <span class="keyword">nil</span></span><br><span class="line">        <span class="literal">result</span> = <span class="keyword">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="literal">result</span> = delayedClosure</span><br><span class="line">    </span><br><span class="line">    //函数体实际执行的代码,</span><br><span class="line">    dispatch_later &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> delayedClosure = <span class="literal">result</span> &#123;</span><br><span class="line">            delayedClosure(cancel: <span class="literal">false</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">result</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func dispatch_task_delay_main(time:<span class="type">NSTimeInterval</span>, task:dispatch_block_t) -&gt; <span class="type">Task</span>? &#123;</span><br><span class="line">    <span class="keyword">return</span> dispatch_task_delay(dispatch_get_main_queue(), time: time, task: task)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func dispatch_task_cancel(task:<span class="type">Task</span>?) &#123;</span><br><span class="line">    task?(cancel: <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              <h2 id="可选链">可选链</h2><h3 id="在可选链中调用函数">在可选链中调用函数</h3><p>当可选链的结尾是一个函数的时候,这个函数的返回值也是一个可选类型,即使这个函数的返回值是 void(空元组),通过判断函数的返回值是否为空可以判断函数是否被执行,<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name : <span class="type">String</span></span><br><span class="line">    <span class="keyword">init</span>(name:<span class="type">String</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">play</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"play <span class="subst">\(name)</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> toy : <span class="type">Toy</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pet : <span class="type">Pet</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> xiaoming = <span class="type">Child</span>()</span><br><span class="line">xiaoming.pet = <span class="type">Pet</span>()</span><br><span class="line"><span class="comment">//xiaoming.pet?.toy = Toy(name: "Car")</span></span><br><span class="line"><span class="comment">//xiaoming.pet?.toy?.play()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//闭包中的判断,即返回一个可选的空元组</span></span><br><span class="line"><span class="keyword">var</span> playClosure = &#123;(child:<span class="type">Child</span>) -&gt;()? <span class="keyword">in</span></span><br><span class="line">    child.pet?.toy?.play()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> isPlay :() = xiaoming.pet?.toy?.play()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Somthing Play"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Nothing Play"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
             
           </span>
@@ -1005,8 +836,8 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
             
             
               
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-study-error/" itemprop="url">
-                  Swift笔记 - 错误处理
+                <a class="post-title-link" href="/2015/10/21/2015-10-23-Swift-operator/" itemprop="url">
+                  Swift笔记 - 运算符
                 </a>
               
             
@@ -1016,8 +847,8 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T14:55:54+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-10-21T15:13:55+08:00" content="2015-10-21">
+              2015-10-21
             </time>
           </span>
 
@@ -1043,18 +874,188 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
         
           <span itemprop="articleBody">
             
-              <p>#try-catch</p>
-<p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try</p>
-<hr>
-<p>2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制<br>但是我们可以采用下列方法解决,创建一个泛型枚举作为容器<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt;&#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Success</span>(<span class="constant">T</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Error</span>(<span class="constant">NSError</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeAsyncThing()-&gt; <span class="constant">Result</span>&lt;<span class="constant">String</span>&gt;&#123;</span><br><span class="line">    <span class="regexp">//</span>处理一些非同步的事情</span><br><span class="line">    var asyncResult = <span class="literal">false</span></span><br><span class="line">    let asyncValue : <span class="constant">String</span>? = <span class="literal">nil</span></span><br><span class="line">    let asyncError : <span class="constant">NSError</span>? = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">if</span> asyncResult&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Success</span>(asyncValue!)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Error</span>(asyncError!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>3 . 对于可以忽视错误类型的异常可以采用 if+可选绑定 进行,对于保证不会出错的也可以采用!进行强制解析<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="type">CommonError</span> : <span class="type">ErrorType</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Error</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Warning</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeThingMayBeWrong(success:<span class="type">Bool</span>) throws -&gt; <span class="type">String</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> success&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Success"</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        throw <span class="type">CommonError</span>.<span class="type">Error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//<span class="number">1</span>. 强制解析:保证不发生错误情况下使用,当抛出错误时应用会崩溃</span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>! doSomeThingMayBeWrong(<span class="literal">true</span>)</span><br><span class="line">print(<span class="literal">result</span>)</span><br><span class="line"></span><br><span class="line">//<span class="number">2</span>. 可选绑定</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>? doSomeThingMayBeWrong(<span class="literal">false</span>)&#123;</span><br><span class="line">    print(<span class="literal">result</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br><span class="line">//<span class="type">Success</span></span><br><span class="line">//<span class="type">Error</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>4 . 在可以 throw 的方法中永远不能返回一个可选类型,因为结合 try? 使用的话会产生双重 Optional<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">methodThrowsWhenPassingNegative1</span><span class="params">(number: Int)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">Error</span>.<span class="type">Negative</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> number == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里 num 在解包后仍然是一个可选类型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> num = <span class="keyword">try</span>? methodThrowsWhenPassingNegative1(<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(num.<span class="keyword">dynamicType</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"failed"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>#断言<br>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func assert<span class="function"><span class="params">(<span class="property">@autoclosure</span> condition: () -&gt; Bool,</span><br><span class="line">            <span class="property">@autoclosure</span> _ message: () -&gt; String = <span class="keyword">default</span>,</span><br><span class="line">                              file: StaticString = <span class="keyword">default</span>,</span><br><span class="line">                              line: UInt = <span class="keyword">default</span>)</span></span></span><br></pre></td></tr></table></figure></p>
-<p>#fatalError<br>在调试时我们可以使用断言来排除类似s数组越界问题，但是断言只会在 Debug 环境中有效，而在 Release 编译中所有的断言都将被禁用。在遇到确实因为输入的错误无法使程序继续运行的时候，我们一般考虑以产生致命错误 (fatalError) 的方式来终止程序<br><code>@noreturn</code> 表示这个函数可以不要返回值,因为程序整个都将终止。这可以帮助编译器进行一些检查，比如在某些需要返回值的 switch 语句中，我们只希望被 switch 的内容在某些范围内，那么我们在可以在不属于这些范围的 default 块里直接写 fatalError 而不再需要指定返回值<br>假如父类中有必须重写的方法,可以用<code>fatalError</code> 来标识提醒重写</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@noreturn</span> func <span class="function">fatalError</span>(<span class="variable">@autoclosure</span> <span class="attribute">message</span>: () -&gt; String = default,</span><br><span class="line">                                          <span class="attribute">file</span>: StaticString = default,</span><br><span class="line">                                          <span class="attribute">line</span>: UInt = default</span><br></pre></td></tr></table></figure>
+              <p>#函数格式<br><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
+<p>#运算符函数<br>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
+<ol>
+<li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>
+<li>运算符命名 : 自定义运算符可以由以下其中之一的 ASCII 字符<code>/</code>、<code>=</code>、<code>-</code>、<code>+</code>、<code>!</code>、<code>*</code>、<code>%</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>?</code> 以及 <code>~</code>, 或者后面语法中规定的任一个 Unicode 字符开始。在第一个字符之后，允许使用组合型 Unicode 字符。也可以使用两个或者多个的点号来自定义运算符（比如, ….）。虽然可以自定义包含问号?的运算符，但是这个运算符不能只包含单独的一个问号。</li>
+</ol>
+<h2 id="自定义运算符格式">自定义运算符格式</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="keyword">operator</span> &lt;运算符&gt; &#123;</span><br><span class="line">	<span class="keyword">associativity</span> &lt;结合方向&gt;(<span class="keyword">left</span>,<span class="keyword">right</span>,<span class="keyword">none</span>)</span><br><span class="line">	<span class="keyword">precedence</span> &lt;优先级&gt;(乘除<span class="number">150</span>,加减<span class="number">140</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="func"><span class="keyword">func</span> <span class="generics">&lt;运算符&gt;</span> <span class="params">(<span class="keyword">left</span> : &lt;左&gt; ,<span class="keyword">right</span> : &lt;右&gt;)</span></span> -&gt; &lt;返回值&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;返回值&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子_通过自定义运算符实现正则判断"><strong>例子</strong> 通过自定义运算符实现正则判断</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">RegexMode</span> : <span class="title">String</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Mail</span> = <span class="string">"^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]&#123;2,6&#125;)$"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RegexHelper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> regex: <span class="type">NSRegularExpression</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="number">_</span> pattern: <span class="type">String</span>) <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> regex = <span class="type">NSRegularExpression</span>(pattern: pattern,options: .<span class="type">CaseInsensitive</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">match</span><span class="params">(input: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> matches = regex.matchesInString(input,</span><br><span class="line">            options: [],</span><br><span class="line">            range: <span class="type">NSMakeRange</span>(<span class="number">0</span>, input.characters.<span class="built_in">count</span>))</span><br><span class="line">        <span class="keyword">return</span> matches.<span class="built_in">count</span> &gt; <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> =~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> ==~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> =~ <span class="params">(resource : String ,regx : String)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">RegexHelper</span>(regx).match(resource)</span><br><span class="line">    &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> ==~ <span class="params">(resource : String ,regx : RegexMode)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> resource =~ regx.rawValue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"vfanx@qq.com"</span> ==~ <span class="type">RegexMode</span>.<span class="type">Mail</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"有效的邮箱地址"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/21/2015-10-23-Swift-keyword/" itemprop="url">
+                  Swift笔记 关键字
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-21T15:07:42+08:00" content="2015-10-21">
+              2015-10-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>#indirect<br>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含相关值的递归枚举</span></span><br><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">LinkList</span>&lt;<span class="title">Element</span>:<span class="title">Comparable</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Empty</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Node</span>(<span class="type">Element</span>,<span class="type">LinkList</span>&lt;<span class="type">Element</span>&gt;)</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">printList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Node</span>(value,node):</span><br><span class="line">            <span class="built_in">print</span>(value)</span><br><span class="line">            <span class="keyword">switch</span> node&#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Node</span>(<span class="number">_</span>, <span class="number">_</span>):</span><br><span class="line">                node.printList()</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Empty</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> .<span class="type">Empty</span>:<span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">1</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">2</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">3</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">4</span>, <span class="type">LinkList</span>.<span class="type">Empty</span>))))</span><br><span class="line">list.printList()</span><br></pre></td></tr></table></figure>
+<p>#Where<br>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
+<blockquote>
+<p>模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配</p>
+<h3 id="使用场景">使用场景</h3><h4 id="1-_Switch">1. Switch</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="string">"A111"</span>,<span class="string">"A222"</span>,<span class="string">"B111"</span>,<span class="string">"B222"</span>,<span class="string">"C111"</span>,<span class="string">"C222"</span>]</span><br><span class="line">nums.forEach &#123;</span><br><span class="line">    <span class="keyword">switch</span> $<span class="number">0</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"A"</span>):<span class="built_in">print</span>(<span class="string">"A"</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"B"</span>):<span class="built_in">print</span>(<span class="string">"B"</span>)</span><br><span class="line">    <span class="keyword">default</span>:<span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//C111</span></span><br><span class="line"><span class="comment">//C222</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-_if">2. if</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dict : NSDictionary = [<span class="string">"key"</span>:<span class="string">"value"</span>,<span class="string">"key2"</span>:<span class="string">"values"</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">value</span> :NSString = dict[<span class="string">"key"</span>] <span class="keyword">as</span>? NSString <span class="keyword">where</span> <span class="keyword">value</span>.isEqualToString(<span class="string">"value"</span>)&#123;</span><br><span class="line">    print(<span class="string">"Same"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Not Same"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/20/2015-10-23-Swift-class-protocol/" itemprop="url">
+                  Swift笔记 - 类与协议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-20T15:10:10+08:00" content="2015-10-20">
+              2015-10-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="可选协议/协议拓展">可选协议/协议拓展</h2><p><code>MyProtocol</code> 协议中<code>func requiredMethod()</code> 是在协议声明的时候定义的,但是<code>MyProtocol</code> 对其有一个默认实现,而<code>func optionalMethod()</code> 是在拓展中实现的,必须要有一个默认实现. 当<code>TestClass</code> 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.</p>
+<h4 id="结论如下"><strong>结论如下</strong></h4><ul>
+<li>如果类型推断得到的是实际的类型<ul>
+<li>那么类型中的实现将被调用；如果类型中没有实现的话，那么接口扩展中的默认实现将被使用</li>
+</ul>
+</li>
+<li>如果类型推断得到的是接口，而不是实际类型<ul>
+<li>并且方法在接口中进行了定义，那么类型中的实现将被调用；如果类型中没有实现，那么接口扩展中的默认实现被使用</li>
+<li>否则 (也就是方法没有在接口中定义)，扩展中的默认实现将被调用</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">MyProtocol</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">requiredMethod</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MyProtocol</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">requiredMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Origin Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">optionalMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Optional Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> : <span class="title">MyProtocol</span> </span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">requiredMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Rewrite Require Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">optionalMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Rewrite Optional Method"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> temp = <span class="type">TestClass</span>() <span class="keyword">as</span> <span class="type">MyProtocol</span></span><br><span class="line">temp.requiredMethod() <span class="comment">//Rewrite Require Method</span></span><br><span class="line">temp.optionalMethod() <span class="comment">//Optional Method</span></span><br></pre></td></tr></table></figure>
+<h2 id="类型/协议_转换">类型/协议 转换</h2><p>###<strong>通用代码</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Study</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">NSStudy</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">NSString</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> : <span class="title">Study</span>,<span class="title">NSStudy</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">sayName</span><span class="params">(name:String)</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Father : "</span>+name)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"HelloWord"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">helloWord</span><span class="params">()</span></span> -&gt; <span class="type">NSString</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">NSString</span>(string: <span class="string">"HelloWord"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>: <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">sayName</span><span class="params">(name:String)</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Son : "</span>+name)</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="func"><span class="keyword">func</span> <span class="title">gotoSchool</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Go to school"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="操作符">操作符</h3><p>####1. 判断 <strong>是否为某个类或为某个类的子类</strong> 或 <strong>是否遵守某个协议</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">var</span> man:Father = <span class="function"><span class="title">Son</span><span class="params">()</span></span></span><br><span class="line"><span class="tag">var</span> isSon = man is Son          <span class="comment">//true</span></span><br><span class="line"><span class="tag">var</span> canStudy = man is Study     <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>####2. 将某个类转换成另外一个类, 或者假设其遵守某个方法<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//转换为某个类</span></span><br><span class="line"><span class="keyword">if</span> let success:() = (<span class="keyword">man</span> <span class="keyword">as</span>? Son)?.gotoSchool()&#123;</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"Success"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"Fail"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行不同协议中的同名方法</span></span><br><span class="line"><span class="keyword">var</span> str = (<span class="keyword">man</span> <span class="keyword">as</span> NSStudy).helloWord()</span><br><span class="line"><span class="keyword">if</span> str is NSString&#123;</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"Is NSString"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
             
           </span>

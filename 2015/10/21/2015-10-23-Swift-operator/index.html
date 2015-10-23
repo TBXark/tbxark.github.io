@@ -45,19 +45,19 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="#indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
-123456789101112131415161718192021//包含相关值的递归枚举indirect enu">
+<meta name="description" content="#函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
+#运算符函数类和结构可以为现有的操作符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 关键字">
-<meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-keyword/index.html">
+<meta property="og:title" content="Swift笔记 - 运算符">
+<meta property="og:url" content="http://yoursite.com/2015/10/21/2015-10-23-Swift-operator/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="#indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
-123456789101112131415161718192021//包含相关值的递归枚举indirect enu">
-<meta property="og:updated_time" content="2015-10-23T07:24:57.000Z">
+<meta property="og:description" content="#函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
+#运算符函数类和结构可以为现有的操作符">
+<meta property="og:updated_time" content="2015-10-23T07:49:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 关键字">
-<meta name="twitter:description" content="#indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
-123456789101112131415161718192021//包含相关值的递归枚举indirect enu">
+<meta name="twitter:title" content="Swift笔记 - 运算符">
+<meta name="twitter:description" content="#函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
+#运算符函数类和结构可以为现有的操作符">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -69,7 +69,7 @@
 
 
 
-  <title> Swift笔记 关键字 | TBXark </title>
+  <title> Swift笔记 - 运算符 | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -194,7 +194,7 @@
             
             
               
-                Swift笔记 关键字
+                Swift笔记 - 运算符
               
             
           </h1>
@@ -203,8 +203,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:07:42+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-10-21T15:13:55+08:00" content="2015-10-21">
+              2015-10-21
             </time>
           </span>
 
@@ -227,14 +227,15 @@
       
 
       
-        <span itemprop="articleBody"><p>#indirect<br>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含相关值的递归枚举</span></span><br><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">LinkList</span>&lt;<span class="title">Element</span>:<span class="title">Comparable</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Empty</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Node</span>(<span class="type">Element</span>,<span class="type">LinkList</span>&lt;<span class="type">Element</span>&gt;)</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">printList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Node</span>(value,node):</span><br><span class="line">            <span class="built_in">print</span>(value)</span><br><span class="line">            <span class="keyword">switch</span> node&#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Node</span>(<span class="number">_</span>, <span class="number">_</span>):</span><br><span class="line">                node.printList()</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Empty</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> .<span class="type">Empty</span>:<span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">1</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">2</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">3</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">4</span>, <span class="type">LinkList</span>.<span class="type">Empty</span>))))</span><br><span class="line">list.printList()</span><br></pre></td></tr></table></figure>
-<p>#Where<br>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
-<blockquote>
-<p>模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配</p>
-<h3 id="使用场景">使用场景</h3><h4 id="1-_Switch">1. Switch</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="string">"A111"</span>,<span class="string">"A222"</span>,<span class="string">"B111"</span>,<span class="string">"B222"</span>,<span class="string">"C111"</span>,<span class="string">"C222"</span>]</span><br><span class="line">nums.forEach &#123;</span><br><span class="line">    <span class="keyword">switch</span> $<span class="number">0</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"A"</span>):<span class="built_in">print</span>(<span class="string">"A"</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"B"</span>):<span class="built_in">print</span>(<span class="string">"B"</span>)</span><br><span class="line">    <span class="keyword">default</span>:<span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//C111</span></span><br><span class="line"><span class="comment">//C222</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="2-_if">2. if</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dict : NSDictionary = [<span class="string">"key"</span>:<span class="string">"value"</span>,<span class="string">"key2"</span>:<span class="string">"values"</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">value</span> :NSString = dict[<span class="string">"key"</span>] <span class="keyword">as</span>? NSString <span class="keyword">where</span> <span class="keyword">value</span>.isEqualToString(<span class="string">"value"</span>)&#123;</span><br><span class="line">    print(<span class="string">"Same"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Not Same"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><p>#函数格式<br><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
+<p>#运算符函数<br>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
+<ol>
+<li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>
+<li>运算符命名 : 自定义运算符可以由以下其中之一的 ASCII 字符<code>/</code>、<code>=</code>、<code>-</code>、<code>+</code>、<code>!</code>、<code>*</code>、<code>%</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>?</code> 以及 <code>~</code>, 或者后面语法中规定的任一个 Unicode 字符开始。在第一个字符之后，允许使用组合型 Unicode 字符。也可以使用两个或者多个的点号来自定义运算符（比如, ….）。虽然可以自定义包含问号?的运算符，但是这个运算符不能只包含单独的一个问号。</li>
+</ol>
+<h2 id="自定义运算符格式">自定义运算符格式</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="keyword">operator</span> &lt;运算符&gt; &#123;</span><br><span class="line">	<span class="keyword">associativity</span> &lt;结合方向&gt;(<span class="keyword">left</span>,<span class="keyword">right</span>,<span class="keyword">none</span>)</span><br><span class="line">	<span class="keyword">precedence</span> &lt;优先级&gt;(乘除<span class="number">150</span>,加减<span class="number">140</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="func"><span class="keyword">func</span> <span class="generics">&lt;运算符&gt;</span> <span class="params">(<span class="keyword">left</span> : &lt;左&gt; ,<span class="keyword">right</span> : &lt;右&gt;)</span></span> -&gt; &lt;返回值&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;返回值&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子_通过自定义运算符实现正则判断"><strong>例子</strong> 通过自定义运算符实现正则判断</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">RegexMode</span> : <span class="title">String</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Mail</span> = <span class="string">"^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]&#123;2,6&#125;)$"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RegexHelper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> regex: <span class="type">NSRegularExpression</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="number">_</span> pattern: <span class="type">String</span>) <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> regex = <span class="type">NSRegularExpression</span>(pattern: pattern,options: .<span class="type">CaseInsensitive</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">match</span><span class="params">(input: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> matches = regex.matchesInString(input,</span><br><span class="line">            options: [],</span><br><span class="line">            range: <span class="type">NSMakeRange</span>(<span class="number">0</span>, input.characters.<span class="built_in">count</span>))</span><br><span class="line">        <span class="keyword">return</span> matches.<span class="built_in">count</span> &gt; <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> =~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> ==~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> =~ <span class="params">(resource : String ,regx : String)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">RegexHelper</span>(regx).match(resource)</span><br><span class="line">    &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> ==~ <span class="params">(resource : String ,regx : RegexMode)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> resource =~ regx.rawValue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"vfanx@qq.com"</span> ==~ <span class="type">RegexMode</span>.<span class="type">Mail</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"有效的邮箱地址"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
       
     </div>
 
@@ -251,16 +252,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/23/2015-10-23-Swift-collection-type/" rel="next" title="Swift学习笔记 - 集合类型">
-                <i class="fa fa-chevron-left"></i> Swift学习笔记 - 集合类型
+              <a href="/2015/10/21/2015-10-23-Swift-keyword/" rel="next" title="Swift笔记 关键字">
+                <i class="fa fa-chevron-left"></i> Swift笔记 关键字
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/23/2015-10-23-Swift-Objective-C/" rel="prev" title="Swift 笔记 Swift与Objective-C">
-                Swift 笔记 Swift与Objective-C <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/21/2015-10-23-Swift-optional-type/" rel="prev" title="Swift笔记 可选类型">
+                Swift笔记 可选类型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -368,7 +369,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_Switch"><span class="nav-number">1.1.</span> <span class="nav-text">1. Switch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-_if"><span class="nav-number">1.2.</span> <span class="nav-text">2. if</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义运算符格式"><span class="nav-number">1.</span> <span class="nav-text">自定义运算符格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子_通过自定义运算符实现正则判断"><span class="nav-number">1.1.</span> <span class="nav-text">例子 通过自定义运算符实现正则判断</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
