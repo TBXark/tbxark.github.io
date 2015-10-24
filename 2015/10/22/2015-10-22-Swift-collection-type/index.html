@@ -45,20 +45,20 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="集合类型值类型与应用类型
+<meta name="description" content="集合类型值类型与引用类型
 swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.
 原来 Foundation 框">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 集合类型">
 <meta property="og:url" content="http://yoursite.com/2015/10/22/2015-10-22-Swift-collection-type/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="集合类型值类型与应用类型
+<meta property="og:description" content="集合类型值类型与引用类型
 swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.
 原来 Foundation 框">
-<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
+<meta property="og:updated_time" content="2015-10-24T01:40:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 集合类型">
-<meta name="twitter:description" content="集合类型值类型与应用类型
+<meta name="twitter:description" content="集合类型值类型与引用类型
 swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.
 原来 Foundation 框">
 
@@ -265,7 +265,7 @@ swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型
       
 
       
-        <span itemprop="articleBody"><h1 id="集合类型">集合类型</h1><h2 id="值类型与应用类型">值类型与应用类型</h2><ul>
+        <span itemprop="articleBody"><h1 id="集合类型">集合类型</h1><h2 id="值类型与引用类型">值类型与引用类型</h2><ul>
 <li>swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.</li>
 <li>原来 Foundation 框架中的集合类型(NSSet,NSArray,NSDictionary) 都是引用类型的容器.</li>
 <li>在实际开发中按照具体的数据规模和操作特点来决定到时是使用值类型的容器还是引用类型的容器：在<strong>需要处理大量数据</strong>并且<strong>频繁操作 (增减) 其中元素时</strong>，选择 NSMutableArray 和 NSMutableDictionary 会更好，而对于容器内条目小而容器本身数目多的情况，应该使用 Swift 语言内建的 Array 和 Dictionary。</li>
@@ -462,7 +462,7 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合类型"><span class="nav-number">1.</span> <span class="nav-text">集合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值类型与应用类型"><span class="nav-number">1.1.</span> <span class="nav-text">值类型与应用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合Set"><span class="nav-number">1.2.</span> <span class="nav-text">集合Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_Set关系"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. Set关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_Set_比较"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. Set 比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组_Array"><span class="nav-number">1.3.</span> <span class="nav-text">数组 Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义下标"><span class="nav-number">1.3.1.</span> <span class="nav-text">自定义下标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典_Dictionary"><span class="nav-number">1.4.</span> <span class="nav-text">字典 Dictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对未知_Key_的_Value_的判断"><span class="nav-number">1.4.1.</span> <span class="nav-text">对未知 Key 的 Value 的判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_传统判断"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1. 传统判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高阶函数+可选链"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">2.高阶函数+可选链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-_值类型判断"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">3. 值类型判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-where_操作符"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">4.where 操作符</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合类型"><span class="nav-number">1.</span> <span class="nav-text">集合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值类型与引用类型"><span class="nav-number">1.1.</span> <span class="nav-text">值类型与引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合Set"><span class="nav-number">1.2.</span> <span class="nav-text">集合Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_Set关系"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. Set关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_Set_比较"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. Set 比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组_Array"><span class="nav-number">1.3.</span> <span class="nav-text">数组 Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义下标"><span class="nav-number">1.3.1.</span> <span class="nav-text">自定义下标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典_Dictionary"><span class="nav-number">1.4.</span> <span class="nav-text">字典 Dictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对未知_Key_的_Value_的判断"><span class="nav-number">1.4.1.</span> <span class="nav-text">对未知 Key 的 Value 的判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_传统判断"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1. 传统判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高阶函数+可选链"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">2.高阶函数+可选链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-_值类型判断"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">3. 值类型判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-where_操作符"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">4.where 操作符</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

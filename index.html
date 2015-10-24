@@ -863,7 +863,7 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
         
           <span itemprop="articleBody">
             
-              <h1 id="集合类型">集合类型</h1><h2 id="值类型与应用类型">值类型与应用类型</h2><ul>
+              <h1 id="集合类型">集合类型</h1><h2 id="值类型与引用类型">值类型与引用类型</h2><ul>
 <li>swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.</li>
 <li>原来 Foundation 框架中的集合类型(NSSet,NSArray,NSDictionary) 都是引用类型的容器.</li>
 <li>在实际开发中按照具体的数据规模和操作特点来决定到时是使用值类型的容器还是引用类型的容器：在<strong>需要处理大量数据</strong>并且<strong>频繁操作 (增减) 其中元素时</strong>，选择 NSMutableArray 和 NSMutableDictionary 会更好，而对于容器内条目小而容器本身数目多的情况，应该使用 Swift 语言内建的 Array 和 Dictionary。</li>
