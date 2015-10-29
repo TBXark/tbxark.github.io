@@ -212,6 +212,104 @@
             
             
               
+                <a class="post-title-link" href="/2015/10/21/2015-10-21-Swift-keyword/" itemprop="url">
+                  Swift笔记 - 关键字
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-21T15:07:42+08:00" content="2015-10-21">
+              2015-10-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="indirect">indirect</h1><p>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含相关值的递归枚举</span></span><br><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">LinkList</span>&lt;<span class="title">Element</span>:<span class="title">Comparable</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Empty</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Node</span>(<span class="type">Element</span>,<span class="type">LinkList</span>&lt;<span class="type">Element</span>&gt;)</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">printList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Node</span>(value,node):</span><br><span class="line">            <span class="built_in">print</span>(value)</span><br><span class="line">            <span class="keyword">switch</span> node&#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Node</span>(<span class="number">_</span>, <span class="number">_</span>):</span><br><span class="line">                node.printList()</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Empty</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> .<span class="type">Empty</span>:<span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">1</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">2</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">3</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">4</span>, <span class="type">LinkList</span>.<span class="type">Empty</span>))))</span><br><span class="line">list.printList()</span><br></pre></td></tr></table></figure>
+<h1 id="Where">Where</h1><p>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
+<blockquote>
+<p>模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配</p>
+<h3 id="使用场景">使用场景</h3><h4 id="1-_Switch">1. Switch</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="string">"A111"</span>,<span class="string">"A222"</span>,<span class="string">"B111"</span>,<span class="string">"B222"</span>,<span class="string">"C111"</span>,<span class="string">"C222"</span>]</span><br><span class="line">nums.forEach &#123;</span><br><span class="line">    <span class="keyword">switch</span> $<span class="number">0</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"A"</span>):<span class="built_in">print</span>(<span class="string">"A"</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasPrefix(<span class="string">"B"</span>):<span class="built_in">print</span>(<span class="string">"B"</span>)</span><br><span class="line">    <span class="keyword">default</span>:<span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//A</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//B</span></span><br><span class="line"><span class="comment">//C111</span></span><br><span class="line"><span class="comment">//C222</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-_if">2. if</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dict : NSDictionary = [<span class="string">"key"</span>:<span class="string">"value"</span>,<span class="string">"key2"</span>:<span class="string">"values"</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">value</span> :NSString = dict[<span class="string">"key"</span>] <span class="keyword">as</span>? NSString <span class="keyword">where</span> <span class="keyword">value</span>.isEqualToString(<span class="string">"value"</span>)&#123;</span><br><span class="line">    print(<span class="string">"Same"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Not Same"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/10/20/2015-10-20-Swift-class-protocol/" itemprop="url">
                   Swift笔记 - 类与协议
                 </a>
@@ -443,7 +541,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
