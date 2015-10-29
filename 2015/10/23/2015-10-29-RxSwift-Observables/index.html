@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="RxSwift,Swift,响应式编程," />
 
 
 
@@ -50,16 +50,16 @@ ObservablesObservables 是 RxSwift 里面最常用的一个类,但是这么名�
 
 ad">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TBXark">
-<meta property="og:url" content="http://yoursite.com/2015/10/29/2015-10-29-RxSwift-Observables/index.html">
+<meta property="og:title" content="RxSwift 笔记 - 创建Observables">
+<meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-29-RxSwift-Observables/index.html">
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="序作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.
 ObservablesObservables 是 RxSwift 里面最常用的一个类,但是这么名字有点逗啊,翻译上面是这么写的
 
 ad">
-<meta property="og:updated_time" content="2015-10-29T15:07:39.000Z">
+<meta property="og:updated_time" content="2015-10-29T15:44:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TBXark">
+<meta name="twitter:title" content="RxSwift 笔记 - 创建Observables">
 <meta name="twitter:description" content="序作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.
 ObservablesObservables 是 RxSwift 里面最常用的一个类,但是这么名字有点逗啊,翻译上面是这么写的
 
@@ -75,7 +75,7 @@ ad">
 
 
 
-  <title>  | TBXark </title>
+  <title> RxSwift 笔记 - 创建Observables | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +220,7 @@ ad">
             
             
               
-                
+                RxSwift 笔记 - 创建Observables
               
             
           </h1>
@@ -229,11 +229,26 @@ ad">
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-29T23:07:39+08:00" content="2015-10-29">
-              2015-10-29
+            <time itemprop="dateCreated" datetime="2015-10-23T15:08:27+08:00" content="2015-10-23">
+              2015-10-23
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
+                    <span itemprop="name">RxSwift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -253,37 +268,37 @@ ad">
       
 
       
-        <span itemprop="articleBody"><h3 id="序">序</h3><p>作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.</p>
-<h3 id="Observables">Observables</h3><p>Observables 是 RxSwift 里面最常用的一个类,但是这么名字有点逗啊,翻译上面是这么写的</p>
+        <span itemprop="articleBody"><h1 id="序">序</h1><p>作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.</p>
+<h1 id="Observables">Observables</h1><p>Observables 是 RxSwift 里面最常用的一个类,但是这么名字有点逗啊,翻译上面是这么写的</p>
 <blockquote>
 <p>adj. 观察得到的; 应遵守的; 应庆祝的</p>
 </blockquote>
 <p>什么鬼,为什么不是名词,这样子我很难翻译啊,作为一个 RAC 的脑残粉,我觉得强行把它叫做Signal信号,然后先忽略他的内部实现,在造轮子之前先学会用轮子.</p>
 <p>在<code>Observable+Creation.swift</code> 文件里面有他各种各样创建Observables的方法</p>
-<h4 id="信号种类">信号种类</h4><p>在 RAC 里面信号分三种 (complete , error ,next),在 RxSwift 里面也是一样,他是通过枚举实现的</p>
+<h2 id="信号种类">信号种类</h2><p>在 RAC 里面信号分三种 (complete , error ,next),在 RxSwift 里面也是一样,他是通过枚举实现的</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Event</span>&lt;<span class="title">Element</span>&gt; : <span class="title">CustomStringConvertible</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">    Next element is produced</span><br><span class="line">    */</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Next</span>(<span class="type">Element</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">    Sequence terminates with error</span><br><span class="line">    */</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Error</span>(<span class="type">ErrorType</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">    Sequence completes sucessfully</span><br><span class="line">    */</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Completed</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">    - returns: Description of event</span><br><span class="line">    */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123;</span><br><span class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Next</span>(<span class="keyword">let</span> value):</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Next(<span class="subst">\(value)</span>)"</span></span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Error</span>(<span class="keyword">let</span> error):</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Error(<span class="subst">\(error)</span>)"</span></span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Completed</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Completed"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="empty">empty</h4><p>一个空序列只发送 <code>完成信号</code></p>
+<h2 id="empty">empty</h2><p>一个空序列只发送 <code>完成信号</code></p>
 <p><strong>RxSwift栗子:</strong></p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"empty"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> emptySequence: Observable&lt;Int&gt; = empty()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> subscription = emptySequence</span><br><span class="line">        .subscribe &#123; <span class="function"><span class="keyword">event</span> <span class="keyword">in</span></span><br><span class="line">            <span class="title">print</span>(<span class="params"><span class="keyword">event</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <p><strong>RAC栗子:</strong></p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RACSignal *<span class="keyword">empty</span> = [RACSignal <span class="keyword">empty</span>];</span><br><span class="line">[<span class="keyword">empty</span> subscribeCompleted:^&#123;</span><br><span class="line">NSLog(@<span class="string">"Complete"</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h4 id="never">never</h4><p>啥都不干的信号, -,,-) 好吧…..<br><strong>RxSwift栗子:</strong></p>
+<h2 id="never">never</h2><p>啥都不干的信号, -,,-) 好吧…..<br><strong>RxSwift栗子:</strong></p>
 <figure class="highlight golo"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"never"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> neverSequence: <span class="typename">Observable</span>&lt;String&gt; = never()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> subscription = neverSequence</span><br><span class="line">        .subscribe &#123; _ <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">print</span>(<span class="string">"This block is never called."</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>RAC栗子:</strong></p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RACSignal *<span class="keyword">never</span> = [RACSignal <span class="keyword">never</span>];</span><br><span class="line">[<span class="keyword">never</span> subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@<span class="string">"Next : %@"</span>, x);</span><br><span class="line">&#125; completed:^&#123;</span><br><span class="line">    NSLog(@<span class="string">"Complete"</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h4 id="just">just</h4><p>返回一个包含 信息的 next 信号 和 一个完成信号<br><strong>RxSwift栗子:</strong></p>
+<h2 id="just">just</h2><p>返回一个包含 信息的 next 信号 和 一个完成信号<br><strong>RxSwift栗子:</strong></p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"just"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> singleElementSequence = just(<span class="number">32</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> subscription = singleElementSequence</span><br><span class="line">        .subscribe &#123; <span class="function"><span class="keyword">event</span> <span class="keyword">in</span></span><br><span class="line">            <span class="title">print</span>(<span class="params"><span class="keyword">event</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <p><strong>RAC栗子:</strong></p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RACSignal *just = [RACSignal <span class="keyword">return</span>:<span class="string">@"Just"</span>];</span><br><span class="line">[just subscribeNext:^(<span class="keyword">id</span> x) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Next : %@"</span>, x);</span><br><span class="line">&#125; completed:^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Complete"</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h4 id="sequenceOf">sequenceOf</h4><p>直接创建一个序列<br><strong>RxSwift栗子:</strong></p>
+<h2 id="sequenceOf">sequenceOf</h2><p>直接创建一个序列<br><strong>RxSwift栗子:</strong></p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"sequenceOf"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> sequenceOfElements<span class="comment">/* : Observable&lt;Int&gt; */</span> = sequenceOf(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> subscription = sequenceOfElements</span><br><span class="line">        .subscribe &#123; <span class="function"><span class="keyword">event</span> <span class="keyword">in</span></span><br><span class="line">            <span class="title">print</span>(<span class="params"><span class="keyword">event</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="from">from</h4><p>从其他序列类型创建一个序列<br><strong>RxSwift栗子:</strong></p>
+<h2 id="from">from</h2><p>从其他序列类型创建一个序列<br><strong>RxSwift栗子:</strong></p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"from"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> sequenceFromArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].asObservable()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> subscription = sequenceFromArray</span><br><span class="line">        .subscribe &#123; <span class="function"><span class="keyword">event</span> <span class="keyword">in</span></span><br><span class="line">            <span class="title">print</span>(<span class="params"><span class="keyword">event</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="failWith">failWith</h4><p>失败信号<br><strong>RxSwift栗子:</strong></p>
+<h2 id="failWith">failWith</h2><p>失败信号<br><strong>RxSwift栗子:</strong></p>
 <figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"failWith"</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">error</span> = NSError(domain: <span class="string">"Test"</span>, code: -<span class="number">1</span>, userInfo: nil)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> erroredSequence: Observable&lt;<span class="built_in">Int</span>&gt; = failWith(<span class="keyword">error</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> subscription = erroredSequence</span><br><span class="line">        .subscribe &#123; event <span class="keyword">in</span></span><br><span class="line">            print(event)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>RAC栗子:</strong></p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSError *<span class="built_in">error</span> = [NSError errorWithDomain:@<span class="string">"Error"</span> code:-<span class="number">1</span> userInfo:<span class="keyword">nil</span>];</span><br><span class="line">RACSignal *signal = [RACSignal <span class="built_in">error</span>:<span class="built_in">error</span>];</span><br><span class="line">[signal subscribeError:^(NSError *<span class="built_in">error</span>) &#123;</span><br><span class="line">    NSLog(@<span class="string">"Error : %@"</span>,<span class="built_in">error</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h4 id="deferred">deferred</h4><p>创建一个信号直到有人订阅他,并且每次重新创建该信号,但是在 RAC 中的说法就是可以用来有效地将热信号变成冷的信号。这里就有一些奇怪了,RAC 中createSignal中的 block 确实是等到有订阅者订阅才被触发.而且官方的例子似乎也不能说明这个问题.</p>
+<h2 id="deferred">deferred</h2><p>创建一个信号直到有人订阅他,并且每次重新创建该信号,但是在 RAC 中的说法就是可以用来有效地将热信号变成冷的信号。这里就有一些奇怪了,RAC 中createSignal中的 block 确实是等到有订阅者订阅才被触发.而且官方的例子似乎也不能说明这个问题.</p>
 <blockquote>
 <ul>
 <li>Hot Observable是主动的，尽管你并没有订阅事件，但是它会时刻推送，就像鼠标移动；而Cold Observable是被动的，只有当你订阅的时候，它才会发布消息。</li>
@@ -303,18 +318,32 @@ ad">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/RxSwift/" rel="tag">#RxSwift</a>
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+            <a href="/tags/响应式编程/" rel="tag">#响应式编程</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/23/2015-10-23-Swift-closure/" rel="next" title="Swift笔记 - 闭包">
-                <i class="fa fa-chevron-left"></i> Swift笔记 - 闭包
+              <a href="/2015/10/23/2015-10-23-Swift-multithreading/" rel="next" title="Swift笔记 - 多线程">
+                <i class="fa fa-chevron-left"></i> Swift笔记 - 多线程
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/23/2015-10-23-Swift-Objective-C/" rel="prev" title="Swift 笔记 - Swift与Objective-C">
+                Swift 笔记 - Swift与Objective-C <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -386,14 +415,14 @@ ad">
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -421,7 +450,7 @@ ad">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Observables"><span class="nav-number">2.</span> <span class="nav-text">Observables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信号种类"><span class="nav-number">2.1.</span> <span class="nav-text">信号种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#empty"><span class="nav-number">2.2.</span> <span class="nav-text">empty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#never"><span class="nav-number">2.3.</span> <span class="nav-text">never</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#just"><span class="nav-number">2.4.</span> <span class="nav-text">just</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sequenceOf"><span class="nav-number">2.5.</span> <span class="nav-text">sequenceOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#from"><span class="nav-number">2.6.</span> <span class="nav-text">from</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#failWith"><span class="nav-number">2.7.</span> <span class="nav-text">failWith</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deferred"><span class="nav-number">2.8.</span> <span class="nav-text">deferred</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Observables"><span class="nav-number">2.</span> <span class="nav-text">Observables</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信号种类"><span class="nav-number">2.1.</span> <span class="nav-text">信号种类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty"><span class="nav-number">2.2.</span> <span class="nav-text">empty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#never"><span class="nav-number">2.3.</span> <span class="nav-text">never</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#just"><span class="nav-number">2.4.</span> <span class="nav-text">just</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sequenceOf"><span class="nav-number">2.5.</span> <span class="nav-text">sequenceOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from"><span class="nav-number">2.6.</span> <span class="nav-text">from</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#failWith"><span class="nav-number">2.7.</span> <span class="nav-text">failWith</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deferred"><span class="nav-number">2.8.</span> <span class="nav-text">deferred</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
