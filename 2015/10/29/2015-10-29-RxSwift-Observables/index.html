@@ -57,7 +57,7 @@ ad">
 ObservablesObservables 是 RxSwift 里面最常用的一个类,但是这么名字有点逗啊,翻译上面是这么写的
 
 ad">
-<meta property="og:updated_time" content="2015-10-31T03:52:12.000Z">
+<meta property="og:updated_time" content="2015-10-31T12:15:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift 笔记 - 创建Observables">
 <meta name="twitter:description" content="序作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.
@@ -329,6 +329,8 @@ ad">
 </blockquote>
 <p><strong>RxSwift栗子:</strong></p>
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="string">"deferred"</span>) &#123;</span><br><span class="line">    let deferredSequence: Observable&lt;Int&gt; = deferred &#123;</span><br><span class="line">        <span class="keyword">print</span>(<span class="string">"creating"</span>)</span><br><span class="line">        <span class="keyword">return</span> create &#123; observer <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">print</span>(<span class="string">"emmiting"</span>)</span><br><span class="line">            observer.on(.Next(<span class="number">0</span>))</span><br><span class="line">            observer.on(.Next(<span class="number">1</span>))</span><br><span class="line">            observer.on(.Next(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> NopDisposable.<span class="keyword">instance</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    deferredSequence</span><br><span class="line">        .subscribe &#123; <span class="keyword">event</span> <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">print</span>(<span class="keyword">event</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    deferredSequence</span><br><span class="line">        .subscribe &#123; <span class="keyword">event</span> <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">print</span>(<span class="keyword">event</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>本系列实例代码以及放在 -&gt; <a href="https://github.com/TBXark/RxSwiftLearnDemo" target="_blank" rel="external">https://github.com/TBXark/RxSwiftLearnDemo</a></p>
 </span>
       
     </div>
