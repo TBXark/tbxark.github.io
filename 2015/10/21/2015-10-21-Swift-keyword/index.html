@@ -45,19 +45,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
-123456789101112131415161718192021//包含相关值的递归枚举indirect enum">
+<meta name="description" content="本篇主要介绍 indirect 和 where 关键字">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 关键字">
 <meta property="og:url" content="http://yoursite.com/2015/10/21/2015-10-21-Swift-keyword/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
-123456789101112131415161718192021//包含相关值的递归枚举indirect enum">
-<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
+<meta property="og:description" content="本篇主要介绍 indirect 和 where 关键字">
+<meta property="og:updated_time" content="2015-10-31T12:40:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 关键字">
-<meta name="twitter:description" content="indirect// indirect : adj. 间接的, 迂回的对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)
-123456789101112131415161718192021//包含相关值的递归枚举indirect enum">
+<meta name="twitter:description" content="本篇主要介绍 indirect 和 where 关键字">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -279,7 +276,8 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="indirect">indirect</h1><p>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
+        <span itemprop="articleBody"><p>本篇主要介绍 indirect 和 where 关键字<br><a id="more"></a></p>
+<h1 id="indirect">indirect</h1><p>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含相关值的递归枚举</span></span><br><span class="line"><span class="keyword">indirect</span> <span class="class"><span class="keyword">enum</span> <span class="title">LinkList</span>&lt;<span class="title">Element</span>:<span class="title">Comparable</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Empty</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Node</span>(<span class="type">Element</span>,<span class="type">LinkList</span>&lt;<span class="type">Element</span>&gt;)</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">printList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> .<span class="type">Node</span>(value,node):</span><br><span class="line">            <span class="built_in">print</span>(value)</span><br><span class="line">            <span class="keyword">switch</span> node&#123;</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Node</span>(<span class="number">_</span>, <span class="number">_</span>):</span><br><span class="line">                node.printList()</span><br><span class="line">            <span class="keyword">case</span> .<span class="type">Empty</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> .<span class="type">Empty</span>:<span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">1</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">2</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">3</span>, <span class="type">LinkList</span>.<span class="type">Node</span>(<span class="number">4</span>, <span class="type">LinkList</span>.<span class="type">Empty</span>))))</span><br><span class="line">list.printList()</span><br></pre></td></tr></table></figure>
 <h1 id="Where">Where</h1><p>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
 <blockquote>

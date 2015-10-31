@@ -45,19 +45,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
-运算符函数类和结构可以为现有的操作符提供">
+<meta name="description" content="函数是 Swift 中的一等公民, 即可以作为参数合返回值,这一点学过 js 得儿人应该比较了解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 运算符">
 <meta property="og:url" content="http://yoursite.com/2015/10/21/2015-10-21-Swift-operator/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
-运算符函数类和结构可以为现有的操作符提供">
-<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
+<meta property="og:description" content="函数是 Swift 中的一等公民, 即可以作为参数合返回值,这一点学过 js 得儿人应该比较了解">
+<meta property="og:updated_time" content="2015-10-31T12:41:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 运算符">
-<meta name="twitter:description" content="函数格式权限修饰符(public,internal,private)  重写标志(override)  函数类型(class,static)  泛型&amp;lt;T&amp;gt; where condition (参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))  异常抛出(throws)  -&amp;gt; 返回值
-运算符函数类和结构可以为现有的操作符提供">
+<meta name="twitter:description" content="函数是 Swift 中的一等公民, 即可以作为参数合返回值,这一点学过 js 得儿人应该比较了解">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -279,7 +276,8 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="函数格式">函数格式</h1><p><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
+        <span itemprop="articleBody"><p>函数是 Swift 中的一等公民, 即可以作为参数合返回值,这一点学过 js 得儿人应该比较了解<br><a id="more"></a></p>
+<h1 id="函数格式">函数格式</h1><p><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
 <h1 id="运算符函数">运算符函数</h1><p>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
 <ol>
 <li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>

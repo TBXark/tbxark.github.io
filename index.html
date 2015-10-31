@@ -280,12 +280,7 @@
 
       
         
-          <span itemprop="articleBody">
-            
-            doOn// 相当于 RAC 里面的 doNext,doError,doComplete 的集合,可以在信号的传递链中的任意位置设置 hook 而不改变信号本身
-12345678910111213example(false, name: "doOn")&#123;    let sourceSign
-            ...
-          </span>
+          <p>RxSwif 的基本操作已经只身下<code>doOn</code>,<code>takeUntil</code>,<code>takeWhile</code><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-Others/#more" rel="contents">
               阅读全文 &raquo;
@@ -383,12 +378,7 @@
 
       
         
-          <span itemprop="articleBody">
-            
-            catchError// 在捕获到错误信号后返回指定信号
-123456789101112131415161718192021222324example(false, name: "catchError")&#123;    let sequenceThatFails = PublishSubject
-            ...
-          </span>
+          <p>目前 RxSwift 中的错误是指错误信号 而不是通过 try-catch 而捕获到的异常<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/#more" rel="contents">
               阅读全文 &raquo;
@@ -486,12 +476,7 @@
 
       
         
-          <span itemprop="articleBody">
-            
-            信号的变形map// 这些高阶函数就基本和 Swift 原生的功能和用法基本相似
-12345678910111213141516171819202122example( false, name: "map")&#123;    print("RxSwift Version:")    let ori
-            ...
-          </span>
+          <p>RxSwift 中很多运算和操作与 Swift 中集合类型的高阶函数比较相似,下面我来同时使用两者来看看其中的异同<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-Operation/#more" rel="contents">
               阅读全文 &raquo;
@@ -589,13 +574,7 @@
 
       
         
-          <span itemprop="articleBody">
-            
-            subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。
-Tools全局便利函数
-123456789101112func example(active:Boo
-            ...
-          </span>
+          <p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-Subject/#more" rel="contents">
               阅读全文 &raquo;
@@ -693,12 +672,7 @@ Tools全局便利函数
 
       
         
-          <span itemprop="articleBody">
-            
-            序作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.
-ObservablesObserv
-            ...
-          </span>
+          <h1 id="序">序</h1><p>作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/29/2015-10-29-RxSwift-Observables/#more" rel="contents">
               阅读全文 &raquo;
@@ -796,14 +770,7 @@ ObservablesObserv
 
       
         
-          <span itemprop="articleBody">
-            
-            1. 自动闭包@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。
-例子:自定义逻辑与运算符infix operator ||| { associativity left precedence 140}
-1.使用自动闭包版
-12345678func ||| (
-            ...
-          </span>
+          <p>闭包相当于 OC 中的 block,但是两者还是有比较大的差别<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/23/2015-10-23-Swift-closure/#more" rel="contents">
               阅读全文 &raquo;
@@ -901,16 +868,7 @@ ObservablesObserv
 
       
         
-          <span itemprop="articleBody">
-            
-            Selector
-可以用字符串直接初始化 let selector : Selector = &quot;viewDidLoad&quot;
-不能直接对private 关键词修饰的函数创建Selector,需要在private加@objc 关键词修饰
-
-
-方法的动态调用通过创建 类/实例 的柯里化函
-            ...
-          </span>
+          <p>OC 凭借多年的积累不是一时半会就能被 Swift 取代了,调用 OC 的代码,和兼容 OC 的一些特性,是现阶段不可避免的一个问题<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/23/2015-10-23-Swift-Objective-C/#more" rel="contents">
               阅读全文 &raquo;
@@ -1008,12 +966,7 @@ ObservablesObserv
 
       
         
-          <span itemprop="articleBody">
-            
-            LOCK1. Objective-C 版本 @synchronized，这个关键字可以用来修饰一个变量，并为其自动加上和解除互斥锁。这样，可以保证变量在作用范围内不会被其他线程改变。
-写法1:12345- (void)myMethod:(id)anObj &#123;    @synchronize
-            ...
-          </span>
+          <p>多线程操作主要和框架相关,虽然语言变成了 Swif 但是 API 上没有发生太大的变化</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/23/2015-10-23-Swift-multithreading/#more" rel="contents">
               阅读全文 &raquo;
@@ -1200,13 +1153,7 @@ ObservablesObserv
 
       
         
-          <span itemprop="articleBody">
-            
-            try-catch1 .  对于可能抛出错误的函数不能直接调用,一定要用 try
-
-2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制但是我们可以采用下列方法解决,创建一个泛型
-            ...
-          </span>
+          <p>除了传统的传入 NSError 指针这一很别扭的错误处理方案,Swift 现在用 try-Catch 作为错误处理的主要解决方式<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/23/2015-10-23-Swift-error-control/#more" rel="contents">
               阅读全文 &raquo;

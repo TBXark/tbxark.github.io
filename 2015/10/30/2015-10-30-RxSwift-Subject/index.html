@@ -45,22 +45,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。
-Tools全局便利函数
-123456789101112func example(active:Bool,name:String,action:()-&amp;gt;())&amp;#123;    if active">
+<meta name="description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift 笔记 - Subject">
 <meta property="og:url" content="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Subject/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。
-Tools全局便利函数
-123456789101112func example(active:Bool,name:String,action:()-&amp;gt;())&amp;#123;    if active">
-<meta property="og:updated_time" content="2015-10-31T12:20:06.000Z">
+<meta property="og:description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。">
+<meta property="og:updated_time" content="2015-10-31T12:54:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift 笔记 - Subject">
-<meta name="twitter:description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。
-Tools全局便利函数
-123456789101112func example(active:Bool,name:String,action:()-&amp;gt;())&amp;#123;    if active">
+<meta name="twitter:description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -282,7 +276,7 @@ Tools全局便利函数
       
 
       
-        <span itemprop="articleBody"><p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。</p>
+        <span itemprop="articleBody"><p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。<br><a id="more"></a> </p>
 <h4 id="Tools">Tools</h4><p>全局便利函数</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">example</span><span class="params">(active:Bool,name:String,action:<span class="params">()</span></span></span>-&gt;())&#123;</span><br><span class="line">    <span class="keyword">if</span> active&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"----<span class="subst">\(name)</span> star ----"</span>)</span><br><span class="line">        action()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"----<span class="subst">\(name)</span> end ----"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">writeSequenceToConsole</span><span class="generics">&lt;O: ObservableType&gt;</span><span class="params">(name: String, sequence: O)</span></span> &#123;</span><br><span class="line">   <span class="keyword">let</span> <span class="number">_</span> = sequence.subscribe &#123;<span class="built_in">print</span>(<span class="string">"Subscription: <span class="subst">\(name)</span>, event: <span class="subst">\($<span class="number">0</span>)</span>"</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="PublishSubject">PublishSubject</h4><p>不断往外发出信号,不管有没有人订阅(相当于热信号),当前时间点订阅的订阅者不能收到之前的信号</p>

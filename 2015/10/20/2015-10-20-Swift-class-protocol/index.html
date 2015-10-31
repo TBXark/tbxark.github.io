@@ -45,19 +45,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.
-结论如">
+<meta name="description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 类与协议">
 <meta property="og:url" content="http://yoursite.com/2015/10/20/2015-10-20-Swift-class-protocol/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.
-结论如">
-<meta property="og:updated_time" content="2015-10-24T03:36:06.000Z">
+<meta property="og:description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.">
+<meta property="og:updated_time" content="2015-10-31T12:39:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift笔记 - 类与协议">
-<meta name="twitter:description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.
-结论如">
+<meta name="twitter:description" content="可选协议/协议拓展MyProtocol 协议中func requiredMethod() 是在协议声明的时候定义的,但是MyProtocol 对其有一个默认实现,而func optionalMethod() 是在拓展中实现的,必须要有一个默认实现. 当TestClass 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -280,6 +277,7 @@
 
       
         <span itemprop="articleBody"><h2 id="可选协议/协议拓展">可选协议/协议拓展</h2><p><code>MyProtocol</code> 协议中<code>func requiredMethod()</code> 是在协议声明的时候定义的,但是<code>MyProtocol</code> 对其有一个默认实现,而<code>func optionalMethod()</code> 是在拓展中实现的,必须要有一个默认实现. 当<code>TestClass</code> 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.</p>
+<a id="more"></a>
 <h4 id="结论如下"><strong>结论如下</strong></h4><ul>
 <li>如果类型推断得到的是实际的类型<ul>
 <li>那么类型中的实现将被调用；如果类型中没有实现的话，那么接口扩展中的默认实现将被使用</li>
