@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="TBXark,iOS,ReactiveCocoa,Objective-C,Swift,RxSwift" />
 
 
 
@@ -82,6 +82,16 @@
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?db8fa683c46bf6bcdce0fd16df1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -212,208 +222,7 @@
             
             
               
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-closure/" itemprop="url">
-                  Swift笔记 - 闭包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:21:21+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="1-_自动闭包">1. 自动闭包</h2><p><strong>@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。</strong></p>
-<h3 id="例子:自定义逻辑与运算符"><strong>例子:</strong>自定义逻辑与运算符</h3><pre><code><span class="keyword">infix</span> <span class="keyword">operator</span> ||| { <span class="keyword">associativity</span> <span class="keyword">left</span> <span class="keyword">precedence</span> <span class="number">140</span>}
-</code></pre><p>1.<strong>使用自动闭包版</strong></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> ||| <span class="params">(@autoclosure <span class="keyword">left</span>:<span class="params">()</span></span></span>-&gt;<span class="type">Bool</span>,<span class="preprocessor">@autoclosure</span> <span class="keyword">right</span>:()-&gt;<span class="type">Bool</span>) -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">left</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">right</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.<strong>不使用闭包版</strong></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> ||| <span class="params">( <span class="keyword">left</span>:Bool, <span class="keyword">right</span>:Bool)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">left</span> || <span class="keyword">right</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.<strong>测试</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="keyword">if</span> (++a &gt; <span class="number">2</span>) ||| (++a &gt; <span class="number">2</span>)&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"a= <span class="subst">\(a)</span>"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"a= <span class="subst">\(a)</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1.使用闭包: a = 3</span></span><br><span class="line"><span class="comment">//2.不使用闭包: a = 4</span></span><br><span class="line"><span class="comment">//结论: 使用闭包可以减少(延迟)计算,使得计算在真正需要的时候才使用</span></span><br></pre></td></tr></table></figure></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-Objective-C/" itemprop="url">
-                  Swift 笔记 - Swift与Objective-C
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:08:27+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="Selector"><strong>Selector</strong></h2><ol>
-<li>可以用字符串直接初始化 <code>let selector : Selector = &quot;viewDidLoad&quot;</code></li>
-<li>不能直接对<code>private</code> 关键词修饰的函数创建<code>Selector</code>,需要在<code>private</code>加@<code>objc</code> 关键词修饰</li>
-</ol>
-<hr>
-<h2 id="方法的动态调用"><strong>方法的动态调用</strong></h2><p>通过创建 类/实例 的柯里化函数,实现方法的动态调用<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TempClass</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">classFunc</span>() </span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Class Func"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">instanceFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Instance Func"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取类型的柯里化函数</span></span><br><span class="line"><span class="keyword">var</span> classMethod = <span class="type">TempClass</span>.classFunc</span><br><span class="line"><span class="comment">//执行类型的柯里化函数 : 类型 + 柯里化函数 + (参数列表)</span></span><br><span class="line"><span class="type">TempClass</span>.classFunc()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取实例的柯里化函数</span></span><br><span class="line"><span class="keyword">var</span> instanceMethod = <span class="type">TempClass</span>.instanceFunc</span><br><span class="line"><span class="keyword">var</span> temp = <span class="type">TempClass</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行实例的柯里化函数 : 柯里化函数 + (实例) + (参数列表)</span></span><br><span class="line">instanceMethod(temp)()</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="单例"><strong>单例</strong></h2><p>由于 Swift 支持类存储变量所以无需使用 GCD 即可创建一个线程安全的单例</p>
-<ul>
-<li><code>private</code> 修饰符 : 外界无法通过 Getter 方法获得,只能通过指定类方法获得</li>
-<li><code>static</code>   修饰符 : 表明这是一个类型变量</li>
-<li><code>let</code>        修饰符 : 防止单例被意外修改</li>
-</ul>
-<p>ps: 子类继承父类后 类存储变量仍然为同一份<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Instance</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">let</span> defaultInstance = <span class="type">Instance</span>()</span><br><span class="line">    <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">shareInstance</span><span class="params">()</span></span> -&gt; <span class="type">Instance</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> defaultInstance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-29-RxSwift-Observables/" itemprop="url">
+                <a class="post-title-link" href="/2015/10/29/2015-10-29-RxSwift-Observables/" itemprop="url">
                   RxSwift 笔记 - 创建Observables
                 </a>
               
@@ -424,8 +233,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:08:27+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-10-29T15:08:27+08:00" content="2015-10-29">
+              2015-10-29
             </time>
           </span>
 
@@ -447,6 +256,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/29/2015-10-29-RxSwift-Observables/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/29/2015-10-29-RxSwift-Observables/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -547,6 +363,221 @@
             
             
               
+                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-closure/" itemprop="url">
+                  Swift笔记 - 闭包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-23T15:21:21+08:00" content="2015-10-23">
+              2015-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/23/2015-10-23-Swift-closure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-closure/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="1-_自动闭包">1. 自动闭包</h2><p><strong>@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。</strong></p>
+<h3 id="例子:自定义逻辑与运算符"><strong>例子:</strong>自定义逻辑与运算符</h3><pre><code><span class="keyword">infix</span> <span class="keyword">operator</span> ||| { <span class="keyword">associativity</span> <span class="keyword">left</span> <span class="keyword">precedence</span> <span class="number">140</span>}
+</code></pre><p>1.<strong>使用自动闭包版</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> ||| <span class="params">(@autoclosure <span class="keyword">left</span>:<span class="params">()</span></span></span>-&gt;<span class="type">Bool</span>,<span class="preprocessor">@autoclosure</span> <span class="keyword">right</span>:()-&gt;<span class="type">Bool</span>) -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">left</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">right</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.<strong>不使用闭包版</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> ||| <span class="params">( <span class="keyword">left</span>:Bool, <span class="keyword">right</span>:Bool)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">left</span> || <span class="keyword">right</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.<strong>测试</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="keyword">if</span> (++a &gt; <span class="number">2</span>) ||| (++a &gt; <span class="number">2</span>)&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"a= <span class="subst">\(a)</span>"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"a= <span class="subst">\(a)</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1.使用闭包: a = 3</span></span><br><span class="line"><span class="comment">//2.不使用闭包: a = 4</span></span><br><span class="line"><span class="comment">//结论: 使用闭包可以减少(延迟)计算,使得计算在真正需要的时候才使用</span></span><br></pre></td></tr></table></figure></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-Objective-C/" itemprop="url">
+                  Swift 笔记 - Swift与Objective-C
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-23T15:08:27+08:00" content="2015-10-23">
+              2015-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/23/2015-10-23-Swift-Objective-C/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-Objective-C/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="Selector"><strong>Selector</strong></h2><ol>
+<li>可以用字符串直接初始化 <code>let selector : Selector = &quot;viewDidLoad&quot;</code></li>
+<li>不能直接对<code>private</code> 关键词修饰的函数创建<code>Selector</code>,需要在<code>private</code>加@<code>objc</code> 关键词修饰</li>
+</ol>
+<hr>
+<h2 id="方法的动态调用"><strong>方法的动态调用</strong></h2><p>通过创建 类/实例 的柯里化函数,实现方法的动态调用<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TempClass</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">classFunc</span>() </span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Class Func"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">instanceFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Instance Func"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取类型的柯里化函数</span></span><br><span class="line"><span class="keyword">var</span> classMethod = <span class="type">TempClass</span>.classFunc</span><br><span class="line"><span class="comment">//执行类型的柯里化函数 : 类型 + 柯里化函数 + (参数列表)</span></span><br><span class="line"><span class="type">TempClass</span>.classFunc()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取实例的柯里化函数</span></span><br><span class="line"><span class="keyword">var</span> instanceMethod = <span class="type">TempClass</span>.instanceFunc</span><br><span class="line"><span class="keyword">var</span> temp = <span class="type">TempClass</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行实例的柯里化函数 : 柯里化函数 + (实例) + (参数列表)</span></span><br><span class="line">instanceMethod(temp)()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="单例"><strong>单例</strong></h2><p>由于 Swift 支持类存储变量所以无需使用 GCD 即可创建一个线程安全的单例</p>
+<ul>
+<li><code>private</code> 修饰符 : 外界无法通过 Getter 方法获得,只能通过指定类方法获得</li>
+<li><code>static</code>   修饰符 : 表明这是一个类型变量</li>
+<li><code>let</code>        修饰符 : 防止单例被意外修改</li>
+</ul>
+<p>ps: 子类继承父类后 类存储变量仍然为同一份<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Instance</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">let</span> defaultInstance = <span class="type">Instance</span>()</span><br><span class="line">    <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">shareInstance</span><span class="params">()</span></span> -&gt; <span class="type">Instance</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> defaultInstance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-multithreading/" itemprop="url">
                   Swift笔记 - 多线程
                 </a>
@@ -581,6 +612,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/23/2015-10-23-Swift-multithreading/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-multithreading/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -662,6 +700,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/23/2015-10-23-Swift-study-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-study-error/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -764,6 +809,13 @@
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/23/2015-10-23-Swift-error-control/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-error-control/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -864,6 +916,13 @@
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/22/2015-10-22-Swift-higher-order-functions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/22/2015-10-22-Swift-higher-order-functions/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -978,6 +1037,13 @@ sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="v
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/22/2015-10-22-Swift-collection-type/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/22/2015-10-22-Swift-collection-type/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1132,6 +1198,13 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
 
           
             
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/21/2015-10-21-Swift-optional-type/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/2015-10-21-Swift-optional-type/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1226,6 +1299,13 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
           
 
           
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/21/2015-10-21-Swift-operator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/2015-10-21-Swift-operator/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1394,11 +1474,28 @@ someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// s
   
   
     
-    
 
   
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tbxark"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
 
 
+    
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
