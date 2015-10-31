@@ -45,16 +45,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="RxSwif 的基本操作已经只身下doOn,takeUntil,takeWhile">
+<meta name="description" content="RxSwif 的基本操作已经只剩下doOn,takeUntil,takeWhile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift 笔记 - 其他">
 <meta property="og:url" content="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Others/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="RxSwif 的基本操作已经只身下doOn,takeUntil,takeWhile">
-<meta property="og:updated_time" content="2015-10-31T12:54:42.000Z">
+<meta property="og:description" content="RxSwif 的基本操作已经只剩下doOn,takeUntil,takeWhile">
+<meta property="og:updated_time" content="2015-10-31T13:00:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift 笔记 - 其他">
-<meta name="twitter:description" content="RxSwif 的基本操作已经只身下doOn,takeUntil,takeWhile">
+<meta name="twitter:description" content="RxSwif 的基本操作已经只剩下doOn,takeUntil,takeWhile">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -276,7 +276,7 @@
       
 
       
-        <span itemprop="articleBody"><p>RxSwif 的基本操作已经只身下<code>doOn</code>,<code>takeUntil</code>,<code>takeWhile</code><br><a id="more"></a></p>
+        <span itemprop="articleBody"><p>RxSwif 的基本操作已经只剩下<code>doOn</code>,<code>takeUntil</code>,<code>takeWhile</code><br><a id="more"></a></p>
 <h4 id="doOn">doOn</h4><p>// 相当于 RAC 里面的 doNext,doError,doComplete 的集合,可以在信号的传递链中的任意位置设置 hook 而不改变信号本身</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">example(<span class="literal">false</span>, <span class="attribute">name</span>: <span class="string">"doOn"</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> sourceSignal = PublishSubject&lt;String&gt;()</span><br><span class="line">    <span class="keyword">let</span> _ = sourceSignal.doOn<span class="function"><span class="params">(onNext: &#123; (str) -&gt; Void <span class="keyword">in</span></span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"Next"</span>)</span><br><span class="line">                &#125;, onError: &#123; (error) -&gt; Void <span class="keyword">in</span></span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"Error"</span>)</span><br><span class="line">                &#125;, onCompleted: &#123; () -&gt; Void <span class="keyword">in</span></span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"Complete"</span>)</span><br><span class="line">            &#125;)</span>.<span class="title">subscribe</span>&#123;<span class="title">print</span><span class="params">($<span class="number">0</span>)</span>&#125;;</span><br><span class="line">    <span class="title">sourceSignal</span>.<span class="title">onNext</span><span class="params">(<span class="string">"One"</span>)</span></span><br><span class="line">    <span class="title">sourceSignal</span>.<span class="title">onNext</span><span class="params">(<span class="string">"Two"</span>)</span></span><br><span class="line">    <span class="title">sourceSignal</span>.<span class="title">onComplete</span><span class="params">()</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h4 id="takeUntil">takeUntil</h4><p>// 直到收到某个信号前,能一直发送信号,当收到 takeUntil 的后立即发送 complete 信号<br>// 常用在 tableviewcell 中,当 cell 重用时避免信号重复</p>
