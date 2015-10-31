@@ -222,6 +222,494 @@
             
             
               
+                <a class="post-title-link" href="/2015/10/22/2015-10-22-Swift-higher-order-functions/" itemprop="url">
+                  Swift笔记 - 高阶函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-22T15:11:31+08:00" content="2015-10-22">
+              2015-10-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/22/2015-10-22-Swift-higher-order-functions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/22/2015-10-22-Swift-higher-order-functions/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="延迟计算"><strong>延迟计算</strong></h2><p>在下列高阶函数调用前使用 lazy  可以是闭包不立即执行,而等到需要时才执行<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = <span class="number">1</span>...<span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = data.lazy.map &#123;</span><br><span class="line">    (i: <span class="type">Int</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span></span><br><span class="line">    print(<span class="string">"正在处理 \(i)"</span>)</span><br><span class="line">    <span class="keyword">return</span> i * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"准备访问结果"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="literal">result</span> &#123;</span><br><span class="line">    print(<span class="string">"操作后结果为 \(i)"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"操作完毕"</span>)</span><br><span class="line">//准备访问结果</span><br><span class="line">//正在处理 <span class="number">1</span></span><br><span class="line">//操作后结果为 <span class="number">2</span></span><br><span class="line">//正在处理 <span class="number">2</span></span><br><span class="line">//操作后结果为 <span class="number">4</span></span><br><span class="line">//正在处理 <span class="number">3</span></span><br><span class="line">//操作后结果为 <span class="number">6</span></span><br><span class="line">//操作完毕</span><br></pre></td></tr></table></figure></p>
+<h2 id="高阶函数"><strong>高阶函数</strong></h2><pre><code>var <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>]
+var muArray = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]
+</code></pre><h4 id="1-_Short:排序">1. Short:排序</h4><pre><code>var sortArray = <span class="keyword">array</span>.sort({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
+//print(sortArray)
+//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
+
+
+//InPlace:无返回值,直接改变当前实例
+var sortInPlaceArray = <span class="keyword">array</span>
+sortInPlaceArray.sortInPlace({<span class="variable">$0</span>&gt;<span class="variable">$1</span>})
+//print(sortInPlaceArray)
+//[<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>]
+</code></pre><h4 id="2-_Map:转换">2. Map:转换</h4><pre><code>var mapArry = <span class="keyword">array</span>.<span class="keyword">map</span> {<span class="string">"No."</span> + String(<span class="variable">$0</span>)}
+//print(mapArry)
+//[<span class="string">"No.1"</span>, <span class="string">"No.2"</span>, <span class="string">"No.3"</span>, <span class="string">"No.4"</span>, <span class="string">"No.5"</span>, <span class="string">"No.6"</span>, <span class="string">"No.0"</span>]
+</code></pre><h4 id="3-_Filter:过滤">3. Filter:过滤</h4><pre><code>var filterArray = <span class="keyword">array</span>.filter {(<span class="variable">$0</span><span class="decorator">%2</span> == <span class="number">0</span>)}
+//print(filterArray)
+//[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">0</span>]
+</code></pre><h4 id="4-_Reduce:归纳">4. Reduce:归纳</h4><pre><code>var reduceArray = <span class="keyword">array</span>.reduce(<span class="string">""</span>, combine: {<span class="variable">$0</span>+<span class="string">"."</span>+String(<span class="variable">$1</span>)})
+//print(reduceArray)
+//.<span class="number">1.2</span>.<span class="number">3.4</span>.<span class="number">5.6</span>.<span class="number">0</span>
+</code></pre><h4 id="5-_Flatten">5. Flatten</h4><pre><code><span class="tag">var</span> flattenArray =  muArray.<span class="function"><span class="title">flatten</span><span class="params">()</span></span>
+<span class="function"><span class="title">print</span><span class="params">(flattenArray)</span></span>
+</code></pre>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/22/2015-10-22-Swift-collection-type/" itemprop="url">
+                  Swift笔记 - 集合类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-22T15:05:16+08:00" content="2015-10-22">
+              2015-10-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/22/2015-10-22-Swift-collection-type/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/22/2015-10-22-Swift-collection-type/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="集合类型">集合类型</h1><h2 id="值类型与引用类型">值类型与引用类型</h2><ul>
+<li>swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.</li>
+<li>原来 Foundation 框架中的集合类型(NSSet,NSArray,NSDictionary) 都是引用类型的容器.</li>
+<li>在实际开发中按照具体的数据规模和操作特点来决定到时是使用值类型的容器还是引用类型的容器：在<strong>需要处理大量数据</strong>并且<strong>频繁操作 (增减) 其中元素时</strong>，选择 NSMutableArray 和 NSMutableDictionary 会更好，而对于容器内条目小而容器本身数目多的情况，应该使用 Swift 语言内建的 Array 和 Dictionary。</li>
+</ul>
+<h2 id="集合Set">集合Set</h2><p>  一个set无序的存储相同类型的不同的值.当一个数组元素的顺序不重要或者你需要保证这些value只出现一次的时候使用set.</p>
+<h3 id="1-_语法">1. 语法</h3><p><code>Set&lt;SomeType&gt;</code>和<code>Array</code>不同的是,<code>Set</code>没有缩写方式.<code>var someSet =Set&lt;Character&gt;()</code>    或者如果上下文以及提供了类型信息,比如一个函数的参数或者一个已知类型的常量或变量.你可以创建用空的数组字面量创建一个空的集合   </p>
+<pre><code>var someSet =<span class="operator"><span class="keyword">Set</span>&lt;<span class="built_in">Character</span>&gt;()// someSet现在包含一个<span class="built_in">Character</span>的值
+someSet.<span class="keyword">insert</span>(<span class="string">"a"</span>)// someSet现在是一个空的<span class="keyword">set</span>,但是它仍然是一个存储<span class="built_in">Character</span>的<span class="keyword">set</span>.
+<span class="keyword">var</span> someSet:<span class="keyword">Set</span>&lt;<span class="keyword">String</span>&gt; = [<span class="string">"L"</span>,<span class="string">"o"</span>,<span class="string">"v"</span>,<span class="string">"e"</span>]</span>
+</code></pre><p>一个set不能单独的从数组字面量推断类型.所以set必须被明确的定义.然而根据swift的类型推断,当你用数组字面量初始化set的时候,如果包含的所以value是一种类型,你可以不写类型.</p>
+<p>//判断一个set是否包含一个值</p>
+<pre><code><span class="tag">var</span> isContainAValue = someSet.<span class="function"><span class="title">contains</span><span class="params">(<span class="string">"o"</span>)</span></span>
+<span class="function"><span class="title">println</span><span class="params">(<span class="string">"/(isContainAValue)"</span>)</span></span>
+</code></pre><p>//遍历一个set</p>
+<pre><code><span class="keyword">for</span> itemin someSet {
+    <span class="keyword">println</span>(<span class="string">"/(item)"</span>)
+}
+// 因为<span class="typename">set</span>类型没有顺序.所以要按照一个指定的顺序遍历<span class="typename">set</span>要使用全局sorted函数.
+<span class="keyword">for</span> iteminsorted(someSet) {
+    <span class="keyword">println</span>(<span class="string">"/(item)"</span>)
+}
+</code></pre><h3 id="2-_Set关系">2. Set关系</h3><p>你可以效率很高的进行一下set操作.比如合并两个set.获取两个集合的相同部分.或者判断两个集合包含所以的,一些或者都不包含一些值.</p>
+<pre><code><span class="tag">var</span> firstSet  : Set = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]
+<span class="tag">var</span> secondSet : Set = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]
+
+<span class="comment">//并集: uionSet = A+B</span>
+<span class="tag">var</span> uionSet : Set = firstSet.<span class="function"><span class="title">union</span><span class="params">(secondSet)</span></span>
+<span class="comment">//print(uionSet) [5, 7, 2, 3, 1, 4]</span>
+
+<span class="comment">//交集: intersectSet = AB</span>
+<span class="tag">var</span> intersectSet : Set = firstSet.<span class="function"><span class="title">intersect</span><span class="params">(secondSet)</span></span>
+<span class="comment">//print(intersectSet) [3, 1]</span>
+
+<span class="comment">//subtract = A - AB</span>
+<span class="tag">var</span> subtract : Set = firstSet.<span class="function"><span class="title">subtract</span><span class="params">(secondSet)</span></span>
+<span class="comment">//print(subtract) [2, 4]</span>
+
+<span class="comment">//exclusiveOr = A+B - AB</span>
+<span class="tag">var</span> exclusiveOr : Set = firstSet.<span class="function"><span class="title">exclusiveOr</span><span class="params">(secondSet)</span></span>
+<span class="comment">//print(exclusiveOr) [5, 7, 2, 4]</span>
+</code></pre><h3 id="3-_Set_比较">3. Set 比较</h3><pre><code><span class="tag">var</span> firstSet  : Set = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]
+<span class="tag">var</span> secondSet : Set = [<span class="number">1</span>]
+
+<span class="comment">//相等 判断</span>
+<span class="tag">var</span> equal = (firstSet == secondSet)
+
+<span class="comment">//子集/超集 判断</span>
+<span class="tag">var</span> sonSet = firstSet.<span class="function"><span class="title">isSubsetOf</span><span class="params">(secondSet)</span></span>
+<span class="tag">var</span> superSet = firstSet.<span class="function"><span class="title">isSupersetOf</span><span class="params">(secondSet)</span></span>
+
+<span class="comment">//相交 判断</span>
+<span class="tag">var</span> disJion = firstSet.<span class="function"><span class="title">isDisjointWith</span><span class="params">(secondSet)</span></span>
+
+<span class="comment">//真子集/真超集 判断</span>
+<span class="tag">var</span> realSonSet = firstSet.<span class="function"><span class="title">isStrictSubsetOf</span><span class="params">(secondSet)</span></span>
+<span class="tag">var</span> realFatherSet = firstSet.<span class="function"><span class="title">isStrictSupersetOf</span><span class="params">(secondSet)</span></span>
+</code></pre><h2 id="数组_Array">数组 Array</h2><h3 id="自定义下标">自定义下标</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var <span class="built_in">array</span> = [<span class="number">111</span>,<span class="number">222</span>,<span class="number">333</span>,<span class="number">444</span>,<span class="number">555</span>]</span><br><span class="line"></span><br><span class="line">extension Array&#123;</span><br><span class="line">    subscript(s inputs:Int...) -&gt; ArraySlice&lt;Element&gt;&#123;</span><br><span class="line">        get&#123;</span><br><span class="line">            var newArray = ArraySlice&lt;Element&gt;()</span><br><span class="line">            let count = self.count</span><br><span class="line">            <span class="keyword">for</span> indexNum in inputs</span><br><span class="line">            &#123;</span><br><span class="line">                assert(indexNum &lt; count, <span class="string">"Index out of range"</span>)</span><br><span class="line">                newArray.append(self[indexNum])</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> newArray</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">set</span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (index,i) in inputs.enumerate() &#123;</span><br><span class="line">                assert(i &lt; self.count, <span class="string">"Index out of range"</span>)</span><br><span class="line">                self[i] = newValue[index]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用区间</span></span><br><span class="line"><span class="built_in">array</span>[<span class="number">0.</span>.<span class="number">.1</span>] = [<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">print(<span class="built_in">array</span>) <span class="comment">// [0, 0, 333, 444, 555]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用自定义数组</span></span><br><span class="line"><span class="built_in">array</span>[s:<span class="number">0</span>] = [<span class="number">123456789</span>]</span><br><span class="line"><span class="built_in">array</span>[s:<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] = [<span class="number">123</span>,<span class="number">123</span>,<span class="number">123</span>]</span><br><span class="line">print(<span class="built_in">array</span>[s:<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">//[123, 123, 123, 555]</span></span><br></pre></td></tr></table></figure>
+<h2 id="字典_Dictionary">字典 Dictionary</h2><p>当使用系统 json解析器时,会返回Foundation类型,所以没办法用 Swif 值类型进行取值和判断</p>
+<h3 id="对未知_Key_的_Value_的判断">对未知 Key 的 Value 的判断</h3><h4 id="1-_传统判断">1. 传统判断</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json = <span class="string">"&#123;\"</span>str\<span class="string">":\"</span>value\<span class="string">",\"</span>dict\<span class="string">":&#123;\"</span>subStr\<span class="string">":\"</span>value\<span class="string">"&#125;&#125;"</span></span><br><span class="line"><span class="keyword">var</span> data = json.dataUsingEncoding(NSUTF8StringEncoding)</span><br><span class="line"><span class="keyword">if</span> let jsonData = data</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> dict : NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments) <span class="keyword">as</span>! NSDictionary</span><br><span class="line">        <span class="keyword">if</span> dict[<span class="string">"str"</span>] != nil &amp;&amp; <span class="literal">String</span>(dict[<span class="string">"str"</span>]!) == <span class="string">"value"</span>&#123;</span><br><span class="line">            <span class="keyword">print</span>(<span class="string">"equal"</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">print</span>(<span class="string">"error"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;catch&#123;</span><br><span class="line">        <span class="keyword">print</span>(<span class="keyword">error</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-高阶函数+可选链">2.高阶函数+可选链</h4><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dict : <span class="type">NSDictionary</span> = [<span class="string">"value"</span>:<span class="string">"key"</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = (dict[<span class="string">"value"</span>] <span class="keyword">as</span>? <span class="type">NSString</span>).map&#123;<span class="type">String</span>($<span class="number">0</span>) == <span class="string">"key"</span>&#125;</span><br><span class="line"><span class="keyword">if</span> <span class="literal">result</span> != <span class="keyword">nil</span> &amp;&amp; <span class="literal">result</span>!&#123;</span><br><span class="line">    print(<span class="string">"Success"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-_值类型判断">3. 值类型判断</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dict = [<span class="string">"value"</span>:<span class="string">"key"</span>]</span><br><span class="line"><span class="keyword">if</span> dict[<span class="string">"values"</span>] == <span class="string">"key"</span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Success"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-where_操作符">4.where 操作符</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dict : NSDictionary = [<span class="string">"key"</span>:<span class="string">"value"</span>,<span class="string">"key2"</span>:<span class="string">"values"</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">value</span> :NSString = dict[<span class="string">"key"</span>] <span class="keyword">as</span>? NSString <span class="keyword">where</span> <span class="keyword">value</span>.isEqualToString(<span class="string">"value"</span>)&#123;</span><br><span class="line">    print(<span class="string">"Same"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Not Same"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/21/2015-10-21-Swift-optional-type/" itemprop="url">
+                  Swift笔记 - 可选类型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-21T15:22:13+08:00" content="2015-10-21">
+              2015-10-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/21/2015-10-21-Swift-optional-type/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/2015-10-21-Swift-optional-type/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="可选链">可选链</h2><h3 id="在可选链中调用函数">在可选链中调用函数</h3><p>当可选链的结尾是一个函数的时候,这个函数的返回值也是一个可选类型,即使这个函数的返回值是 void(空元组),通过判断函数的返回值是否为空可以判断函数是否被执行,<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name : <span class="type">String</span></span><br><span class="line">    <span class="keyword">init</span>(name:<span class="type">String</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">play</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"play <span class="subst">\(name)</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> toy : <span class="type">Toy</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pet : <span class="type">Pet</span>?</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> xiaoming = <span class="type">Child</span>()</span><br><span class="line">xiaoming.pet = <span class="type">Pet</span>()</span><br><span class="line"><span class="comment">//xiaoming.pet?.toy = Toy(name: "Car")</span></span><br><span class="line"><span class="comment">//xiaoming.pet?.toy?.play()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//闭包中的判断,即返回一个可选的空元组</span></span><br><span class="line"><span class="keyword">var</span> playClosure = &#123;(child:<span class="type">Child</span>) -&gt;()? <span class="keyword">in</span></span><br><span class="line">    child.pet?.toy?.play()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> isPlay :() = xiaoming.pet?.toy?.play()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Somthing Play"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Nothing Play"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="可选类型数组">可选类型数组</h3><p>有时候我们可能会遇到数组元素的类型是可选类型,这时候我们遍历操作数组元素的时候每次进行值判断是很 Low 的,然后我们可以使用 <code>flatMap</code> 来对数组进行变形,同时还能对其进行值操作</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">array</span> : [[Int]?] = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],nil,[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],nil,[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],nil]</span><br><span class="line"></span><br><span class="line">//此操作可以剔除数组中的 nil</span><br><span class="line"><span class="keyword">let</span> temp1 = <span class="keyword">array</span>.flatMap&#123;<span class="variable">$0</span>&#125;</span><br><span class="line">print(temp1)//[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line"></span><br><span class="line">//在此基础上可以进行可选链的操作</span><br><span class="line"><span class="keyword">let</span> temp2 = <span class="keyword">array</span>.flatMap&#123;<span class="variable">$0</span>?.reduce(<span class="string">""</span>, combine: &#123;<span class="variable">$0</span>+String(<span class="variable">$1</span>)&#125;)&#125;</span><br><span class="line">print(temp2)//[<span class="string">"123"</span>, <span class="string">"456"</span>, <span class="string">"789"</span>]</span><br></pre></td></tr></table></figure>
+<p>当处理一个非可选的元素为集合类型的数组时,其作用是 “拍扁”</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let array2 : <span class="string">[[[Int]]</span>] = <span class="string">[[[1],[2,3]]</span>,<span class="string">[[4,5],[6]]</span>,<span class="string">[[7,8,9]]</span>]</span><br><span class="line">let temp3 = array2.flatMap&#123;$<span class="number">0.</span>flatMap&#123;$<span class="number">0</span>&#125;&#125;</span><br><span class="line"><span class="built_in">print</span>(temp3)//[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/10/21/2015-10-21-Swift-operator/" itemprop="url">
+                  Swift笔记 - 运算符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-21T15:13:55+08:00" content="2015-10-21">
+              2015-10-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/21/2015-10-21-Swift-operator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/2015-10-21-Swift-operator/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="函数格式">函数格式</h1><p><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
+<h1 id="运算符函数">运算符函数</h1><p>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
+<ol>
+<li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>
+<li>运算符命名 : 自定义运算符可以由以下其中之一的 ASCII 字符<code>/</code>、<code>=</code>、<code>-</code>、<code>+</code>、<code>!</code>、<code>*</code>、<code>%</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>?</code> 以及 <code>~</code>, 或者后面语法中规定的任一个 Unicode 字符开始。在第一个字符之后，允许使用组合型 Unicode 字符。也可以使用两个或者多个的点号来自定义运算符（比如, ….）。虽然可以自定义包含问号?的运算符，但是这个运算符不能只包含单独的一个问号。</li>
+</ol>
+<h2 id="自定义运算符格式">自定义运算符格式</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="keyword">operator</span> &lt;运算符&gt; &#123;</span><br><span class="line">	<span class="keyword">associativity</span> &lt;结合方向&gt;(<span class="keyword">left</span>,<span class="keyword">right</span>,<span class="keyword">none</span>)</span><br><span class="line">	<span class="keyword">precedence</span> &lt;优先级&gt;(乘除<span class="number">150</span>,加减<span class="number">140</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="keyword">prefix</span>/<span class="keyword">postfix</span>/<span class="keyword">infix</span>&gt; <span class="func"><span class="keyword">func</span> <span class="generics">&lt;运算符&gt;</span> <span class="params">(<span class="keyword">left</span> : &lt;左&gt; ,<span class="keyword">right</span> : &lt;右&gt;)</span></span> -&gt; &lt;返回值&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;返回值&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子_通过自定义运算符实现正则判断"><strong>例子</strong> 通过自定义运算符实现正则判断</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">RegexMode</span> : <span class="title">String</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Mail</span> = <span class="string">"^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]&#123;2,6&#125;)$"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RegexHelper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> regex: <span class="type">NSRegularExpression</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="number">_</span> pattern: <span class="type">String</span>) <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> regex = <span class="type">NSRegularExpression</span>(pattern: pattern,options: .<span class="type">CaseInsensitive</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">match</span><span class="params">(input: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> matches = regex.matchesInString(input,</span><br><span class="line">            options: [],</span><br><span class="line">            range: <span class="type">NSMakeRange</span>(<span class="number">0</span>, input.characters.<span class="built_in">count</span>))</span><br><span class="line">        <span class="keyword">return</span> matches.<span class="built_in">count</span> &gt; <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> =~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> ==~ &#123;</span><br><span class="line">    <span class="keyword">associativity</span> <span class="keyword">none</span></span><br><span class="line">    <span class="keyword">precedence</span> <span class="number">130</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> =~ <span class="params">(resource : String ,regx : String)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">RegexHelper</span>(regx).match(resource)</span><br><span class="line">    &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> ==~ <span class="params">(resource : String ,regx : RegexMode)</span></span> -&gt; <span class="type">Bool</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> resource =~ regx.rawValue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"vfanx@qq.com"</span> ==~ <span class="type">RegexMode</span>.<span class="type">Mail</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"有效的邮箱地址"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/10/21/2015-10-21-Swift-keyword/" itemprop="url">
                   Swift笔记 - 关键字
                 </a>
@@ -572,7 +1060,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

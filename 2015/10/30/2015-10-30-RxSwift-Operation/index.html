@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Swift 学习笔记," />
+  <meta name="keywords" content="RxSwift,Swift,响应式编程," />
 
 
 
@@ -45,22 +45,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta name="description" content="信号的变形
+map
+// 这些高阶函数就基本和 Swift 原生的功能和用法基本相似example( false, name: “map”){    print(“RxSwift Version:”)    let originalSequence = sequenceOf(Character(“A”), Character(“B”), Character(“C”))    let  = orig">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 - 序">
-<meta property="og:url" content="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/index.html">
+<meta property="og:title" content="RxSwift 笔记 - 信号的运算与操作">
+<meta property="og:url" content="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Operation/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
-<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
+<meta property="og:description" content="信号的变形
+map
+// 这些高阶函数就基本和 Swift 原生的功能和用法基本相似example( false, name: “map”){    print(“RxSwift Version:”)    let originalSequence = sequenceOf(Character(“A”), Character(“B”), Character(“C”))    let  = orig">
+<meta property="og:updated_time" content="2015-10-31T12:12:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 - 序">
-<meta name="twitter:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta name="twitter:title" content="RxSwift 笔记 - 信号的运算与操作">
+<meta name="twitter:description" content="信号的变形
+map
+// 这些高阶函数就基本和 Swift 原生的功能和用法基本相似example( false, name: “map”){    print(“RxSwift Version:”)    let originalSequence = sequenceOf(Character(“A”), Character(“B”), Character(“C”))    let  = orig">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -72,7 +72,7 @@
 
 
 
-  <title> Swift笔记 - 序 | TBXark </title>
+  <title> RxSwift 笔记 - 信号的运算与操作 | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -227,7 +227,7 @@
             
             
               
-                Swift笔记 - 序
+                RxSwift 笔记 - 信号的运算与操作
               
             
           </h1>
@@ -236,8 +236,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-19T15:10:10+08:00" content="2015-10-19">
-              2015-10-19
+            <time itemprop="dateCreated" datetime="2015-10-30T12:00:00+08:00" content="2015-10-30">
+              2015-10-30
             </time>
           </span>
 
@@ -246,8 +246,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
+                    <span itemprop="name">RxSwift</span>
                   </a>
                 </span>
 
@@ -262,8 +262,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/19/2015-10-19-Swift-begin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/19/2015-10-19-Swift-begin/" itemprop="commentsCount"></span>
+                <a href="/2015/10/30/2015-10-30-RxSwift-Operation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/2015-10-30-RxSwift-Operation/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -282,15 +282,34 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="开始">开始</h2><p>移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.<br>当我对自习每天的学习还算满意的时候,我看到了一句话</p>
-<blockquote>
-<p>哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对他人才华有着高明判断力的君主，他并不这样认为。于是他随意指着绑在周围的战驴说：“亲爱的将军，好好看看这些驴子，它们至少参加过20次战役，可它们仍然是驴子。”</p>
-</blockquote>
-<p>然后,我就开始想,我是不是真的尽全力了呢,虽然我每天都有在学习,但是依然没有走出 Objective-C 的温室.Swift 刚出的时候我一直已其不稳定为借口而没去学习,Swift 2.0出来以后,依然没有太大的吸引力让我去学习.<br>但是我意识到这都是借口,然后我就开始了我的 Swift 学习之旅</p>
-<h2 id="过程">过程</h2><p>我大概花了4天的空闲时间将 <strong>“The Swift Programming Language”</strong> 学习完,作为一个资深 Objective-C 的编程人员,没有了 Runtime 简直像程序员没有了键盘,虽然 Swift 有很多新特性可以作为 KVC,和 KVO 的替代.但是灵活性还有待提高.在学完基础语法之后,我感觉还需要提高,于是买了 王巍 (<a href="http://swifter.tips/author/onevcat/" target="_blank" rel="external">@ONEVCAT</a>) 的 <strong>“<a href="http://swifter.tips" target="_blank" rel="external">SWIFT 100个 必备 TIPS</a>“</strong>, 之后的笔记都是在看这本书的途中写的.部分内容也是摘抄自该书.在这里做一个统一的引用说明</p>
-<h2 id="最后">最后</h2><p>Swift 是一门很有意思的语言,但是由于它的安全性少了很多灵活的乐趣.最近还有一个比较热门的 React Native 现在好像只能用纯 js 编辑,不能和原生进行混编,这对于企业开发似乎不太现实.所以还不打算开始学习.<br>Swift 之后,打算开始用 Swift 学写一些酷炫一点的动画控件,作为 Swift 学习的巩固.</p>
-<hr>
-<p>TBXark</p>
+        <span itemprop="articleBody"><p>信号的变形</p>
+<p>map</p>
+<p>// 这些高阶函数就基本和 Swift 原生的功能和用法基本相似<br>example( false, name: “map”){<br>    print(“RxSwift Version:”)<br>    let originalSequence = sequenceOf(Character(“A”), Character(“B”), Character(“C”))<br>    let <em> = originalSequence.map{$0.hashValue}.subscribe{print($0)}<br>    print(“Swift Version:”)<br>    let swiftOriginalSequence = [Character(“A”), Character(“B”), Character(“C”)]<br>    let </em> = swiftOriginalSequence.map{$0.hashValue}.forEach{print($0)}<br>    /<em><br>    —-map star —-<br>    RxSwift Version:<br>    Next(4799450059485597671)<br>    Next(4799450059485597672)<br>    Next(4799450059485597677)<br>    Completed<br>    Swift Version:<br>    4799450059485597671<br>    4799450059485597672<br>    4799450059485597677<br>    —-map end —-
+    </em>/<br>}<br>flatMap</p>
+<p>// 这里的 flatMap 好像就有一些差异<br>example(false, name: “flatMap”){<br>    print(“RxSwift Version:”)<br>    let array : [[Int]] = [[1,2,3],[4,5,6],[7,8,9]]<br>    let originalSequence = array.map{$0.asObservable()}.asObservable()<br>    let otherSequence = [“A”,”B”,”C”,”D”,”—“].asObservable()<br>    let _ = originalSequence.flatMap{ int in<br>            otherSequence<br>        }.subscribe{print($0)}<br>    print(“Swift Version:”)<br>    print(array.flatMap{$0.map{String($0)}})<br>    /<em><br>    —-flatMap star —-<br>    RxSwift Version:<br>    Next(A)<br>    Next(B)<br>    Next(C)<br>    Next(D)<br>    Next(—)<br>    Next(A)<br>    Next(B)<br>    Next(C)<br>    Next(D)<br>    Next(—)<br>    Next(A)<br>    Next(B)<br>    Next(C)<br>    Next(D)<br>    Next(—)<br>    Completed<br>    Swift Version:<br>    [“1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”]<br>    —-flatMap end —-
+    </em>/<br>}<br>scan / reduce</p>
+<p>// sacn 会显示每次中间计算的结果<br>// reduce 只会显示最终的计算结果<br>example( false, name: “scan / reduce”){<br>    print(“RxSwift Version:”)<br>    let sequenceToSum = sequenceOf(0, 1, 2, 3, 4, 5, 6)<br>    let <em> = sequenceToSum.scan(0){$0+$1}.subscribe{print($0)}<br>    let </em> = sequenceToSum.reduce(0){$0+$1}.subscribe{print($0)}<br>    print(“Swift Version:”)<br>    let array = [1,2,3,4,5,6]<br>    print(“Sum : (array.reduce(0){$0+$1})”);<br>    /<em><br>    —-scan / reduce star —-<br>    RxSwift Version:<br>    Next(0)<br>    Next(1)<br>    Next(3)<br>    Next(6)<br>    Next(10)<br>    Next(15)<br>    Next(21)<br>    Completed<br>    Next(21)<br>    Completed<br>    Swift Version:<br>    Sum : 21<br>    —-scan / reduce end —-
+    </em>/<br>}<br>信号的筛选</p>
+<p>filter</p>
+<p>// 过滤<br>example(false, name: “filter”){<br>    let array = [1,2,3,4,5,6,7,8,9]<br>    print(“RxSwift Version:”)<br>    let _ = array.asObservable().filter{ $0%2 == 0}.subscribe{print($0)}<br>    print(“Swift Version:”)<br>    array.filter{$0%2 == 0}.forEach{print($0)}<br>    /<em><br>    —-filter star —-<br>    RxSwift Version:<br>    Next(2)<br>    Next(4)<br>    Next(6)<br>    Next(8)<br>    Completed<br>    Swift Version:<br>    2<br>    4<br>    6<br>    8<br>    —-filter end —-
+    </em>/<br>}<br>distinctUntilChanged</p>
+<p>// 和前一次的值比较,直到值发生改变才发出信号(这个改变的依据可以用闭包来进行自定义)<br>example(false, name: “distinctUntilChanged”){<br>    let array = [1,1,2,2,1,1,3,3,4,4]<br>    let _ = array.asObservable().distinctUntilChanged().subscribe{print($0)}<br>    /<em><br>    —-distinctUntilChanged star —-<br>    Next(1)<br>    Next(2)<br>    Next(1)<br>    Next(3)<br>    Next(4)<br>    Completed<br>    —-distinctUntilChanged end —-
+    </em>/<br>}<br>take</p>
+<p>// 这是一个系列的函数<br>// 获取几次信号,通常用法是个限定只用一次<br>example(false, name: “take”){<br>    let array = [1,2,3,4,5,6,7,8,9]<br>    let _ = array.asObservable().take(3).subscribe{print($0)}<br>    /<em><br>    —-take star —-<br>    Next(1)<br>    Next(2)<br>    Next(3)<br>    Completed<br>    —-take end —-
+    </em>/<br>}<br>信号的组合</p>
+<p>startWith</p>
+<p>// 实质上实在原有Observables前面加上新的元素然后组成新的Observables,但是不改变原有Observables<br>example(false, name: “startWith”){<br>    let originalSequence = [1,2,3,].asObservable().startWith(123)<br>    let <em> = originalSequence.startWith(12).startWith(11).startWith(10).subscribe{print($0)}<br>    let </em> = originalSequence.subscribe{print($0)}<br>    /<em><br>    —-startWith star —-<br>    Next(0)<br>    Next(0)<br>    Next(0)<br>    Next(1)<br>    Next(2)<br>    Next(3)<br>    Completed<br>    Next(1)<br>    Next(2)<br>    Next(3)<br>    Completed<br>    —-startWith end —-
+    </em>/<br>}<br>combineLatest</p>
+<p>// 将两个Observables组合成一个Observables, 条件是Observables必须有一个.Next ,然后combineLatest 就会将两个Observables最后的.Next 信号合在一起<br>example(false, name: “combineLatest”){<br>    let pub1 = PublishSubject<int>()<br>    let pub2 = PublishSubject<string>()<br>    let _ = combineLatest(pub1, pub2){ String($0) + “.” + $1}.subscribe{print($0)}<br>    pub1.on(.Next(1))<br>    pub1.on(.Next(2))<br>    pub2.on(.Next(“A”))<br>    pub2.on(.Next(“B”))<br>    /<em><br>    —-combineLatest star —-<br>    Next(2.A)<br>    Next(2.B)<br>    —-combineLatest end —-
+    </em>/<br>}<br>zip</string></int></p>
+<p>// 按顺序一次组合,而不是像 combineLatest 选最后一个<br>example(false, name: “zip”){<br>    let pub1 = PublishSubject<int>()<br>    let pub2 = PublishSubject<string>()<br>    let _ = zip(pub1, pub2){ String($0) + “.” + $1}.subscribe{print($0)}<br>    pub1.on(.Next(1))<br>    pub1.on(.Next(2))<br>    pub1.on(.Next(3))<br>    pub2.on(.Next(“A”))<br>    pub1.on(.Next(4))<br>    pub2.on(.Next(“B”))<br>    pub2.on(.Next(“C”))<br>    pub2.on(.Next(“D”))<br>    pub2.on(.Next(“E”))<br>    pub2.on(.Next(“F”))<br>    /<em><br>    —-zip star —-<br>    Next(1.A)<br>    Next(2.B)<br>    Next(3.C)<br>    Next(4.D)<br>    —-zip end —-
+    </em>/<br>}<br>merge</string></int></p>
+<p>// 可以想象成两个水管合并,两个Observables之间不发生组合,而是在同一个Observables中传递<br>// 但是merge 不能将两个不同类 Observables 组合在一起(可以用 Any或 AnyObject 解决,但是不建议,可以对其中一个序列使用 map 从而使得两者类型相同)<br>example(false, name: “merge”){<br>    let pub1 = PublishSubject<int>()<br>    let pub2 = PublishSubject<int>()<br>    let _  =  sequenceOf(pub1, pub2).merge().subscribe{print($0)}<br>    pub1.on(.Next(1))<br>    pub1.on(.Next(2))<br>    pub1.on(.Next(3))<br>    pub2.on(.Next(100))<br>    pub1.on(.Next(4))<br>    pub2.on(.Next(200))<br>    pub2.on(.Next(300))<br>    pub2.on(.Next(400))<br>    /<em><br>    —-merge star —-<br>    Next(1)<br>    Next(2)<br>    Next(3)<br>    Next(100)<br>    Next(4)<br>    Next(200)<br>    Next(300)<br>    Next(400)<br>    —-merge end —-
+    </em>/<br>}<br>contact</int></int></p>
+<p>// 一个信号完成后才能开始另一个信号,将两个信号头尾相接<br>// 通常用在 网络请求后进行本地数据库写入<br>example(false, name: “contact”){<br>    let var1 = BehaviorSubject(value: 0)<br>    let var2 = BehaviorSubject(value: 200)<br>    // var3 is like an Observable<observable<int>&gt;<br>    let var3 = BehaviorSubject(value: var1)<br>    let _ = var3.concat().subscribe{print($0)}<br>    var1.on(.Next(1))<br>    var1.on(.Next(2))<br>    var1.on(.Next(3))<br>    var1.on(.Next(4))<br>    var3.on(.Next(var2))<br>    var2.on(.Next(201))<br>    var1.on(.Next(5))<br>    var1.on(.Next(6))<br>    var1.on(.Next(7))<br>    var1.on(.Completed)<br>    var2.on(.Next(202))<br>    var2.on(.Next(203))<br>    var2.on(.Next(204))<br>    /<em><br>    —-contact star —-<br>    Next(0)<br>    Next(1)<br>    Next(2)<br>    Next(3)<br>    Next(4)<br>    Next(5)<br>    Next(6)<br>    Next(7)<br>    Next(201)<br>    Next(202)<br>    Next(203)<br>    Next(204)<br>    —-contact end —-
+    </em>/<br>}<br>switchLatest</observable<int></p>
+<p>// 解决信号中的信号问题<br>example(false, name: “switchLatest”){<br>    let inner1 = Variable(1)<br>    //这个就是信号中的信号<br>    let container = Variable(inner1)<br>    print(“Origin :”)<br>    let <em> = container.subscribe{print($0)}<br>    print(“SwitchLatest :”)<br>    let </em> = container.switchLatest().subscribe{print($0)}<br>    /<em><br>    —-switchLatest star —-<br>    Origin :<br>    Next(RxSwift.Variable<swift.int>)<br>    SwitchLatest :<br>    Next(1)<br>    —-switchLatest end —-
+    </swift.int></em>/<br>}</p>
 </span>
       
     </div>
@@ -299,7 +318,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift-学习笔记/" rel="tag">#Swift 学习笔记</a>
+            <a href="/tags/RxSwift/" rel="tag">#RxSwift</a>
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+            <a href="/tags/响应式编程/" rel="tag">#响应式编程</a>
           
         </div>
       
@@ -308,12 +331,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/30/2015-10-30-RxSwift-Subject/" rel="next" title="RxSwift 笔记 - Subject">
+                <i class="fa fa-chevron-left"></i> RxSwift 笔记 - Subject
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/20/2015-10-20-Swift-class-protocol/" rel="prev" title="Swift笔记 - 类与协议">
-                Swift笔记 - 类与协议 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/" rel="prev" title="RxSwift 笔记 - 错误处理">
+                RxSwift 笔记 - 错误处理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -329,10 +356,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/19/2015-10-19-Swift-begin/"
-     data-title="Swift笔记 - 序"
+        <div class="ds-share flat" data-thread-key="2015/10/30/2015-10-30-RxSwift-Operation/"
+     data-title="RxSwift 笔记 - 信号的运算与操作"
      data-content=""
-     data-url="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/">
+     data-url="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Operation/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -358,8 +385,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/19/2015-10-19-Swift-begin/"
-                   data-title="Swift笔记 - 序" data-url="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/">
+              <div class="ds-thread" data-thread-key="2015/10/30/2015-10-30-RxSwift-Operation/"
+                   data-title="RxSwift 笔记 - 信号的运算与操作" data-url="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Operation/">
               </div>
             
           </div>
@@ -444,7 +471,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

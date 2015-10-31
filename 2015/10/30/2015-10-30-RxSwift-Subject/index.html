@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Swift 学习笔记," />
+  <meta name="keywords" content="RxSwift,Swift,响应式编程," />
 
 
 
@@ -45,22 +45,19 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta name="description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。Tools
+全局便利函数func example(active:Bool,name:String,action:()-&amp;gt;()){    if active{        print(“—-(na">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 - 序">
-<meta property="og:url" content="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/index.html">
+<meta property="og:title" content="RxSwift 笔记 - Subject">
+<meta property="og:url" content="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Subject/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
-<meta property="og:updated_time" content="2015-10-23T10:15:45.000Z">
+<meta property="og:description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。Tools
+全局便利函数func example(active:Bool,name:String,action:()-&amp;gt;()){    if active{        print(“—-(na">
+<meta property="og:updated_time" content="2015-10-31T12:11:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 - 序">
-<meta name="twitter:description" content="开始移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.当我对自习每天的学习还算满意的时候,我看到了一句话
-
-哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对">
+<meta name="twitter:title" content="RxSwift 笔记 - Subject">
+<meta name="twitter:description" content="subject是一个可以手动控制的信号。subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。Tools
+全局便利函数func example(active:Bool,name:String,action:()-&amp;gt;()){    if active{        print(“—-(na">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -72,7 +69,7 @@
 
 
 
-  <title> Swift笔记 - 序 | TBXark </title>
+  <title> RxSwift 笔记 - Subject | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -227,7 +224,7 @@
             
             
               
-                Swift笔记 - 序
+                RxSwift 笔记 - Subject
               
             
           </h1>
@@ -236,8 +233,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-19T15:10:10+08:00" content="2015-10-19">
-              2015-10-19
+            <time itemprop="dateCreated" datetime="2015-10-30T11:00:00+08:00" content="2015-10-30">
+              2015-10-30
             </time>
           </span>
 
@@ -246,8 +243,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
+                    <span itemprop="name">RxSwift</span>
                   </a>
                 </span>
 
@@ -262,8 +259,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/19/2015-10-19-Swift-begin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/19/2015-10-19-Swift-begin/" itemprop="commentsCount"></span>
+                <a href="/2015/10/30/2015-10-30-RxSwift-Subject/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/2015-10-30-RxSwift-Subject/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -282,15 +279,16 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="开始">开始</h2><p>移动开发每天都有新东西要学习,虽然我每天都在学习,但是信息更新的速度还是快过我学习的速度.iOS9出了许多新特性,虽然这些新特性还不能马上运用到项目中(目前项目要求最低支持 7.0),但是还是要掌握必须适配的特性.<br>当我对自习每天的学习还算满意的时候,我看到了一句话</p>
-<blockquote>
-<p>哈德良皇帝手下有一名将军觉得自己应该被提升。“我应该晋升到更重要的岗位，因为我经验丰富，至少参加了十场重要战役。” 可皇帝是位对他人才华有着高明判断力的君主，他并不这样认为。于是他随意指着绑在周围的战驴说：“亲爱的将军，好好看看这些驴子，它们至少参加过20次战役，可它们仍然是驴子。”</p>
-</blockquote>
-<p>然后,我就开始想,我是不是真的尽全力了呢,虽然我每天都有在学习,但是依然没有走出 Objective-C 的温室.Swift 刚出的时候我一直已其不稳定为借口而没去学习,Swift 2.0出来以后,依然没有太大的吸引力让我去学习.<br>但是我意识到这都是借口,然后我就开始了我的 Swift 学习之旅</p>
-<h2 id="过程">过程</h2><p>我大概花了4天的空闲时间将 <strong>“The Swift Programming Language”</strong> 学习完,作为一个资深 Objective-C 的编程人员,没有了 Runtime 简直像程序员没有了键盘,虽然 Swift 有很多新特性可以作为 KVC,和 KVO 的替代.但是灵活性还有待提高.在学完基础语法之后,我感觉还需要提高,于是买了 王巍 (<a href="http://swifter.tips/author/onevcat/" target="_blank" rel="external">@ONEVCAT</a>) 的 <strong>“<a href="http://swifter.tips" target="_blank" rel="external">SWIFT 100个 必备 TIPS</a>“</strong>, 之后的笔记都是在看这本书的途中写的.部分内容也是摘抄自该书.在这里做一个统一的引用说明</p>
-<h2 id="最后">最后</h2><p>Swift 是一门很有意思的语言,但是由于它的安全性少了很多灵活的乐趣.最近还有一个比较热门的 React Native 现在好像只能用纯 js 编辑,不能和原生进行混编,这对于企业开发似乎不太现实.所以还不打算开始学习.<br>Swift 之后,打算开始用 Swift 学写一些酷炫一点的动画控件,作为 Swift 学习的巩固.</p>
-<hr>
-<p>TBXark</p>
+        <span itemprop="articleBody"><p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。<br>Tools</p>
+<p>全局便利函数<br>func example(active:Bool,name:String,action:()-&gt;()){<br>    if active{<br>        print(“—-(name) star —-“)<br>        action()<br>        print(“—-(name) end —-“);<br>    }<br>}<br>func writeSequenceToConsole<o: observabletype="">(name: String, sequence: O) {<br>   let _ = sequence.subscribe {print(“Subscription: (name), event: ($0)”)}<br>}<br>PublishSubject</o:></p>
+<p>不断往外发出信号,不管有没有人订阅(相当于热信号),当前时间点订阅的订阅者不能收到之前的信号<br>example( false, name: “PublishSubject”){<br>   let subject = PublishSubject<string>()<br>   subject.onNext(“A”);<br>   writeSequenceToConsole(“1”, sequence: subject)<br>   subject.onNext(“B”);<br>   subject.onNext(“C”);<br>   writeSequenceToConsole(“2”, sequence: subject)<br>   subject.onNext(“D”);<br>   /<em><br>   —-PublishSubject star —-<br>   Subscription: 1, event: Next(B)<br>   Subscription: 1, event: Next(C)<br>   Subscription: 1, event: Next(D)<br>   Subscription: 2, event: Next(D)<br>   —-PublishSubject end —-
+   </em>/<br>ReplaySubject</string></p>
+<p>虽然也是不断往外发出信号,不管有没有人订阅(相当于热信号),但是订阅者无论什么时候订阅都能收到缓冲区里的所有信号,因为ReplaySubject会保存这些结果,并且重播,bufferSize表示它最大可缓存信号的个数<br> example(false, name: “ReplaySubject”){<br>     let subject =  ReplaySubject<string>.create(bufferSize: 1)<br>     subject.onNext(“A”);<br>     writeSequenceToConsole(“1”, sequence: subject)<br>     subject.onNext(“B”);<br>     subject.onNext(“C”);<br>     writeSequenceToConsole(“2”, sequence: subject)<br>     subject.onNext(“D”);<br>     /<em><br>     —-ReplaySubject star —-<br>     Subscription: 1, event: Next(A)<br>     Subscription: 1, event: Next(B)<br>     Subscription: 1, event: Next(C)<br>     Subscription: 2, event: Next(C)<br>     Subscription: 1, event: Next(D)<br>     Subscription: 2, event: Next(D)<br>     —-ReplaySubject end —-
+     </em>/<br> }<br>BehaviorSubject</string></p>
+<p>再有信号发出之前订阅会收到一个默认的信号,在有信号之后订阅就收不到了<br>example(false, name: “BehaviorSubject”){<br>    let subject =  BehaviorSubject(value: “Flag”)<br>    writeSequenceToConsole(“1”, sequence: subject)<br>    subject.onNext(“A”)<br>    writeSequenceToConsole(“2”, sequence: subject)<br>    subject.onNext(“B”)<br>    subject.onComplete()<br>    /<em><br>    —-BehaviorSubject star —-<br>    Subscription: 1, event: Next(Flag)<br>    Subscription: 1, event: Next(A)<br>    Subscription: 2, event: Next(A)<br>    Subscription: 1, event: Next(B)<br>    Subscription: 2, event: Next(B)<br>    Subscription: 1, event: Completed<br>    Subscription: 2, event: Completed<br>    —-BehaviorSubject end —-
+    </em>/<br>}<br>Variable</p>
+<p>将BehaviorSubject 快速装包<br>// 具体实现代码如下<br>public var value: E {<br>    get {<br>        return lock.calculateLocked {<br>            return _value<br>        }<br>    }<br>    set(newValue) {<br>        lock.performLocked {<br>            _value = newValue<br>        }<br>        self.subject.on(.Next(newValue))<br>    }<br>}<br> example(false, name: “Variable”){<br>     let subject = Variable(“Flag”)<br>     writeSequenceToConsole(“1”, sequence: subject)<br>     subject.value = “A”<br>     writeSequenceToConsole(“2”, sequence: subject)<br>     subject.value = “B”<br>     /<em><br>     —-Variable star —-<br>     Subscription: 1, event: Next(Flag)<br>     Subscription: 1, event: Next(A)<br>     Subscription: 2, event: Next(A)<br>     Subscription: 1, event: Next(B)<br>     Subscription: 2, event: Next(B)<br>     —-Variable end —-
+     </em>/<br> }</p>
 </span>
       
     </div>
@@ -299,7 +297,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift-学习笔记/" rel="tag">#Swift 学习笔记</a>
+            <a href="/tags/RxSwift/" rel="tag">#RxSwift</a>
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+            <a href="/tags/响应式编程/" rel="tag">#响应式编程</a>
           
         </div>
       
@@ -308,12 +310,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/29/2015-10-29-RxSwift-Observables/" rel="next" title="RxSwift 笔记 - 创建Observables">
+                <i class="fa fa-chevron-left"></i> RxSwift 笔记 - 创建Observables
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/20/2015-10-20-Swift-class-protocol/" rel="prev" title="Swift笔记 - 类与协议">
-                Swift笔记 - 类与协议 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/30/2015-10-30-RxSwift-Operation/" rel="prev" title="RxSwift 笔记 - 信号的运算与操作">
+                RxSwift 笔记 - 信号的运算与操作 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -329,10 +335,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/19/2015-10-19-Swift-begin/"
-     data-title="Swift笔记 - 序"
+        <div class="ds-share flat" data-thread-key="2015/10/30/2015-10-30-RxSwift-Subject/"
+     data-title="RxSwift 笔记 - Subject"
      data-content=""
-     data-url="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/">
+     data-url="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Subject/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -358,8 +364,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/19/2015-10-19-Swift-begin/"
-                   data-title="Swift笔记 - 序" data-url="http://yoursite.com/2015/10/19/2015-10-19-Swift-begin/">
+              <div class="ds-thread" data-thread-key="2015/10/30/2015-10-30-RxSwift-Subject/"
+                   data-title="RxSwift 笔记 - Subject" data-url="http://yoursite.com/2015/10/30/2015-10-30-RxSwift-Subject/">
               </div>
             
           </div>
@@ -444,7 +450,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
