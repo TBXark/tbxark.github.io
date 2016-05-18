@@ -53,7 +53,7 @@
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="Long long times ago, 木噶西木噶西, 创建一个 cocoapods 仓库  是相当的麻烦,到底有多麻烦呢, 就是麻烦到我都忘记是怎么创建的了.最近心血来潮就想把自己的开源项目(很水的)都加上 cocoapod.然后我就发现了一种新的创建 pod 仓库的方法(ps: 其实是久的方法, 但是我不知道而已)
 1. 注册trunk1. 更新到 0.35.0 以上的 Cocoapodps">
-<meta property="og:updated_time" content="2016-05-18T14:30:31.000Z">
+<meta property="og:updated_time" content="2016-05-18T16:30:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="超快速为自己的 Github 项目创建 Cocoapod 仓库">
 <meta name="twitter:description" content="Long long times ago, 木噶西木噶西, 创建一个 cocoapods 仓库  是相当的麻烦,到底有多麻烦呢, 就是麻烦到我都忘记是怎么创建的了.最近心血来潮就想把自己的开源项目(很水的)都加上 cocoapod.然后我就发现了一种新的创建 pod 仓库的方法(ps: 其实是久的方法, 但是我不知道而已)
@@ -295,7 +295,7 @@
 <h4 id="2-_填写_podspec_文件">2. 填写 podspec 文件</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Pod:</span><span class="symbol">:Spec</span>.new <span class="keyword">do</span> |s|</span><br><span class="line">  s.name         = <span class="string">"PROJECT_NAME"</span> <span class="comment">#* 要和文件名一样</span></span><br><span class="line">  s.version      = <span class="string">"1.0.2"</span> <span class="comment">#* 版本号</span></span><br><span class="line">  s.summary      = <span class="string">"SUMMARY"</span> <span class="comment"># 简介</span></span><br><span class="line">  s.homepage     = <span class="string">"https://github.com/xxx/xxx"</span> <span class="comment"># 主页</span></span><br><span class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT License'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125; <span class="comment"># 协议</span></span><br><span class="line">  s.author       = &#123; <span class="string">"USER_NAME"</span> =&gt; <span class="string">"E-MAIL"</span> &#125; <span class="comment"># 作者</span></span><br><span class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">"https://github.com/xxxx/xxx.git"</span>, <span class="symbol">:tag</span> =&gt; s.version &#125; <span class="comment">#* github源 </span></span><br><span class="line">  s.platform     = <span class="symbol">:ios</span>, <span class="string">'8.0'</span> <span class="comment"># 平台,系统版本</span></span><br><span class="line">  s.source_files = <span class="string">'Classes/*.swift'</span> <span class="comment"># 源代码文件,及路径</span></span><br><span class="line">  s.requires_arc = <span class="keyword">true</span> <span class="comment"># ARC 支持</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>其中我打了 <code>*</code> 是最重要的,  <code>source_files</code> 文件路径一定要填对</p>
 <h4 id="3-_上传_podspec_文件">3. 上传 podspec 文件</h4><blockquote>
-<p>pod trunk push PROJECT_NAME</p>
+<p>pod trunk push PROJECT_NAME.podspec</p>
 </blockquote>
 <p>上传上去, 假如编译有问题或者有其他 pod 方面的问题的话,按照提示修改就可以了</p>
 </span>
