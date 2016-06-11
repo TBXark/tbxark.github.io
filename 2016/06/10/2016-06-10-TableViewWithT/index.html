@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Swift 学习笔记," />
+  <meta name="keywords" content="技巧," />
 
 
 
@@ -45,16 +45,25 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="除了传统的传入 NSError 指针这一很别扭的错误处理方案,Swift 现在用 try-Catch 作为错误处理的主要解决方式">
+<meta name="description" content="在通常情况下我们 tableview 的 datasource 的写法是
+ 1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
+使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
+ 1tableView.d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift笔记 - 错误处理">
-<meta property="og:url" content="http://yoursite.com/2015/10/23/2015-10-23-Swift-error-control/index.html">
+<meta property="og:title" content="使用泛型优化 UITableviewCell 的重用">
+<meta property="og:url" content="http://yoursite.com/2016/06/10/2016-06-10-TableViewWithT/index.html">
 <meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="除了传统的传入 NSError 指针这一很别扭的错误处理方案,Swift 现在用 try-Catch 作为错误处理的主要解决方式">
-<meta property="og:updated_time" content="2015-10-31T12:47:45.000Z">
+<meta property="og:description" content="在通常情况下我们 tableview 的 datasource 的写法是
+ 1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
+使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
+ 1tableView.d">
+<meta property="og:updated_time" content="2016-06-09T17:47:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift笔记 - 错误处理">
-<meta name="twitter:description" content="除了传统的传入 NSError 指针这一很别扭的错误处理方案,Swift 现在用 try-Catch 作为错误处理的主要解决方式">
+<meta name="twitter:title" content="使用泛型优化 UITableviewCell 的重用">
+<meta name="twitter:description" content="在通常情况下我们 tableview 的 datasource 的写法是
+ 1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
+使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
+ 1tableView.d">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +75,7 @@
 
 
 
-  <title> Swift笔记 - 错误处理 | TBXark </title>
+  <title> 使用泛型优化 UITableviewCell 的重用 | TBXark </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +230,7 @@
             
             
               
-                Swift笔记 - 错误处理
+                使用泛型优化 UITableviewCell 的重用
               
             
           </h1>
@@ -230,8 +239,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T14:55:54+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2016-06-10T01:50:10+08:00" content="2016-06-10">
+              2016-06-10
             </time>
           </span>
 
@@ -256,8 +265,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/23/2015-10-23-Swift-error-control/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-error-control/" itemprop="commentsCount"></span>
+                <a href="/2016/06/10/2016-06-10-TableViewWithT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/10/2016-06-10-TableViewWithT/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,22 +285,25 @@
       
 
       
-        <span itemprop="articleBody"><p>除了传统的传入 NSError 指针这一很别扭的错误处理方案,Swift 现在用 try-Catch 作为错误处理的主要解决方式<br><a id="more"></a></p>
-<h1 id="try-catch">try-catch</h1><p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try</p>
-<hr>
-<p>2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制<br>但是我们可以采用下列方法解决,创建一个泛型枚举作为容器</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt;&#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Success</span>(<span class="constant">T</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Error</span>(<span class="constant">NSError</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeAsyncThing()-&gt; <span class="constant">Result</span>&lt;<span class="constant">String</span>&gt;&#123;</span><br><span class="line">    <span class="regexp">//</span>处理一些非同步的事情</span><br><span class="line">    var asyncResult = <span class="literal">false</span></span><br><span class="line">    let asyncValue : <span class="constant">String</span>? = <span class="literal">nil</span></span><br><span class="line">    let asyncError : <span class="constant">NSError</span>? = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">if</span> asyncResult&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Success</span>(asyncValue!)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="constant">Result</span>.<span class="constant">Error</span>(asyncError!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>3 . 对于可以忽视错误类型的异常可以采用 if+可选绑定 进行,对于保证不会出错的也可以采用!进行强制解析</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="type">CommonError</span> : <span class="type">ErrorType</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Error</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Warning</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doSomeThingMayBeWrong(success:<span class="type">Bool</span>) throws -&gt; <span class="type">String</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> success&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Success"</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        throw <span class="type">CommonError</span>.<span class="type">Error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//<span class="number">1</span>. 强制解析:保证不发生错误情况下使用,当抛出错误时应用会崩溃</span><br><span class="line"><span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>! doSomeThingMayBeWrong(<span class="literal">true</span>)</span><br><span class="line">print(<span class="literal">result</span>)</span><br><span class="line"></span><br><span class="line">//<span class="number">2</span>. 可选绑定</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">result</span> = <span class="keyword">try</span>? doSomeThingMayBeWrong(<span class="literal">false</span>)&#123;</span><br><span class="line">    print(<span class="literal">result</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    print(<span class="string">"Error"</span>)</span><br><span class="line">&#125;</span><br><span class="line">//<span class="type">Success</span></span><br><span class="line">//<span class="type">Error</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>4 . 在可以 throw 的方法中永远不能返回一个可选类型,因为结合 try? 使用的话会产生双重 Optional</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">methodThrowsWhenPassingNegative1</span><span class="params">(number: Int)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">Error</span>.<span class="type">Negative</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> number == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里 num 在解包后仍然是一个可选类型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> num = <span class="keyword">try</span>? methodThrowsWhenPassingNegative1(<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(num.<span class="keyword">dynamicType</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"failed"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="断言">断言</h1><p>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func assert<span class="function"><span class="params">(<span class="property">@autoclosure</span> condition: () -&gt; Bool,</span><br><span class="line">            <span class="property">@autoclosure</span> _ message: () -&gt; String = <span class="keyword">default</span>,</span><br><span class="line">                              file: StaticString = <span class="keyword">default</span>,</span><br><span class="line">                              line: UInt = <span class="keyword">default</span>)</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="fatalError">fatalError</h1><p>在调试时我们可以使用断言来排除类似s数组越界问题，但是断言只会在 Debug 环境中有效，而在 Release 编译中所有的断言都将被禁用。在遇到确实因为输入的错误无法使程序继续运行的时候，我们一般考虑以产生致命错误 (fatalError) 的方式来终止程序<br><code>@noreturn</code> 表示这个函数可以不要返回值,因为程序整个都将终止。这可以帮助编译器进行一些检查，比如在某些需要返回值的 switch 语句中，我们只希望被 switch 的内容在某些范围内，那么我们在可以在不属于这些范围的 default 块里直接写 fatalError 而不再需要指定返回值<br>假如父类中有必须重写的方法,可以用<code>fatalError</code> 来标识提醒重写</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">@noreturn</span> func <span class="function">fatalError</span>(<span class="variable">@autoclosure</span> <span class="attribute">message</span>: () -&gt; String = default,</span><br><span class="line">                                          <span class="attribute">file</span>: StaticString = default,</span><br><span class="line">                                          <span class="attribute">line</span>: UInt = default</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p>在通常情况下我们 tableview 的 datasource 的写法是</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableView.<span class="function"><span class="title">dequeueReusableCellWithIdentifier</span><span class="params">(<span class="string">"Iden"</span>, forIndexPath: indexPath)</span></span></span><br></pre></td></tr></table></figure>
+<p>使用这个函数返回的值是一个 <code>UITableView</code>, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableView.<span class="function"><span class="title">dequeueReusableCellWithIdentifier</span><span class="params">(<span class="string">"Iden"</span>, forIndexPath: indexPath)</span></span> as! TableViewCell</span><br></pre></td></tr></table></figure>
+<p>虽然我不推荐在代码中使用强制类型转换,但是在我们能肯定类型的时候使用强制类型转化可以使得代码更加简洁</p>
+<p>那么, 能不能用泛型来修改这一段代码呢? 让函数的返回值直接是我们想要的 Cell 的类型而不用我们强制类型转换, 然后我们就试一下将泛型作为函数的返回值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">foo</span><span class="generics">&lt;T&gt;</span><span class="params">()</span></span> -&gt; <span class="type">T</span></span><br></pre></td></tr></table></figure>
+<p>然后我们就是用类拓展来增加一个重用 TableViewCell 的方法, 如下: </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UITableView</span> </span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">dequeueCustomCellWithIdentifier</span><span class="generics">&lt;T: UITableViewCell&gt;</span><span class="params">(identifier: String, forIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">T</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) <span class="keyword">as</span>! <span class="type">T</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们来测试一下这段代码的可行性</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let cell = <span class="built_in">table</span>View.dequeueCustomCellWithIdentifier<span class="variable">&lt;TableViewCell&gt;</span>(<span class="string">"Cell"</span>, <span class="keyword">for</span>IndexPath:indexPath)</span><br></pre></td></tr></table></figure>
+<p>是不是报错了呢, 其实返回值是泛型的函数真正的调用方法是: </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let cell: TableViewCell = tableView.<span class="function"><span class="title">dequeueCustomCellWithIdentifier</span><span class="params">(<span class="string">"Cell"</span>, forIndexPath:indexPath)</span></span></span><br></pre></td></tr></table></figure>
+<p>既然类型转换都省了, 那么 <code>identifier</code> 能不能也省略呢, 通常情况下, 我们的 <code>identifier</code> 只是为了区分不同的 cell, 相同类型的 cell 使用不同的 iden 的使用常见还是比较少见的, 所以我们就极端一点,直接使用 类型作为 Cell 的 <code>identifier</code>, 然后我们就有了下面的代码: </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> iden: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">NSStringFromClass</span>(<span class="keyword">self</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UITableView</span> </span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">registerCustomClass</span><span class="params">(cellClass: AnyClass?)</span></span> &#123;</span><br><span class="line">        registerClass(cellClass, forCellReuseIdentifier: cellClass?.iden ?? <span class="string">""</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">dequeueCustomCellWithIdentifier</span><span class="generics">&lt;T: UITableViewCell&gt;</span><span class="params">(forIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">T</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dequeueReusableCellWithIdentifier(<span class="type">T</span>.iden, forIndexPath: indexPath) <span class="keyword">as</span>! <span class="type">T</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以我们在注册/重用 cell  的时候就可以这么写</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableView.<span class="function"><span class="title">registerCustomClass</span><span class="params">(TableViewCell.self)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let cell: TableViewCell = tableView.<span class="function"><span class="title">dequeueCustomCellWithIdentifier</span><span class="params">(forIndexPath: indexPath)</span></span></span><br></pre></td></tr></table></figure>
+<p>按照这个思路, 我们可以将响应的注册重用 Header, Footer 和 UICollectionView 的代码写出来</p>
 </span>
       
     </div>
@@ -300,7 +312,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift-学习笔记/" rel="tag">#Swift 学习笔记</a>
+            <a href="/tags/技巧/" rel="tag">#技巧</a>
           
         </div>
       
@@ -309,17 +321,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/22/2015-10-22-Swift-higher-order-functions/" rel="next" title="Swift笔记 - 高阶函数">
-                <i class="fa fa-chevron-left"></i> Swift笔记 - 高阶函数
+              <a href="/2016/05/18/2016-05-18-Make-Cocoapod/" rel="next" title="超快速为自己的 Github 项目创建 Cocoapod 仓库">
+                <i class="fa fa-chevron-left"></i> 超快速为自己的 Github 项目创建 Cocoapod 仓库
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/10/23/2015-10-23-Swift-multithreading/" rel="prev" title="Swift笔记 - 多线程">
-                Swift笔记 - 多线程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -334,10 +342,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/23/2015-10-23-Swift-error-control/"
-     data-title="Swift笔记 - 错误处理"
+        <div class="ds-share flat" data-thread-key="2016/06/10/2016-06-10-TableViewWithT/"
+     data-title="使用泛型优化 UITableviewCell 的重用"
      data-content=""
-     data-url="http://yoursite.com/2015/10/23/2015-10-23-Swift-error-control/">
+     data-url="http://yoursite.com/2016/06/10/2016-06-10-TableViewWithT/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -363,8 +371,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/23/2015-10-23-Swift-error-control/"
-                   data-title="Swift笔记 - 错误处理" data-url="http://yoursite.com/2015/10/23/2015-10-23-Swift-error-control/">
+              <div class="ds-thread" data-thread-key="2016/06/10/2016-06-10-TableViewWithT/"
+                   data-title="使用泛型优化 UITableviewCell 的重用" data-url="http://yoursite.com/2016/06/10/2016-06-10-TableViewWithT/">
               </div>
             
           </div>
@@ -449,7 +457,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#try-catch"><span class="nav-number">1.</span> <span class="nav-text">try-catch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#断言"><span class="nav-number">2.</span> <span class="nav-text">断言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fatalError"><span class="nav-number">3.</span> <span class="nav-text">fatalError</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
