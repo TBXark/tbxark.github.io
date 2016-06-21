@@ -57,7 +57,7 @@
  1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
 使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
  1tableView.d">
-<meta property="og:updated_time" content="2016-06-09T17:47:35.000Z">
+<meta property="og:updated_time" content="2016-06-21T16:19:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用泛型优化 UITableviewCell 的重用">
 <meta name="twitter:description" content="在通常情况下我们 tableview 的 datasource 的写法是
@@ -304,6 +304,9 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tableView.<span class="function"><span class="title">registerCustomClass</span><span class="params">(TableViewCell.self)</span></span></span><br></pre></td></tr></table></figure>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let cell: TableViewCell = tableView.<span class="function"><span class="title">dequeueCustomCellWithIdentifier</span><span class="params">(forIndexPath: indexPath)</span></span></span><br></pre></td></tr></table></figure>
 <p>按照这个思路, 我们可以将响应的注册重用 Header, Footer 和 UICollectionView 的代码写出来</p>
+<p>ps:</p>
+<p>原来之前已经有人把这个想法封装成了一个库, 而且比我写得要全面</p>
+<p><a href="http://https://github.com/AliSoftware/Reusable" target="_blank" rel="external">Reusable http://https://github.com/AliSoftware/Reusable </a></p>
 </span>
       
     </div>
