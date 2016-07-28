@@ -1,51 +1,11 @@
-<!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="utf-8">
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-  
-    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  
-
-
-<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
-
-
-    <meta name="description" content="Little Bird Can Remember" />
-
-
-
-  <meta name="keywords" content="TBXark,iOS,ReactiveCocoa,Objective-C,Swift,RxSwift" />
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
-
-
-<meta name="description" content="Little Bird Can Remember">
+  <title>TBXark</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Little Bird Can Remember">
 <meta property="og:type" content="website">
 <meta property="og:title" content="TBXark">
 <meta property="og:url" content="http://yoursite.com/index.html">
@@ -54,1333 +14,671 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TBXark">
 <meta name="twitter:description" content="Little Bird Can Remember">
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post'
-  };
-</script>
-
-
-
-  <title> TBXark </title>
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-  
-
-
-
-
-
-
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">TBXark</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">I an TBXark</p>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
 </div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">home</a></li><li><a href="/project">project</a></li><li><a href="/archives">archives</a></li><li><a href="/categories">categories</a></li><li><a href="/tags">tags</a></li><li><a href="/about">about</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+	</div>
+</header>
+    <div id="main">
+      
+  
+    <article id="post-2016-06-10-TableViewWithT" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/06/10/2016-06-10-TableViewWithT/" class="article-date">
+  <time datetime="2016-06-09T17:50:10.000Z" itemprop="datePublished">2016-06-10</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2016/06/10/2016-06-10-TableViewWithT/">使用泛型优化 UITableviewCell 的重用</a>
+    </h1>
   
 
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-project">
-          <a href="/project" rel="section">
-            
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
-            
-            项目
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+	</header>
+	<div class="entry-content">
+		
+    	<p>在通常情况下我们 tableview 的 datasource 的写法是</p>
+ <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tableView<span class="selector-class">.dequeueReusableCellWithIdentifier</span>(<span class="string">"Iden"</span>, <span class="attribute">forIndexPath</span>: indexPath)</div></pre></td></tr></table></figure>
+<p>使用这个函数返回的值是一个 <code>UITableView</code>, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:</p>
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tableView.dequeueReusableCellWithIdentifier(<span class="string">"Iden"</span>, <span class="string">forIndexPath:</span> indexPath) <span class="keyword">as</span>! TableViewCell</div></pre></td></tr></table></figure>
+<p>虽然我不推荐在代码中使用强制类型转换,但是在我们能肯定类型的时候使用强制类型转化可以使得代码更加简洁</p>
+<p>那么, 能不能用泛型来修改这一段代码呢? 让函数的返回值直接是我们想要的 Cell 的类型而不用我们强制类型转换, 然后我们就试一下将泛型作为函数的返回值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span>&lt;T&gt;<span class="params">()</span></span> -&gt; <span class="type">T</span></div></pre></td></tr></table></figure>
+<p>然后我们就是用类拓展来增加一个重用 TableViewCell 的方法, 如下: </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UITableView</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">dequeueCustomCellWithIdentifier</span>&lt;T: UITableViewCell&gt;<span class="params">(identifier: String, forIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">T</span> &#123;</div><div class="line">        <span class="keyword">return</span> dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) <span class="keyword">as</span>! <span class="type">T</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后我们来测试一下这段代码的可行性</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let cell = <span class="built_in">table</span>View.dequeueCustomCellWithIdentifier<span class="variable">&lt;TableViewCell&gt;</span>(<span class="string">"Cell"</span>, <span class="keyword">for</span>IndexPath:indexPath)</div></pre></td></tr></table></figure>
+<p>是不是报错了呢, 其实返回值是泛型的函数真正的调用方法是: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> cell: TableViewCell = tableView.dequeueCustomCellWithIdentifier(<span class="string">"Cell"</span>, <span class="keyword">for</span>IndexPath:indexPath)</div></pre></td></tr></table></figure>
+<p>既然类型转换都省了, 那么 <code>identifier</code> 能不能也省略呢, 通常情况下, 我们的 <code>identifier</code> 只是为了区分不同的 cell, 相同类型的 cell 使用不同的 iden 的使用常见还是比较少见的, 所以我们就极端一点,直接使用 类型作为 Cell 的 <code>identifier</code>, 然后我们就有了下面的代码: </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> iden: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">NSStringFromClass</span>(<span class="keyword">self</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UITableView</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">registerCustomClass</span><span class="params">(cellClass: AnyClass?)</span></span> &#123;</div><div class="line">        registerClass(cellClass, forCellReuseIdentifier: cellClass?.iden ?? <span class="string">""</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">dequeueCustomCellWithIdentifier</span>&lt;T: UITableViewCell&gt;<span class="params">(forIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">T</span> &#123;</div><div class="line">        <span class="keyword">return</span> dequeueReusableCellWithIdentifier(<span class="type">T</span>.iden, forIndexPath: indexPath) <span class="keyword">as</span>! <span class="type">T</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以我们在注册/重用 cell  的时候就可以这么写</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tableView</span><span class="selector-class">.registerCustomClass</span>(<span class="selector-tag">TableViewCell</span><span class="selector-class">.self</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> cell: TableViewCell = tableView.dequeueCustomCellWithIdentifier(<span class="keyword">for</span>IndexPath: indexPath)</div></pre></td></tr></table></figure>
+<p>按照这个思路, 我们可以将响应的注册重用 Header, Footer 和 UICollectionView 的代码写出来</p>
+<p>ps:</p>
+<p>原来之前已经有人把这个想法封装成了一个库, 而且比我写得要全面</p>
+<p><a href="http://https://github.com/AliSoftware/Reusable" target="_blank" rel="external">Reusable http://https://github.com/AliSoftware/Reusable </a></p>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/06/10/2016-06-10-TableViewWithT/" itemprop="url">
-                  使用泛型优化 UITableviewCell 的重用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-06-10T01:50:10+08:00" content="2016-06-10">
-              2016-06-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/10/2016-06-10-TableViewWithT/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/10/2016-06-10-TableViewWithT/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            在通常情况下我们 tableview 的 datasource 的写法是
- 1tableView.dequeueReusableCellWithIdentifier("Iden", forIndexPath: indexPath)
-使用这个函数返回的值是一个 UITableView, 当我们使用自定
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/10/2016-06-10-TableViewWithT/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2016/05/18/2016-05-18-Make-Cocoapod/" itemprop="url">
-                  超快速为自己的 Github 项目创建 Cocoapod 仓库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-18T14:50:00+08:00" content="2016-05-18">
-              2016-05-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tip/" itemprop="url" rel="index">
-                    <span itemprop="name">tip</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/18/2016-05-18-Make-Cocoapod/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/2016-05-18-Make-Cocoapod/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-            Long long times ago, 木噶西木噶西, 创建一个 cocoapods 仓库  是相当的麻烦,到底有多麻烦呢, 就是麻烦到我都忘记是怎么创建的了.最近心血来潮就想把自己的开源项目(很水的)都加上 cocoapod.然后我就发现了一种新的创建 pod 仓库的方法(ps: 其实是久的方法
-            ...
-          </span>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/18/2016-05-18-Make-Cocoapod/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/30/2015-10-30-RxSwift-Others/" itemprop="url">
-                  RxSwift 笔记 - 其他
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T14:00:00+08:00" content="2015-10-30">
-              2015-10-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
-                    <span itemprop="name">RxSwift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/30/2015-10-30-RxSwift-Others/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/2015-10-30-RxSwift-Others/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>RxSwif 的基本操作已经只剩下<code>doOn</code>,<code>takeUntil</code>,<code>takeWhile</code><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-Others/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/" itemprop="url">
-                  RxSwift 笔记 - 错误处理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T13:00:00+08:00" content="2015-10-30">
-              2015-10-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
-                    <span itemprop="name">RxSwift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/2015-10-30-RxSwift-ErrorHading/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>目前 RxSwift 中的错误是指错误信号 而不是通过 try-catch 而捕获到的异常<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/30/2015-10-30-RxSwift-Operation/" itemprop="url">
-                  RxSwift 笔记 - 信号的运算与操作
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T12:00:00+08:00" content="2015-10-30">
-              2015-10-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
-                    <span itemprop="name">RxSwift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/30/2015-10-30-RxSwift-Operation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/2015-10-30-RxSwift-Operation/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>RxSwift 中很多运算和操作与 Swift 中集合类型的高阶函数比较相似,下面我来同时使用两者来看看其中的异同<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-Operation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/30/2015-10-30-RxSwift-Subject/" itemprop="url">
-                  RxSwift 笔记 - Subject
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T11:00:00+08:00" content="2015-10-30">
-              2015-10-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
-                    <span itemprop="name">RxSwift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/30/2015-10-30-RxSwift-Subject/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/2015-10-30-RxSwift-Subject/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/30/2015-10-30-RxSwift-Subject/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/29/2015-10-29-RxSwift-Observables/" itemprop="url">
-                  RxSwift 笔记 - 创建Observables
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-29T15:08:27+08:00" content="2015-10-29">
-              2015-10-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/RxSwift/" itemprop="url" rel="index">
-                    <span itemprop="name">RxSwift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/29/2015-10-29-RxSwift-Observables/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/29/2015-10-29-RxSwift-Observables/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="序">序</h1><p>作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/29/2015-10-29-RxSwift-Observables/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-closure/" itemprop="url">
-                  Swift笔记 - 闭包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:21:21+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/23/2015-10-23-Swift-closure/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-closure/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>闭包相当于 OC 中的 block,但是两者还是有比较大的差别<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/23/2015-10-23-Swift-closure/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-Objective-C/" itemprop="url">
-                  Swift 笔记 - Swift与Objective-C
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:08:27+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/23/2015-10-23-Swift-Objective-C/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-Objective-C/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>OC 凭借多年的积累不是一时半会就能被 Swift 取代了,调用 OC 的代码,和兼容 OC 的一些特性,是现阶段不可避免的一个问题<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/23/2015-10-23-Swift-Objective-C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/10/23/2015-10-23-Swift-multithreading/" itemprop="url">
-                  Swift笔记 - 多线程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-23T15:03:30+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/23/2015-10-23-Swift-multithreading/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/2015-10-23-Swift-multithreading/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>多线程操作主要和框架相关,虽然语言变成了 Swif 但是 API 上没有发生太大的变化</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/23/2015-10-23-Swift-multithreading/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
- </div>
-
-        
-
-        
-      </div>
-
-      
-        
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Swift/">Swift</a>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
 
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/TBXark-Logo-Small.png" alt="TBXark" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">TBXark</p>
-        </div>
-        <p class="site-description motion-element" itemprop="description">Little Bird Can Remember</p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">18</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
-    </div>
-  </aside>
+			</span>
+		</div>
+	</footer>
+	
+</article>
 
 
-      
-    </main>
+	<hr class="article-devider">
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+
+
   
-  &copy;  2014 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span> </span>
-  <span class="author" itemprop="copyrightHolder">TBXark</span>
-</div>
+    <article id="post-2016-05-18-Make-Cocoapod" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/05/18/2016-05-18-Make-Cocoapod/" class="article-date">
+  <time datetime="2016-05-18T06:50:00.000Z" itemprop="datePublished">2016-05-18</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2016/05/18/2016-05-18-Make-Cocoapod/">超快速为自己的 Github 项目创建 Cocoapod 仓库</a>
+    </h1>
+  
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
+	</header>
+	<div class="entry-content">
+		
+    	<p>Long long times ago, 木噶西木噶西, 创建一个 cocoapods 仓库  是相当的麻烦,到底有多麻烦呢, 就是麻烦到我都忘记是怎么创建的了.最近心血来潮就想把自己的开源项目(很水的)都加上 cocoapod.<br>然后我就发现了一种新的创建 pod 仓库的方法(ps: 其实是久的方法, 但是我不知道而已)</p>
+<h3 id="1-_注册trunk">1. 注册trunk</h3><h4 id="1-_更新到_0-35-0_以上的_Cocoapod">1. 更新到 <code>0.35.0</code> 以上的 Cocoapod</h4><p>ps: 但是推荐不要升级到最新的测试版, 那个都是坑啊. </p>
+<blockquote>
+<p>sudo gem install cocoapods</p>
+</blockquote>
+<h4 id="2-_发送注册请求">2. 发送注册请求</h4><blockquote>
+<p>pod trunk register E-MAIL ‘USER_NAME’  –verbose</p>
+</blockquote>
+<p>然后就去邮箱验证,我的 outlook 邮箱会把它识别为垃圾邮件, 收不到邮件的可以去垃圾箱里面找一下</p>
+<h4 id="3-_上传自己的代码,并且打上_tag">3. 上传自己的代码,并且打上 tag</h4><p>这一部分都是 gti 的基本操作,就不赘述了</p>
+<hr>
+<h3 id="2-_创建podspec文件">2. 创建podspec文件</h3><p>这里不推荐用 <code>pod spec create PROJECT_NAME</code> 创建, 因为太多了, 有用信息其实只有一点<br>但是感兴趣的话可以用这个命令来创建, 查看完整版的 podspec 文件</p>
+<h4 id="1-_创建_podspec_文件">1. 创建 podspec 文件</h4><p>注意,这里文件名字就是仓库的名字,不一定要跟项目的名字或者github一样.但是不能和已有的 pod 仓库重复.</p>
+<h4 id="2-_填写_podspec_文件">2. 填写 podspec 文件</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name         = <span class="string">"PROJECT_NAME"</span> <span class="comment">#* 要和文件名一样</span></div><div class="line">  s.version      = <span class="string">"1.0.2"</span> <span class="comment">#* 版本号</span></div><div class="line">  s.summary      = <span class="string">"SUMMARY"</span> <span class="comment"># 简介</span></div><div class="line">  s.homepage     = <span class="string">"https://github.com/xxx/xxx"</span> <span class="comment"># 主页</span></div><div class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT License'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125; <span class="comment"># 协议</span></div><div class="line">  s.author       = &#123; <span class="string">"USER_NAME"</span> =&gt; <span class="string">"E-MAIL"</span> &#125; <span class="comment"># 作者</span></div><div class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">"https://github.com/xxxx/xxx.git"</span>, <span class="symbol">:tag</span> =&gt; s.version &#125; <span class="comment">#* github源 </span></div><div class="line">  s.platform     = <span class="symbol">:ios</span>, <span class="string">'8.0'</span> <span class="comment"># 平台,系统版本</span></div><div class="line">  s.source_files = <span class="string">'Classes/*.swift'</span> <span class="comment"># 源代码文件,及路径</span></div><div class="line">  s.requires_arc = <span class="literal">true</span> <span class="comment"># ARC 支持</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>其中我打了 <code>*</code> 是最重要的,  <code>source_files</code> 文件路径一定要填对</p>
+<h4 id="3-_上传_podspec_文件">3. 上传 podspec 文件</h4><blockquote>
+<p>pod trunk push PROJECT_NAME.podspec</p>
+</blockquote>
+<p>上传上去, 假如编译有问题或者有其他 pod 方面的问题的话,按照提示修改就可以了</p>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
- </div>
-    </footer>
-
-    <div class="back-to-top"></div>
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tip/">tip</a>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-30-RxSwift-Others" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/30/2015-10-30-RxSwift-Others/" class="article-date">
+  <time datetime="2015-10-30T06:00:00.000Z" itemprop="datePublished">2015-10-30</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/30/2015-10-30-RxSwift-Others/">RxSwift 笔记 - 其他</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>RxSwif 的基本操作已经只剩下<code>doOn</code>,<code>takeUntil</code>,<code>takeWhile</code><br>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/30/2015-10-30-RxSwift-Others/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-30-RxSwift-ErrorHading" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/" class="article-date">
+  <time datetime="2015-10-30T05:00:00.000Z" itemprop="datePublished">2015-10-30</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/">RxSwift 笔记 - 错误处理</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>目前 RxSwift 中的错误是指错误信号 而不是通过 try-catch 而捕获到的异常<br>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/30/2015-10-30-RxSwift-ErrorHading/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-30-RxSwift-Operation" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/30/2015-10-30-RxSwift-Operation/" class="article-date">
+  <time datetime="2015-10-30T04:00:00.000Z" itemprop="datePublished">2015-10-30</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/30/2015-10-30-RxSwift-Operation/">RxSwift 笔记 - 信号的运算与操作</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>RxSwift 中很多运算和操作与 Swift 中集合类型的高阶函数比较相似,下面我来同时使用两者来看看其中的异同<br>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/30/2015-10-30-RxSwift-Operation/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-30-RxSwift-Subject" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/30/2015-10-30-RxSwift-Subject/" class="article-date">
+  <time datetime="2015-10-30T03:00:00.000Z" itemprop="datePublished">2015-10-30</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/30/2015-10-30-RxSwift-Subject/">RxSwift 笔记 - Subject</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。<br>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/30/2015-10-30-RxSwift-Subject/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-29-RxSwift-Observables" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/29/2015-10-29-RxSwift-Observables/" class="article-date">
+  <time datetime="2015-10-29T07:08:27.000Z" itemprop="datePublished">2015-10-29</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/29/2015-10-29-RxSwift-Observables/">RxSwift 笔记 - 创建Observables</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<h1 id="序">序</h1><p>作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.</p>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/29/2015-10-29-RxSwift-Observables/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-23-Swift-closure" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/23/2015-10-23-Swift-closure/" class="article-date">
+  <time datetime="2015-10-23T07:21:21.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/23/2015-10-23-Swift-closure/">Swift笔记 - 闭包</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>闭包相当于 OC 中的 block,但是两者还是有比较大的差别<br>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/23/2015-10-23-Swift-closure/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Swift/">Swift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift-学习笔记/">Swift 学习笔记</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-23-Swift-Objective-C" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/23/2015-10-23-Swift-Objective-C/" class="article-date">
+  <time datetime="2015-10-23T07:08:27.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/23/2015-10-23-Swift-Objective-C/">Swift 笔记 - Swift与Objective-C</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>OC 凭借多年的积累不是一时半会就能被 Swift 取代了,调用 OC 的代码,和兼容 OC 的一些特性,是现阶段不可避免的一个问题<br>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/23/2015-10-23-Swift-Objective-C/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Swift/">Swift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift-学习笔记/">Swift 学习笔记</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-2015-10-23-Swift-multithreading" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/23/2015-10-23-Swift-multithreading/" class="article-date">
+  <time datetime="2015-10-23T07:03:30.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+		</span>
+		<span class="meta-elements author">TBXark</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/10/23/2015-10-23-Swift-multithreading/">Swift笔记 - 多线程</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<p>多线程操作主要和框架相关,虽然语言变成了 Swif 但是 API 上没有发生太大的变化</p>
+			
+				<p class="article-more-link">
+					<a href="/2015/10/23/2015-10-23-Swift-multithreading/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Swift/">Swift</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift-学习笔记/">Swift 学习笔记</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
 
   
   
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2016 TBXark<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
     
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"tbxark"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-
-      isMobile() && FastClick.attach(document.body);
-
-      // Define Motion Sequence.
-      motionIntegrator
-        .add(motionMiddleWares.logo)
-        .add(motionMiddleWares.menu)
-        .add(motionMiddleWares.backToTop)
-        .add(motionMiddleWares.postList)
-        .add(motionMiddleWares.sidebar);
-
-      // Bootstrap Motion.
-      motionIntegrator.bootstrap();
-    });
-  </script>
-
-  
-  
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+<script src="/js/script.js"></script>
+  </div>
 </body>
 </html>
