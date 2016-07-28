@@ -17,7 +17,7 @@
  1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
 使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
  1tableView.d">
-<meta property="og:updated_time" content="2016-06-21T16:19:38.000Z">
+<meta property="og:updated_time" content="2016-07-28T09:05:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用泛型优化 UITableviewCell 的重用">
 <meta name="twitter:description" content="在通常情况下我们 tableview 的 datasource 的写法是
@@ -43,7 +43,7 @@
 	</h1>
 	<nav class="nav">
 		<ul>
-			<li><a href="/">home</a></li><li><a href="/project">project</a></li><li><a href="/archives">archives</a></li><li><a href="/categories">categories</a></li><li><a href="/tags">tags</a></li><li><a href="/about">about</a></li>
+			<li><a href="/">home</a></li><li><a href="/project">project</a></li><li><a href="/archives">archives</a></li><li><a href="/about">about</a></li>
 			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
 			
 		</ul>
@@ -81,6 +81,7 @@
  <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tableView<span class="selector-class">.dequeueReusableCellWithIdentifier</span>(<span class="string">"Iden"</span>, <span class="attribute">forIndexPath</span>: indexPath)</div></pre></td></tr></table></figure>
 <p>使用这个函数返回的值是一个 <code>UITableView</code>, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:</p>
  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tableView.dequeueReusableCellWithIdentifier(<span class="string">"Iden"</span>, <span class="string">forIndexPath:</span> indexPath) <span class="keyword">as</span>! TableViewCell</div></pre></td></tr></table></figure>
+ <a id="more"></a>
 <p>虽然我不推荐在代码中使用强制类型转换,但是在我们能肯定类型的时候使用强制类型转化可以使得代码更加简洁</p>
 <p>那么, 能不能用泛型来修改这一段代码呢? 让函数的返回值直接是我们想要的 Cell 的类型而不用我们强制类型转换, 然后我们就试一下将泛型作为函数的返回值</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span>&lt;T&gt;<span class="params">()</span></span> -&gt; <span class="type">T</span></div></pre></td></tr></table></figure>
@@ -153,10 +154,11 @@
 	</h1>
 	<span class="copyright">
 		&copy; 2016 TBXark<br>
-		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Theme by <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
 	</span>
 </footer>
+
     
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

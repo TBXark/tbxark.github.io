@@ -976,9 +976,8 @@ pre .deletion {
   display: inline-block;
   text-transform: uppercase;
   font-size: 120%;
-  padding-bottom: 0.2em;
   letter-spacing: 0.2em;
-  margin: 1em 1.5em 0 0;
+  margin: 0.5em 1.5em 0 0;
   border-bottom: 3px solid #777;
 }
 #footer .footer-blog-title a {
