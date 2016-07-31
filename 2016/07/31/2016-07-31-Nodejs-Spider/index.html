@@ -6,18 +6,24 @@
   <title>用 Node.js 写简易爬虫 | TBXark</title>
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="爬虫
-网络爬虫始于一张被称作种子的统一资源地址（URLs）列表。当网络爬虫访问这些统一资源定位器时，它们会甄别出页面上所有的超链接，并将它们写入一张＂待访列表＂，即所谓＂爬行疆域＂（crawl frontier）。此疆域上的统一资源地址将被按照一套策略循环访问。如果爬虫在他执行的过程中复制归档和保存网站上的信息，这些档案通常储存，使他们可以被查看。阅读和浏览他们的网站上实时更新的信息，并保存为网站">
+网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。
+
+说到爬虫一般都会想到 Python,但是比起 Python, 会 Javascript应该更多.然后刚好我就用 Node.js 写了一个简单的爬虫, 爬取输入的优酷视频的 url 并且读取所需信息在网页上显示出来,并且在终端中用 json 显示.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用 Node.js 写简易爬虫">
 <meta property="og:url" content="http://tbxark.site/2016/07/31/2016-07-31-Nodejs-Spider/index.html">
 <meta property="og:site_name" content="TBXark">
 <meta property="og:description" content="爬虫
-网络爬虫始于一张被称作种子的统一资源地址（URLs）列表。当网络爬虫访问这些统一资源定位器时，它们会甄别出页面上所有的超链接，并将它们写入一张＂待访列表＂，即所谓＂爬行疆域＂（crawl frontier）。此疆域上的统一资源地址将被按照一套策略循环访问。如果爬虫在他执行的过程中复制归档和保存网站上的信息，这些档案通常储存，使他们可以被查看。阅读和浏览他们的网站上实时更新的信息，并保存为网站">
-<meta property="og:updated_time" content="2016-07-31T05:15:43.000Z">
+网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。
+
+说到爬虫一般都会想到 Python,但是比起 Python, 会 Javascript应该更多.然后刚好我就用 Node.js 写了一个简单的爬虫, 爬取输入的优酷视频的 url 并且读取所需信息在网页上显示出来,并且在终端中用 json 显示.">
+<meta property="og:updated_time" content="2016-07-31T05:22:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用 Node.js 写简易爬虫">
 <meta name="twitter:description" content="爬虫
-网络爬虫始于一张被称作种子的统一资源地址（URLs）列表。当网络爬虫访问这些统一资源定位器时，它们会甄别出页面上所有的超链接，并将它们写入一张＂待访列表＂，即所谓＂爬行疆域＂（crawl frontier）。此疆域上的统一资源地址将被按照一套策略循环访问。如果爬虫在他执行的过程中复制归档和保存网站上的信息，这些档案通常储存，使他们可以被查看。阅读和浏览他们的网站上实时更新的信息，并保存为网站">
+网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。
+
+说到爬虫一般都会想到 Python,但是比起 Python, 会 Javascript应该更多.然后刚好我就用 Node.js 写了一个简单的爬虫, 爬取输入的优酷视频的 url 并且读取所需信息在网页上显示出来,并且在终端中用 json 显示.">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -57,7 +63,7 @@
 		</span>
 		<span class="meta-elements author">
   <div class="article-category">
-    <a class="article-category-link" href="/categories/node-js/">/node.js</a>
+    <a class="article-category-link" href="/categories/node-js/">node.js</a>
   </div>
 </span>
 		<div class="commentscount">
@@ -77,7 +83,7 @@
 	<div class="entry-content">
 		
     	<h2 id="爬虫">爬虫</h2><blockquote>
-<p>网络爬虫始于一张被称作种子的统一资源地址（URLs）列表。当网络爬虫访问这些统一资源定位器时，它们会甄别出页面上所有的超链接，并将它们写入一张＂待访列表＂，即所谓＂爬行疆域＂（crawl frontier）。此疆域上的统一资源地址将被按照一套策略循环访问。如果爬虫在他执行的过程中复制归档和保存网站上的信息，这些档案通常储存，使他们可以被查看。阅读和浏览他们的网站上实时更新的信息，并保存为网站的“快照”。大容量的体积意味着网络爬虫只能在给定时间内下载有限数量的网页，所以要优先考虑其下载。高变化率意味着网页可能已经被更新或者删除。一些被服务器端软件生成的URLs（统一资源定位符）也使得网络爬虫很难避免检索到重复内容。</p>
+<p>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。</p>
 </blockquote>
 <p>说到爬虫一般都会想到 Python,但是比起 Python, 会 Javascript应该更多.<br>然后刚好我就用 Node.js 写了一个简单的爬虫, 爬取输入的优酷视频的 url 并且读取所需信息在网页上显示出来,并且在终端中用 json 显示.<br>Github: <a href="https://github.com/TBXark/YoukuInfo" target="_blank" rel="external">https://github.com/TBXark/YoukuInfo</a></p>
 <a id="more"></a>
