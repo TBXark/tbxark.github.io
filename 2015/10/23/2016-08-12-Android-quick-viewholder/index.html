@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android - 通用 Viewholder | TBXark</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="在 iOS 开发中基本不会用到 Viewholder 这种神奇的模式, 所以第一次在 android 中看到还是挺懵逼的,感觉有点逗.而且每次重复的写 viewholder 感觉很不 geek,所以在google 上搜到别人搜到的…..这一个通用的 viewholder 的方法挺不错的.
+1234567891011121314151617public class ViewHolder &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android - 通用 Viewholder">
+<meta property="og:url" content="http://tbxark.site/2015/10/23/2016-08-12-Android-quick-viewholder/index.html">
+<meta property="og:site_name" content="TBXark">
+<meta property="og:description" content="在 iOS 开发中基本不会用到 Viewholder 这种神奇的模式, 所以第一次在 android 中看到还是挺懵逼的,感觉有点逗.而且每次重复的写 viewholder 感觉很不 geek,所以在google 上搜到别人搜到的…..这一个通用的 viewholder 的方法挺不错的.
+1234567891011121314151617public class ViewHolder &amp;#123;">
+<meta property="og:updated_time" content="2016-08-11T16:10:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android - 通用 Viewholder">
+<meta name="twitter:description" content="在 iOS 开发中基本不会用到 Viewholder 这种神奇的模式, 所以第一次在 android 中看到还是挺懵逼的,感觉有点逗.而且每次重复的写 viewholder 感觉很不 geek,所以在google 上搜到别人搜到的…..这一个通用的 viewholder 的方法挺不错的.
+1234567891011121314151617public class ViewHolder &amp;#123;">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">home</a></li><li><a href="/archives">archives</a></li><li><a href="/about">about</a></li>
+			<!-- <li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li> -->
+			<!--  -->
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tbxark.site"></form>
+	</div>
+</header>
+
+    <div id="main">
+      <article id="post-2016-08-12-Android-quick-viewholder" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/23/2016-08-12-Android-quick-viewholder/" class="article-date">
+  <time datetime="2015-10-23T06:48:00.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">/android</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      Android - 通用 Viewholder
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>在 iOS 开发中基本不会用到 Viewholder 这种神奇的模式, 所以第一次在 android 中看到还是挺懵逼的,感觉有点逗.<br>而且每次重复的写 viewholder 感觉很不 geek,所以在google 上搜到别人搜到的…..这一个通用的 viewholder 的方法<br>挺不错的.</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">class</span> ViewHolder &#123;</div><div class="line">    <span class="comment">// I added a generic return type to reduce the casting noise in client code</span></div><div class="line">    @SuppressWarnings(<span class="string">"unchecked"</span>)</div><div class="line">    public static &lt;T <span class="keyword">extends</span> <span class="keyword">View</span>&gt; T get(<span class="keyword">View</span> <span class="keyword">view</span>, int id) &#123;</div><div class="line">        SparseArray&lt;<span class="keyword">View</span>&gt; viewHolder = (SparseArray&lt;<span class="keyword">View</span>&gt;) <span class="keyword">view</span>.getTag()<span class="comment">;</span></div><div class="line">        <span class="keyword">if</span> (viewHolder == null) &#123;</div><div class="line">            viewHolder = <span class="keyword">new</span> SparseArray&lt;<span class="keyword">View</span>&gt;()<span class="comment">;</span></div><div class="line">            <span class="keyword">view</span>.setTag(viewHolder)<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">View</span> childView = viewHolder.get(id)<span class="comment">;</span></div><div class="line">        <span class="keyword">if</span> (childView == null) &#123;</div><div class="line">            childView = <span class="keyword">view</span>.findViewById(id)<span class="comment">;</span></div><div class="line">            viewHolder.put(id, childView)<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (T) childView<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Override</div><div class="line">public View getView(int position, View convertView, ViewGroup parent) &#123;</div><div class="line"></div><div class="line">    if (convertView == null) &#123;</div><div class="line">        convertView = LayoutInflater.from(<span class="built_in">context</span>)</div><div class="line">          .inflate(R.layout.<span class="keyword">banana_phone, </span>parent, false)<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ImageView <span class="keyword">bananaView </span>= ViewHolder.get(convertView, R.id.<span class="keyword">banana);</span></div><div class="line">    TextView phoneView = ViewHolder.get(convertView, R.id.phone)<span class="comment">;</span></div><div class="line"></div><div class="line">    <span class="keyword">BananaPhone </span><span class="keyword">bananaPhone </span>= getItem(position)<span class="comment">;</span></div><div class="line">    phoneView.setText(<span class="keyword">bananaPhone.getPhone());</span></div><div class="line">    <span class="keyword">bananaView.setImageResource(bananaPhone.getBanana());</span></div><div class="line"></div><div class="line">    return convertView<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>RecyclerView.ViewHolder<br>提供了非常简便的写法，不用去判断是否需要使用viewholder，recyclerview会自动判断。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Override</span></div><div class="line">public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line">   View root = LayoutInflater<span class="selector-class">.from</span>(mContext)<span class="selector-class">.inflate</span>(myLayout, parent, false);</div><div class="line">   return new ViewHolder(root);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">@Override</span> public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line">   Item item = mItems<span class="selector-class">.get</span>(position);</div><div class="line">   holder<span class="selector-class">.title</span><span class="selector-class">.setText</span>(item.getTitle());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">@Override</span> public int getItemCount() &#123;</div><div class="line">   return mItems != null ? mItems<span class="selector-class">.size</span>() : <span class="selector-tag">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Adnroid/">Adnroid</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/23/2015-10-23-Swift-error-control/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Swift笔记 - 错误处理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/22/2015-10-22-Swift-higher-order-functions/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Swift笔记 - 高阶函数
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:tbxark.site">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2016 TBXark<br>
+		Theme by <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
