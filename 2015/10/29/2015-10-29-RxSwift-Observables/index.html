@@ -5,6 +5,14 @@
   
   <title>RxSwift 笔记 - 创建Observables | TBXark</title>
   <meta name="viewport" content="width=device-width">
+
+  <$ if page.tags and page.tags.length %>
+  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
+  <$ else %>
+  <$ if theme.keywords %>
+      <meta name="keywords" content="{{ theme.keywords }}" />
+  <$ endif %>
+
   <meta name="description" content="序作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift 笔记 - 创建Observables">
@@ -20,12 +28,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  {% if page.tags and page.tags.length %}
-	<meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}" />
-  {% else %}
-  {% if theme.keywords %}
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  {% endif %}
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>

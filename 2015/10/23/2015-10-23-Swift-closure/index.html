@@ -5,6 +5,14 @@
   
   <title>Swift笔记 - 闭包 | TBXark</title>
   <meta name="viewport" content="width=device-width">
+
+  <$ if page.tags and page.tags.length %>
+  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
+  <$ else %>
+  <$ if theme.keywords %>
+      <meta name="keywords" content="{{ theme.keywords }}" />
+  <$ endif %>
+
   <meta name="description" content="闭包相当于 OC 中的 block,但是两者还是有比较大的差别">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 闭包">
@@ -20,12 +28,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  {% if page.tags and page.tags.length %}
-	<meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}" />
-  {% else %}
-  {% if theme.keywords %}
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  {% endif %}
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>

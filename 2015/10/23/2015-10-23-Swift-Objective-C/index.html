@@ -5,6 +5,14 @@
   
   <title>Swift 笔记 - Swift与Objective-C | TBXark</title>
   <meta name="viewport" content="width=device-width">
+
+  <$ if page.tags and page.tags.length %>
+  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
+  <$ else %>
+  <$ if theme.keywords %>
+      <meta name="keywords" content="{{ theme.keywords }}" />
+  <$ endif %>
+
   <meta name="description" content="OC 凭借多年的积累不是一时半会就能被 Swift 取代了,调用 OC 的代码,和兼容 OC 的一些特性,是现阶段不可避免的一个问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift 笔记 - Swift与Objective-C">
@@ -20,12 +28,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  {% if page.tags and page.tags.length %}
-	<meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}" />
-  {% else %}
-  {% if theme.keywords %}
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  {% endif %}
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>

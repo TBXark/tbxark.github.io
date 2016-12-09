@@ -5,6 +5,14 @@
   
   <title>RxSwift 笔记 - 错误处理 | TBXark</title>
   <meta name="viewport" content="width=device-width">
+
+  <$ if page.tags and page.tags.length %>
+  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
+  <$ else %>
+  <$ if theme.keywords %>
+      <meta name="keywords" content="{{ theme.keywords }}" />
+  <$ endif %>
+
   <meta name="description" content="目前 RxSwift 中的错误是指错误信号 而不是通过 try-catch 而捕获到的异常">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift 笔记 - 错误处理">
@@ -20,12 +28,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  {% if page.tags and page.tags.length %}
-	<meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}" />
-  {% else %}
-  {% if theme.keywords %}
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  {% endif %}
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>

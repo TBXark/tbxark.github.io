@@ -5,6 +5,14 @@
   
   <title>Swift笔记 - 高阶函数 | TBXark</title>
   <meta name="viewport" content="width=device-width">
+
+  <$ if page.tags and page.tags.length %>
+  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
+  <$ else %>
+  <$ if theme.keywords %>
+      <meta name="keywords" content="{{ theme.keywords }}" />
+  <$ endif %>
+
   <meta name="description" content="了解 RAC 的人都知道信号处理时通常会使用一些高阶函数进行链式操作,在 Swift 中系统默认支持了一下高阶函数,方便了我们的操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift笔记 - 高阶函数">
@@ -20,12 +28,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  {% if page.tags and page.tags.length %}
-	<meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}" />
-  {% else %}
-  {% if theme.keywords %}
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  {% endif %}
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>

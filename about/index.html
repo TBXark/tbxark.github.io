@@ -5,6 +5,14 @@
   
   <title>关于我 | TBXark</title>
   <meta name="viewport" content="width=device-width">
+
+  <$ if page.tags and page.tags.length %>
+  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
+  <$ else %>
+  <$ if theme.keywords %>
+      <meta name="keywords" content="{{ theme.keywords }}" />
+  <$ endif %>
+
   <meta name="description" content="我是TBXark,一条 iOS 代码(单身)狗.精通 iOS/Android 平台….的手机的贴膜(笑~)自从使用 ReactiveCocoa 后就疯狂的爱上的 MVVM 模式,从此走上了一条不归路.现在已经入了 RxSwift 的坑,再也爬不出来.热爱编程(笑~),热爱动漫,热爱萝莉(大雾)突然有一天觉得之前写得代码太丑,所以就把 Github 上面的东西都清空了.现在努力的写出更漂亮的代码">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于我">
@@ -22,12 +30,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  {% if page.tags and page.tags.length %}
-	<meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}" />
-  {% else %}
-  {% if theme.keywords %}
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  {% endif %}
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>
