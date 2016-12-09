@@ -5,39 +5,16 @@
   
   <title>使用泛型优化 UITableviewCell 的重用 | TBXark</title>
   <meta name="viewport" content="width=device-width">
+  <meta name="keywords" content="tbxark,vfanx,范名睿,swift,iOS,objective-c" />
 
-  <$ if page.tags and page.tags.length %>
-  	<meta name="keywords" content="<$ for tag in page.tags %>{{ tag.name }},<$ endfor %>" />
-  <$ else %>
-  <$ if theme.keywords %>
-      <meta name="keywords" content="{{ theme.keywords }}" />
-  <$ endif %>
 
-  <meta name="description" content="在通常情况下我们 tableview 的 datasource 的写法是
- 1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
-使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
- 1tableView.d">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用泛型优化 UITableviewCell 的重用">
-<meta property="og:url" content="http://tbxark.site/2016/06/10/2016-06-10-TableViewWithT/index.html">
-<meta property="og:site_name" content="TBXark">
-<meta property="og:description" content="在通常情况下我们 tableview 的 datasource 的写法是
- 1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
-使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
- 1tableView.d">
-<meta property="og:updated_time" content="2016-07-28T09:05:07.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用泛型优化 UITableviewCell 的重用">
-<meta name="twitter:description" content="在通常情况下我们 tableview 的 datasource 的写法是
- 1tableView.dequeueReusableCellWithIdentifier(&quot;Iden&quot;, forIndexPath: indexPath)
-使用这个函数返回的值是一个 UITableView, 当我们使用自定义的 TableViewCell 式要对其进行一次强制类型转换, 如下:
- 1tableView.d">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
 </head>
 
 <body>
