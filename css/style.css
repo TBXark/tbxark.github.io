@@ -364,7 +364,7 @@ pre .deletion {
   display: block;
   margin: 4em 0;
   position: relative;
-  *zoom: 1;
+  zoom: 1;
 }
 #header:after {
   display: block;
@@ -418,7 +418,7 @@ pre .deletion {
 }
 .nav ul {
   display: block;
-  *zoom: 1;
+  zoom: 1;
   margin: 0;
   padding: 0;
 }
@@ -960,7 +960,7 @@ pre .deletion {
   margin: 3em 0;
   font-size: 70%;
   display: block;
-  *zoom: 1;
+  zoom: 1;
   line-height: 1.6;
 }
 #footer:after {
