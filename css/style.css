@@ -1,6 +1,6 @@
 @charset "utf-8";
-@import url("//fonts.googleapis.com/css?family=Source+Code+Pro");
-@import url("//fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url("//fonts.weirui.org/css?family=Source+Code+Pro");
+@import url("//fonts.weirui.org//css?family=Open+Sans:400,700");
 html,
 body,
 div,
@@ -112,7 +112,7 @@ button::-moz-focus-inner {
 body {
   background: #fff;
   color: #4f5759;
-  font: 100% 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font: 100% 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', sans-serif;
   text-rendering: optimizelegibility;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -507,7 +507,7 @@ pre .deletion {
   color: #4f5759;
   letter-spacing: 1px;
   width: 90%;
-  font: 13px 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font: 13px 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -688,7 +688,7 @@ pre .deletion {
 }
 .entry-content blockquote footer {
   font-size: 100%;
-  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 .entry-content blockquote footer cite:before {
   content: "—";
@@ -1133,7 +1133,7 @@ pre .deletion {
   }
   .mb-search input {
     background: #fff;
-    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', sans-serif;
     font-size: 15px;
     padding: 5px 10px;
     border-bottom: 2px solid #ddd !important;
