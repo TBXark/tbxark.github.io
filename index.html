@@ -45,6 +45,121 @@
     <div id="main">
       
   
+    <article id="post-2016-12-16-fxxk-property" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/12/12/2016-12-16-fxxk-property/" class="article-date">
+  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tips/">tips</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2016/12/12/2016-12-16-fxxk-property/">让我们细数 iOS 开发中那些坑爹的变量的默认值</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<ol>
+<li><p><code>automaticallyAdjustsScrollViewInsets</code><br><code>automaticallyAdjustsScrollViewInsets</code> 其实是一个很有用的属性, 当 vc 含有 navigationbar 或者 tabbar 的时候, 且他们为不透明状态, vc 就会调整第一个 scrollerView 的 insets 值, 使得这些 bar 不会对 scrollerView 造成遮挡.<br>而且这个属性的值默认是 <code>true</code>, 然后有得时候就会发生一些奇怪的问题, 比如我的这篇文章 -&gt; <a href="/2016/12/08/2016-12-08-Swift-Pinterst/">写 PinterestSegement 中发现的一个问题</a></p>
+</li>
+<li><p><code>translatesAutoresizingMaskIntoConstraints</code><br>iOS 的布局方式3种, 直接设置 frame, Autoresizing, Autolayout. 当 <code>translatesAutoresizingMaskIntoConstraints</code> 为 <code>true</code> 的时候, 系统就会自动的将 <code>autoresizingMask</code> “翻译” 成以约束为基础的布局, 而且 <code>translatesAutoresizingMaskIntoConstraints</code> 的默认值是 <code>true</code></p>
+</li>
+</ol>
+<p>比如说一下这段代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        <span class="keyword">let</span> testView = <span class="type">UIView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">50</span>, height: <span class="number">50</span>))</div><div class="line">        testView.backgroundColor = <span class="type">UIColor</span>.red</div><div class="line">        view.addSubview(testView)</div><div class="line">        <span class="built_in">print</span>(testView.constraints)</div><div class="line">      &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 输出: []</span></div><div class="line"><span class="comment">// 注意这里的输出是空数组</span></div></pre></td></tr></table></figure>
+<p>然后打开 Xcode 的 调试窗口看<br><img src="/images/C6EAAEA1-59C4-49CD-92CC-F344B91D02EF.png" alt=""><br>然后发现, 实际上它已经加了很多约束, 而且这些约束能准确的描述该 view 的大小和未知了</p>
+<p>假如我们这时候给这个 view 手动的加上约束, 如下</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">class</span> ViewController: <span class="built_in">UIViewController</span> &#123;</div><div class="line"></div><div class="line"></div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        let testView = <span class="built_in">UIView</span>(frame: <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">50</span>, height: <span class="number">50</span>))</div><div class="line">        testView.backgroundColor = <span class="built_in">UIColor</span>.red</div><div class="line">        view.addSubview(testView)</div><div class="line">        print(testView.constraints)</div><div class="line"></div><div class="line"></div><div class="line">        view.addConstraints( <span class="built_in">NSLayoutConstraint</span>.constraints(withVisualFormat: <span class="string">"H:|-100-[testView(==100)]"</span>, options: <span class="built_in">NSLayoutFormatOptions</span>(rawValue: <span class="number">0</span>), metrics: <span class="literal">nil</span>, views: [<span class="string">"testView"</span>: testView]));</div><div class="line"></div><div class="line">        view.addConstraints(<span class="built_in">NSLayoutConstraint</span>.constraints(withVisualFormat: <span class="string">"V:|-100-[testView(==100)]"</span>, options: <span class="built_in">NSLayoutFormatOptions</span>(rawValue: <span class="number">0</span>), metrics: <span class="literal">nil</span>, views: [<span class="string">"testView"</span>: testView]));</div><div class="line"></div><div class="line">        print(view.constraints)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这时候, 控制台就会打印出一堆错误提示约束有冲突了<br>这时其实只要把 <code>translatesAutoresizingMaskIntoConstraints</code> 设置成 <code>false</code>, view 就不会自己生成约束而是要程序员手动的去完善.<br>ps: 当使用 sb/xib 添加约束的时候, 系统会自动的把 <code>translatesAutoresizingMaskIntoConstraints</code> 设置成 <code>false</code>, 或者使用 <code>snpkit</code> 等第三方库是也不用考虑这个问题</p>
+<p><strong>更新中,欢迎一起完善</strong></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+
+  
+    <article id="post-2016-12-12-Objective-c-class-property" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/12/12/2016-12-12-Objective-c-class-property/" class="article-date">
+  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2016/12/12/2016-12-12-Objective-c-class-property/">Objective-C 的类变量</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>惊闻 OC 支持类变量, 然后用个 demo 测试了一下<br>发现只是 <code>property</code> 加上了 <code>class</code> 类型, 但是实际的上还是要手写 静态变量和 <code>getter</code> 和 <code>setter</code> 方法的实现.<br>所以 Objective-C 的类变量 只是代替 头文件中 <code>getter</code> 和 <code>setter</code> 方法的声明.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Test</span> : <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">class</span>, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> * name;</div><div class="line"><span class="comment">//+ (NSString *)name;</span></div><div class="line"><span class="comment">//+(void)setName:(NSString *)name;</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Test</span></span></div><div class="line"><span class="keyword">@dynamic</span> name;</div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *_name = <span class="literal">nil</span>;</div><div class="line">+ (<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    <span class="keyword">return</span> _name;</div><div class="line">&#125;</div><div class="line">+(<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    _name = name.copy;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+
+  
     <article id="post-2016-12-08-Swift-Pinterst" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
@@ -472,116 +587,6 @@
 			
 				<p class="article-more-link">
 					<a href="/2015/10/30/2015-10-30-RxSwift-Operation/#more">Read More</a>
-				</p>
-      
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="tags">
-				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
-
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-
-  
-    <article id="post-2015-10-30-RxSwift-Subject" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/10/30/2015-10-30-RxSwift-Subject/" class="article-date">
-  <time datetime="2015-10-30T03:00:00.000Z" itemprop="datePublished">2015-10-30</time>
-</a>
-		</span>
-		<span class="meta-elements author">
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
-  </div>
-</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/10/30/2015-10-30-RxSwift-Subject/">RxSwift 笔记 - Subject</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-			<p>subject是一个可以手动控制的信号。<br>subject可以看作是信号的一个“可变”变体(variant)，就像NSMutableArray之于NSArray。它对于桥接非rx代码到信号中去非常有用。<br>
-			
-				<p class="article-more-link">
-					<a href="/2015/10/30/2015-10-30-RxSwift-Subject/#more">Read More</a>
-				</p>
-      
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="tags">
-				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
-
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-
-  
-    <article id="post-2015-10-29-RxSwift-Observables" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/10/29/2015-10-29-RxSwift-Observables/" class="article-date">
-  <time datetime="2015-10-29T07:08:27.000Z" itemprop="datePublished">2015-10-29</time>
-</a>
-		</span>
-		<span class="meta-elements author">
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
-  </div>
-</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/10/29/2015-10-29-RxSwift-Observables/">RxSwift 笔记 - 创建Observables</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-			<h1 id="序">序</h1><p>作为一个 ReactiveCocoa 的脑残粉,看到 RAC 在 Swift 下惨不忍睹的状况, 我毅然决然的决定…..去寻找备胎,然后找到大名鼎鼎的ReactiveX团队出的 RxSwift, 然后看到他们完美的 Playground 教程然后我就决定入坑了.</p>
-			
-				<p class="article-more-link">
-					<a href="/2015/10/29/2015-10-29-RxSwift-Observables/#more">Read More</a>
 				</p>
       
     

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Objective-C 的类变量 | TBXark</title>
+  <meta name="viewport" content="width=device-width">
+
+
+  
+    
+    <meta name="keywords" content="Objective-C, tbxark,vfanx,swift,iOS,objective-c,范名睿">
+  
+
+
+
+
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">home</a></li><li><a href="https://github.com/tbxark">github</a></li><li><a href="/archives">archives</a></li><li><a href="/about">about</a></li>
+			<!-- <li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li> -->
+			<!--  -->
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tbxark.site"></form>
+	</div>
+</header>
+
+    <div id="main">
+      <article id="post-2016-12-12-Objective-c-class-property" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/12/12/2016-12-12-Objective-c-class-property/" class="article-date">
+  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      Objective-C 的类变量
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>惊闻 OC 支持类变量, 然后用个 demo 测试了一下<br>发现只是 <code>property</code> 加上了 <code>class</code> 类型, 但是实际的上还是要手写 静态变量和 <code>getter</code> 和 <code>setter</code> 方法的实现.<br>所以 Objective-C 的类变量 只是代替 头文件中 <code>getter</code> 和 <code>setter</code> 方法的声明.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Test</span> : <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">class</span>, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> * name;</div><div class="line"><span class="comment">//+ (NSString *)name;</span></div><div class="line"><span class="comment">//+(void)setName:(NSString *)name;</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Test</span></span></div><div class="line"><span class="keyword">@dynamic</span> name;</div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *_name = <span class="literal">nil</span>;</div><div class="line">+ (<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    <span class="keyword">return</span> _name;</div><div class="line">&#125;</div><div class="line">+(<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    _name = name.copy;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/12/2016-12-16-fxxk-property/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          让我们细数 iOS 开发中那些坑爹的变量的默认值
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/08/2016-12-08-Swift-Pinterst/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          写 PinterestSegement 中发现的一个问题
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2016 TBXark<br>
+		Theme by <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script src="/js/script.mini.js"></script>
+
+  </div>
+</body>
+</html>
