@@ -45,16 +45,16 @@
     <div id="main">
       
   
-    <article id="post-2016-12-16-fxxk-property" class="post">
+    <article id="post-2017-MinesWeeping" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/2016/12/12/2016-12-16-fxxk-property/" class="article-date">
-  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
+			<a href="/2017/01/27/2017-MinesWeeping/" class="article-date">
+  <time datetime="2017-01-27T14:20:55.000Z" itemprop="datePublished">2017-01-27</time>
 </a>
 		</span>
 		<span class="meta-elements author">
   <div class="article-category">
-    <a class="article-category-link" href="/categories/tips/">tips</a>
+    <a class="article-category-link" href="/categories/Swift/">Swift</a>
   </div>
 </span>
 		<div class="commentscount">
@@ -66,27 +66,24 @@
 		
   
     <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2016/12/12/2016-12-16-fxxk-property/">让我们细数 iOS 开发中那些坑爹的变量的默认值</a>
+      <a class="article-title" href="/2017/01/27/2017-MinesWeeping/">简易扫雷游戏</a>
     </h1>
   
 
 	</header>
 	<div class="entry-content">
 		
-			<h3 id="1-_automaticallyAdjustsScrollViewInsets">1. <code>automaticallyAdjustsScrollViewInsets</code></h3><p><code>automaticallyAdjustsScrollViewInsets</code> 其实是一个很有用的属性, 当 vc 含有 navigationbar 或者 tabbar 的时候, 且他们为不透明状态, vc 就会调整第一个 scrollerView 的 insets 值, 使得这些 bar 不会对 scrollerView 造成遮挡.<br>而且这个属性的值默认是 <code>true</code>, 然后有得时候就会发生一些奇怪的问题, 比如我的这篇文章 -&gt; <a href="/2016/12/08/2016-12-08-Swift-Pinterst/">写 PinterestSegement 中发现的一个问题</a></p>
-<h3 id="2-_translatesAutoresizingMaskIntoConstraints">2. <code>translatesAutoresizingMaskIntoConstraints</code></h3><p>iOS 的布局方式3种, 直接设置 frame, Autoresizing, Autolayout. 当 <code>translatesAutoresizingMaskIntoConstraints</code> 为 <code>true</code> 的时候, 系统就会自动的将 <code>autoresizingMask</code> “翻译” 成以约束为基础的布局, 而且 <code>translatesAutoresizingMaskIntoConstraints</code> 的默认值是 <code>true</code></p>
-			
-				<p class="article-more-link">
-					<a href="/2016/12/12/2016-12-16-fxxk-property/#more">Read More</a>
-				</p>
-      
+    	<p>在北京回深圳的飞机上, 在飞机上睡醒后太无聊了, 然后顺手写了个扫雷, 但是当时没有写完, 现在顺便用 stroyboard 弄了一个简单配置界面. 之后有机会再完善这个 “游戏” 吧~ </p>
+<p>整个”游戏” 只用了 UIKit, 没有什么高级的组建或者框架.</p>
+<p><img src="/images/2017-01-26-bomb-game-demo.png" alt=""></p>
+
     
 	</div>
 	<footer class="entry-footer">
 		<div class="entry-meta-footer">
 			<span class="tags">
 				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游戏/">游戏</a></li></ul>
 
 			</span>
 		</div>
@@ -139,6 +136,62 @@
 			<span class="tags">
 				
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+
+  
+    <article id="post-2016-12-16-fxxk-property" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/12/12/2016-12-16-fxxk-property/" class="article-date">
+  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tips/">tips</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2016/12/12/2016-12-16-fxxk-property/">让我们细数 iOS 开发中那些坑爹的变量的默认值</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+			<h3 id="1-_automaticallyAdjustsScrollViewInsets">1. <code>automaticallyAdjustsScrollViewInsets</code></h3><p><code>automaticallyAdjustsScrollViewInsets</code> 其实是一个很有用的属性, 当 vc 含有 navigationbar 或者 tabbar 的时候, 且他们为不透明状态, vc 就会调整第一个 scrollerView 的 insets 值, 使得这些 bar 不会对 scrollerView 造成遮挡.<br>而且这个属性的值默认是 <code>true</code>, 然后有得时候就会发生一些奇怪的问题, 比如我的这篇文章 -&gt; <a href="/2016/12/08/2016-12-08-Swift-Pinterst/">写 PinterestSegement 中发现的一个问题</a></p>
+<h3 id="2-_translatesAutoresizingMaskIntoConstraints">2. <code>translatesAutoresizingMaskIntoConstraints</code></h3><p>iOS 的布局方式3种, 直接设置 frame, Autoresizing, Autolayout. 当 <code>translatesAutoresizingMaskIntoConstraints</code> 为 <code>true</code> 的时候, 系统就会自动的将 <code>autoresizingMask</code> “翻译” 成以约束为基础的布局, 而且 <code>translatesAutoresizingMaskIntoConstraints</code> 的默认值是 <code>true</code></p>
+			
+				<p class="article-more-link">
+					<a href="/2016/12/12/2016-12-16-fxxk-property/#more">Read More</a>
+				</p>
+      
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 
 			</span>
 		</div>
@@ -548,61 +601,6 @@
 
 
   
-    <article id="post-2015-10-30-RxSwift-Operation" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/10/30/2015-10-30-RxSwift-Operation/" class="article-date">
-  <time datetime="2015-10-30T04:00:00.000Z" itemprop="datePublished">2015-10-30</time>
-</a>
-		</span>
-		<span class="meta-elements author">
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/RxSwift/">RxSwift</a>
-  </div>
-</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/10/30/2015-10-30-RxSwift-Operation/">RxSwift 笔记 - 信号的运算与操作</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-			<p>RxSwift 中很多运算和操作与 Swift 中集合类型的高阶函数比较相似,下面我来同时使用两者来看看其中的异同<br>
-			
-				<p class="article-more-link">
-					<a href="/2015/10/30/2015-10-30-RxSwift-Operation/#more">Read More</a>
-				</p>
-      
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="tags">
-				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式编程/">响应式编程</a></li></ul>
-
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -616,7 +614,7 @@
 		<a href="/">TBXark</a>
 	</h1>
 	<span class="copyright">
-		&copy; 2016 TBXark<br>
+		&copy; 2017 TBXark<br>
 		Theme by <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
 	</span>
