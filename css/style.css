@@ -192,6 +192,15 @@ code {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   font-size: 1em;
 }
+code {
+  background-color: #f4f4f4;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
 .left,
 .alignleft {
   float: left;

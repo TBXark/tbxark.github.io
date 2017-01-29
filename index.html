@@ -101,58 +101,6 @@
 
 
   
-    <article id="post-2016-12-12-Objective-c-class-property" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2016/12/12/2016-12-12-Objective-c-class-property/" class="article-date">
-  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
-</a>
-		</span>
-		<span class="meta-elements author">
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
-  </div>
-</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2016/12/12/2016-12-12-Objective-c-class-property/">Objective-C 的类变量</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p>惊闻 OC 支持类变量, 然后用个 demo 测试了一下<br>发现只是 <code>property</code> 加上了 <code>class</code> 类型, 但是实际的上还是要手写 静态变量和 <code>getter</code> 和 <code>setter</code> 方法的实现.<br>所以 Objective-C 的类变量 只是代替 头文件中 <code>getter</code> 和 <code>setter</code> 方法的声明.</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Test</span> : <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">class</span>, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> * name;</div><div class="line"><span class="comment">//+ (NSString *)name;</span></div><div class="line"><span class="comment">//+(void)setName:(NSString *)name;</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Test</span></span></div><div class="line"><span class="keyword">@dynamic</span> name;</div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *_name = <span class="literal">nil</span>;</div><div class="line">+ (<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    <span class="keyword">return</span> _name;</div><div class="line">&#125;</div><div class="line">+(<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    _name = name.copy;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="tags">
-				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
-
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-
-  
     <article id="post-2016-12-16-fxxk-property" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
@@ -195,6 +143,58 @@
 			<span class="tags">
 				
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+
+  
+    <article id="post-2016-12-12-Objective-c-class-property" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2016/12/12/2016-12-12-Objective-c-class-property/" class="article-date">
+  <time datetime="2016-12-11T17:23:00.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2016/12/12/2016-12-12-Objective-c-class-property/">Objective-C 的类变量</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>惊闻 OC 支持类变量, 然后用个 demo 测试了一下<br>发现只是 <code>property</code> 加上了 <code>class</code> 类型, 但是实际的上还是要手写 静态变量和 <code>getter</code> 和 <code>setter</code> 方法的实现.<br>所以 Objective-C 的类变量 只是代替 头文件中 <code>getter</code> 和 <code>setter</code> 方法的声明.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Test</span> : <span class="title">NSObject</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">class</span>, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> * name;</div><div class="line"><span class="comment">//+ (NSString *)name;</span></div><div class="line"><span class="comment">//+(void)setName:(NSString *)name;</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Test</span></span></div><div class="line"><span class="keyword">@dynamic</span> name;</div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> *_name = <span class="literal">nil</span>;</div><div class="line">+ (<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    <span class="keyword">return</span> _name;</div><div class="line">&#125;</div><div class="line">+(<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name &#123;</div><div class="line">    _name = name.copy;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
 
 			</span>
 		</div>
