@@ -39,7 +39,7 @@
 		</ul>
 	</nav>
 	<div id="search-form-wrap">
-		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tbxark.site"></form>
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tbxark.site"></form>
 	</div>
 </header>
 
@@ -74,21 +74,21 @@
 		
     	<p>Long long times ago, 木噶西木噶西, 创建一个 cocoapods 仓库  是相当的麻烦,到底有多麻烦呢, 就是麻烦到我都忘记是怎么创建的了.最近心血来潮就想把自己的开源项目(很水的)都加上 cocoapod.<br>然后我就发现了一种新的创建 pod 仓库的方法(ps: 其实是久的方法, 但是我不知道而已)</p>
  <a id="more"></a>
-<h3 id="1-_注册trunk">1. 注册trunk</h3><h4 id="1-_更新到_0-35-0_以上的_Cocoapod">1. 更新到 <code>0.35.0</code> 以上的 Cocoapod</h4><p>ps: 但是推荐不要升级到最新的测试版, 那个都是坑啊. </p>
+<h3 id="1-注册trunk"><a href="#1-注册trunk" class="headerlink" title="1. 注册trunk"></a>1. 注册trunk</h3><h4 id="1-更新到-0-35-0-以上的-Cocoapod"><a href="#1-更新到-0-35-0-以上的-Cocoapod" class="headerlink" title="1. 更新到 0.35.0 以上的 Cocoapod"></a>1. 更新到 <code>0.35.0</code> 以上的 Cocoapod</h4><p>ps: 但是推荐不要升级到最新的测试版, 那个都是坑啊. </p>
 <blockquote>
 <p>sudo gem install cocoapods</p>
 </blockquote>
-<h4 id="2-_发送注册请求">2. 发送注册请求</h4><blockquote>
+<h4 id="2-发送注册请求"><a href="#2-发送注册请求" class="headerlink" title="2. 发送注册请求"></a>2. 发送注册请求</h4><blockquote>
 <p>pod trunk register E-MAIL ‘USER_NAME’  –verbose</p>
 </blockquote>
 <p>然后就去邮箱验证,我的 outlook 邮箱会把它识别为垃圾邮件, 收不到邮件的可以去垃圾箱里面找一下</p>
-<h4 id="3-_上传自己的代码,并且打上_tag">3. 上传自己的代码,并且打上 tag</h4><p>这一部分都是 gti 的基本操作,就不赘述了</p>
+<h4 id="3-上传自己的代码-并且打上-tag"><a href="#3-上传自己的代码-并且打上-tag" class="headerlink" title="3. 上传自己的代码,并且打上 tag"></a>3. 上传自己的代码,并且打上 tag</h4><p>这一部分都是 gti 的基本操作,就不赘述了</p>
 <hr>
-<h3 id="2-_创建podspec文件">2. 创建podspec文件</h3><p>这里不推荐用 <code>pod spec create PROJECT_NAME</code> 创建, 因为太多了, 有用信息其实只有一点<br>但是感兴趣的话可以用这个命令来创建, 查看完整版的 podspec 文件</p>
-<h4 id="1-_创建_podspec_文件">1. 创建 podspec 文件</h4><p>注意,这里文件名字就是仓库的名字,不一定要跟项目的名字或者github一样.但是不能和已有的 pod 仓库重复.</p>
-<h4 id="2-_填写_podspec_文件">2. 填写 podspec 文件</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name         = <span class="string">"PROJECT_NAME"</span> <span class="comment">#* 要和文件名一样</span></div><div class="line">  s.version      = <span class="string">"1.0.2"</span> <span class="comment">#* 版本号</span></div><div class="line">  s.summary      = <span class="string">"SUMMARY"</span> <span class="comment"># 简介</span></div><div class="line">  s.homepage     = <span class="string">"https://github.com/xxx/xxx"</span> <span class="comment"># 主页</span></div><div class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT License'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125; <span class="comment"># 协议</span></div><div class="line">  s.author       = &#123; <span class="string">"USER_NAME"</span> =&gt; <span class="string">"E-MAIL"</span> &#125; <span class="comment"># 作者</span></div><div class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">"https://github.com/xxxx/xxx.git"</span>, <span class="symbol">:tag</span> =&gt; s.version &#125; <span class="comment">#* github源 </span></div><div class="line">  s.platform     = <span class="symbol">:ios</span>, <span class="string">'8.0'</span> <span class="comment"># 平台,系统版本</span></div><div class="line">  s.source_files = <span class="string">'Classes/*.swift'</span> <span class="comment"># 源代码文件,及路径</span></div><div class="line">  s.requires_arc = <span class="literal">true</span> <span class="comment"># ARC 支持</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="2-创建podspec文件"><a href="#2-创建podspec文件" class="headerlink" title="2. 创建podspec文件"></a>2. 创建podspec文件</h3><p>这里不推荐用 <code>pod spec create PROJECT_NAME</code> 创建, 因为太多了, 有用信息其实只有一点<br>但是感兴趣的话可以用这个命令来创建, 查看完整版的 podspec 文件</p>
+<h4 id="1-创建-podspec-文件"><a href="#1-创建-podspec-文件" class="headerlink" title="1. 创建 podspec 文件"></a>1. 创建 podspec 文件</h4><p>注意,这里文件名字就是仓库的名字,不一定要跟项目的名字或者github一样.但是不能和已有的 pod 仓库重复.</p>
+<h4 id="2-填写-podspec-文件"><a href="#2-填写-podspec-文件" class="headerlink" title="2. 填写 podspec 文件"></a>2. 填写 podspec 文件</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name         = <span class="string">"PROJECT_NAME"</span> <span class="comment">#* 要和文件名一样</span></div><div class="line">  s.version      = <span class="string">"1.0.2"</span> <span class="comment">#* 版本号</span></div><div class="line">  s.summary      = <span class="string">"SUMMARY"</span> <span class="comment"># 简介</span></div><div class="line">  s.homepage     = <span class="string">"https://github.com/xxx/xxx"</span> <span class="comment"># 主页</span></div><div class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT License'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125; <span class="comment"># 协议</span></div><div class="line">  s.author       = &#123; <span class="string">"USER_NAME"</span> =&gt; <span class="string">"E-MAIL"</span> &#125; <span class="comment"># 作者</span></div><div class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">"https://github.com/xxxx/xxx.git"</span>, <span class="symbol">:tag</span> =&gt; s.version &#125; <span class="comment">#* github源 </span></div><div class="line">  s.platform     = <span class="symbol">:ios</span>, <span class="string">'8.0'</span> <span class="comment"># 平台,系统版本</span></div><div class="line">  s.source_files = <span class="string">'Classes/*.swift'</span> <span class="comment"># 源代码文件,及路径</span></div><div class="line">  s.requires_arc = <span class="literal">true</span> <span class="comment"># ARC 支持</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <p>其中我打了 <code>*</code> 是最重要的,  <code>source_files</code> 文件路径一定要填对</p>
-<h4 id="3-_上传_podspec_文件">3. 上传 podspec 文件</h4><blockquote>
+<h4 id="3-上传-podspec-文件"><a href="#3-上传-podspec-文件" class="headerlink" title="3. 上传 podspec 文件"></a>3. 上传 podspec 文件</h4><blockquote>
 <p>pod trunk push PROJECT_NAME.podspec</p>
 </blockquote>
 <p>上传上去, 假如编译有问题或者有其他 pod 方面的问题的话,按照提示修改就可以了</p>

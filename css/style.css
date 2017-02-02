@@ -194,7 +194,6 @@ code {
 }
 code {
   background-color: #f4f4f4;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   padding-left: 10px;
   padding-right: 10px;
@@ -214,7 +213,6 @@ code {
   border: 1px solid #ddd;
   margin-top: 15px;
   padding: 7px 15px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   text-shadow: 0 0 1px #fff;
   line-height: 1.6;
@@ -254,7 +252,6 @@ figure.highlight {
   border: 1px solid #ddd;
   margin: 0;
   padding: 7px 15px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   text-shadow: 0 0 1px #fff;
   line-height: 1.6;
@@ -503,7 +500,6 @@ pre .deletion {
   right: 0;
   background: #fff;
   padding: 3px 15px;
-  -webkit-border-radius: 15px;
   border-radius: 15px;
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -747,7 +743,6 @@ pre .deletion {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   -webkit-background-clip: padding;
   -moz-background-clip: padding;
@@ -856,7 +851,6 @@ pre .deletion {
     margin-left: -4px;
     content: "";
     -webkit-border-radius: 50%;
-    -webkit-border-radius: 50%;
     border-radius: 50%;
     background: #ddd;
     -webkit-box-shadow: 0 1px 2px #fff;
@@ -934,7 +928,6 @@ pre .deletion {
   min-width: 1.2em;
   padding: 6px 8px;
   margin: 1px 5px 1px 5px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   -webkit-background-clip: padding;
   -moz-background-clip: padding;
