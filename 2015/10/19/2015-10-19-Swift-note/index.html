@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Swift笔记 | TBXark</title>
+  <meta name="viewport" content="width=device-width">
+
+
+  
+    
+    <meta name="keywords" content="Swift 学习笔记, tbxark,vfanx,swift,iOS,objective-c,范名睿">
+  
+
+
+
+
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">home</a></li><li><a href="https://github.com/tbxark">github</a></li><li><a href="/archives">archives</a></li><li><a href="/about">about</a></li>
+			<!-- <li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li> -->
+			<!--  -->
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tbxark.site"></form>
+	</div>
+</header>
+
+    <div id="main">
+      <article id="post-2015-10-19-Swift-note" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/10/19/2015-10-19-Swift-note/" class="article-date">
+  <time datetime="2015-10-19T07:10:10.000Z" itemprop="datePublished">2015-10-19</time>
+</a>
+		</span>
+		<span class="meta-elements author">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Swift/">Swift</a>
+  </div>
+</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      Swift笔记
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h1 id="可选协议-协议拓展"><a href="#可选协议-协议拓展" class="headerlink" title="可选协议/协议拓展"></a>可选协议/协议拓展</h1><p><code>MyProtocol</code> 协议中<code>func requiredMethod()</code> 是在协议声明的时候定义的,但是<code>MyProtocol</code> 对其有一个默认实现,而<code>func optionalMethod()</code> 是在拓展中实现的,必须要有一个默认实现. 当<code>TestClass</code> 类被强转为 MyProtocol类型时,协议中声明的方法会被动态派发,但是协议拓展中的方法即使被重写仍然会调用默认实现.</p>
+<a id="more"></a>
+<h4 id="结论如下"><a href="#结论如下" class="headerlink" title="结论如下"></a><strong>结论如下</strong></h4><ul>
+<li>如果类型推断得到的是实际的类型<ul>
+<li>那么类型中的实现将被调用；如果类型中没有实现的话，那么接口扩展中的默认实现将被使用</li>
+</ul>
+</li>
+<li>如果类型推断得到的是接口，而不是实际类型<ul>
+<li>并且方法在接口中进行了定义，那么类型中的实现将被调用；如果类型中没有实现，那么接口扩展中的默认实现被使用</li>
+<li>否则 (也就是方法没有在接口中定义)，扩展中的默认实现将被调用</li>
+</ul>
+</li>
+</ul>
+<pre><code>protocol MyProtocol{
+    func requiredMethod()
+}
+
+extension MyProtocol{
+    func requiredMethod(){
+        print(&quot;Origin Method&quot;)
+    }
+
+    func optionalMethod(){
+        print(&quot;Optional Method&quot;)
+    }
+}
+
+class TestClass : MyProtocol {
+    func requiredMethod() {
+        print(&quot;Rewrite Require Method&quot;)
+    }
+    func optionalMethod() {
+        print(&quot;Rewrite Optional Method&quot;)
+    }
+
+}
+
+var temp = TestClass() as MyProtocol
+temp.requiredMethod() //Rewrite Require Method
+temp.optionalMethod() //Optional Method
+</code></pre><hr>
+<h1 id="类型-协议-转换"><a href="#类型-协议-转换" class="headerlink" title="类型/协议 转换"></a>类型/协议 转换</h1><h3 id="通用代码"><a href="#通用代码" class="headerlink" title="通用代码"></a><strong>通用代码</strong></h3><pre><code>protocol Study{
+    func helloWord() -&gt; String
+}
+
+protocol NSStudy{
+    func helloWord() -&gt; NSString
+}
+
+class Father : Study,NSStudy{
+    func sayName(name:String){
+        print(&quot;Father : &quot;+name)
+    }
+    func helloWord() -&gt; String{
+        return &quot;HelloWord&quot;
+    }
+    func helloWord() -&gt; NSString{
+        return NSString(string: &quot;HelloWord&quot;)
+    }
+}
+
+
+class Son: Father {
+    static func sayName(name:String){
+        print(&quot;Son : &quot;+name)
+    }
+        func gotoSchool(){
+        print(&quot;Go to school&quot;)
+    }
+}
+</code></pre><hr>
+<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h4 id="1-判断-是否为某个类或为某个类的子类-或-是否遵守某个协议"><a href="#1-判断-是否为某个类或为某个类的子类-或-是否遵守某个协议" class="headerlink" title="1. 判断 是否为某个类或为某个类的子类 或 是否遵守某个协议"></a>1. 判断 <strong>是否为某个类或为某个类的子类</strong> 或 <strong>是否遵守某个协议</strong></h4><pre><code>var man:Father = Son()
+var isSon = man is Son          //true
+var canStudy = man is Study     //true
+</code></pre><h4 id="2-将某个类转换成另外一个类-或者假设其遵守某个方法"><a href="#2-将某个类转换成另外一个类-或者假设其遵守某个方法" class="headerlink" title="2. 将某个类转换成另外一个类, 或者假设其遵守某个方法"></a>2. 将某个类转换成另外一个类, 或者假设其遵守某个方法</h4><pre><code>//转换为某个类
+if let success:() = (man as? Son)?.gotoSchool(){
+    print(&quot;Success&quot;)
+}else{
+    print(&quot;Fail&quot;)
+}
+
+//执行不同协议中的同名方法
+var str = (man as NSStudy).helloWord()
+if str is NSString{
+    print(&quot;Is NSString&quot;)
+}
+</code></pre><hr>
+<h1 id="indirect"><a href="#indirect" class="headerlink" title="indirect"></a>indirect</h1><p>// <strong>indirect</strong> : adj. 间接的, 迂回的<br>对于 引用类型class ,包含自身类型的实例变量是很正常的,但是如果是值类型 Struct,enum 包含自身类型的实例变量,所以就要用indirect关键词标识,让编译器不要直接嵌套.(递归枚举,递归结构体)</p>
+<pre><code>//包含相关值的递归枚举
+indirect enum LinkList&lt;Element:Comparable&gt;{
+    case Empty
+    case Node(Element,LinkList&lt;Element&gt;)
+    func printList(){
+        switch self{
+        case let .Node(value,node):
+            print(value)
+            switch node{
+            case .Node(_, _):
+                node.printList()
+            case .Empty:
+                return
+            }
+        case .Empty:return
+        }
+    }
+}
+
+var list = LinkList.Node(1, LinkList.Node(2, LinkList.Node(3, LinkList.Node(4, LinkList.Empty))))
+list.printList()
+</code></pre><hr>
+<h1 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h1><p>where 通常在 Swift 中用作模式匹配,相当于筛选</p>
+<blockquote>
+<p>模式匹配是数据结构中字符串的一种基本运算，给定一个子串，要求在某个字符串中找出与该子串相同的所有子串，这就是模式匹配</p>
+</blockquote>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="1-Switch"><a href="#1-Switch" class="headerlink" title="1. Switch"></a>1. Switch</h4><pre><code>var nums = [&quot;A111&quot;,&quot;A222&quot;,&quot;B111&quot;,&quot;B222&quot;,&quot;C111&quot;,&quot;C222&quot;]
+nums.forEach {
+    switch $0{
+    case let x where x.hasPrefix(&quot;A&quot;):print(&quot;A&quot;)
+    case let x where x.hasPrefix(&quot;B&quot;):print(&quot;B&quot;)
+    default:print($0)
+    }
+}
+//A
+//A
+//B
+//B
+//C111
+//C222
+</code></pre><h4 id="2-if"><a href="#2-if" class="headerlink" title="2. if"></a>2. if</h4><pre><code>let dict : NSDictionary = [&quot;key&quot;:&quot;value&quot;,&quot;key2&quot;:&quot;values&quot;]
+if let value :NSString = dict[&quot;key&quot;] as? NSString where value.isEqualToString(&quot;value&quot;){
+    print(&quot;Same&quot;)
+}else{
+    print(&quot;Not Same&quot;)
+}
+</code></pre><hr>
+<h1 id="函数格式"><a href="#函数格式" class="headerlink" title="函数格式"></a>函数格式</h1><p><strong><code>权限修饰符</code><em>(<code>public</code>,<code>internal</code>,<code>private</code></em>)  <code>重写标志</code>(<em><code>override</code></em>)  <code>函数类型</code>(<em><code>class</code>,<code>static</code></em>)  <code>泛型&lt;T&gt; where condition</code> <code>(参数列表: var/let/inout (外部参数名) (内部参数名) : (参数类型)(?是否为可选))</code>  <code>异常抛出</code>(<em><code>throws</code></em>)  -&gt; <code>返回值</code></strong></p>
+<hr>
+<h1 id="运算符函数"><a href="#运算符函数" class="headerlink" title="运算符函数"></a>运算符函数</h1><p>类和结构可以为现有的操作符提供自定义的实现，这通常被称为运算符重载(<code>overloading</code>)。运算符函数必须为全局函数</p>
+<ol>
+<li>运算符类型 在 func前加 : 前缀<code>prefix</code>、中间<code>infix</code> 或者 后缀<code>postfix</code></li>
+<li>运算符命名 : 自定义运算符可以由以下其中之一的 ASCII 字符<code>/</code>、<code>=</code>、<code>-</code>、<code>+</code>、<code>!</code>、<code>*</code>、<code>%</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>?</code> 以及 <code>~</code>, 或者后面语法中规定的任一个 Unicode 字符开始。在第一个字符之后，允许使用组合型 Unicode 字符。也可以使用两个或者多个的点号来自定义运算符（比如, ….）。虽然可以自定义包含问号?的运算符，但是这个运算符不能只包含单独的一个问号。</li>
+</ol>
+<hr>
+<h2 id="自定义运算符格式"><a href="#自定义运算符格式" class="headerlink" title="自定义运算符格式"></a>自定义运算符格式</h2><pre><code>&lt;prefix/postfix/infix&gt; operator &lt;运算符&gt; {
+    associativity &lt;结合方向&gt;(left,right,none)
+    precedence &lt;优先级&gt;(乘除150,加减140)
+}
+
+&lt;prefix/postfix/infix&gt; func &lt;运算符&gt; (left : &lt;左&gt; ,right : &lt;右&gt;) -&gt; &lt;返回值&gt;{
+    return &lt;返回值&gt;
+}
+</code></pre><h3 id="例子-通过自定义运算符实现正则判断"><a href="#例子-通过自定义运算符实现正则判断" class="headerlink" title="例子 通过自定义运算符实现正则判断"></a><strong>例子</strong> 通过自定义运算符实现正则判断</h3><pre><code>enum RegexMode : String{
+    case Mail = &quot;^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$&quot;
+}
+
+struct RegexHelper {
+    let regex: NSRegularExpression
+
+    init(_ pattern: String) throws {
+        try regex = NSRegularExpression(pattern: pattern,options: .CaseInsensitive)
+    }
+
+    func match(input: String) -&gt; Bool {
+        let matches = regex.matchesInString(input,
+            options: [],
+            range: NSMakeRange(0, input.characters.count))
+        return matches.count &gt; 0
+    }
+}
+
+infix operator =~ {
+    associativity none
+    precedence 130
+}
+
+infix operator ==~ {
+    associativity none
+    precedence 130
+}
+
+func =~ (resource : String ,regx : String) -&gt; Bool{
+    do{
+        return try RegexHelper(regx).match(resource)
+    }catch{
+        return false
+    }
+}
+
+func ==~ (resource : String ,regx : RegexMode) -&gt; Bool{
+    return resource =~ regx.rawValue
+}
+
+if &quot;vfanx@qq.com&quot; ==~ RegexMode.Mail
+{
+    print(&quot;有效的邮箱地址&quot;)
+}
+</code></pre><hr>
+<h1 id="可选链"><a href="#可选链" class="headerlink" title="可选链"></a>可选链</h1><h3 id="在可选链中调用函数"><a href="#在可选链中调用函数" class="headerlink" title="在可选链中调用函数"></a>在可选链中调用函数</h3><p>当可选链的结尾是一个函数的时候,这个函数的返回值也是一个可选类型,即使这个函数的返回值是 void(空元组),通过判断函数的返回值是否为空可以判断函数是否被执行</p>
+<pre><code>class Toy {
+    var name : String
+    init(name:String){
+        self.name = name
+    }
+    func play(){
+        print(&quot;play \(name)&quot;)
+    }
+}
+
+class Pet {
+    var toy : Toy?
+}
+
+class Child {
+    var pet : Pet?
+}
+
+var xiaoming = Child()
+xiaoming.pet = Pet()
+//xiaoming.pet?.toy = Toy(name: &quot;Car&quot;)
+//xiaoming.pet?.toy?.play()
+
+//闭包中的判断,即返回一个可选的空元组
+var playClosure = {(child:Child) -&gt;()? in
+    child.pet?.toy?.play()
+}
+
+if let isPlay :() = xiaoming.pet?.toy?.play()
+{
+    print(&quot;Somthing Play&quot;)
+}else{
+    print(&quot;Nothing Play&quot;)
+}
+</code></pre><hr>
+<h1 id="可选类型数组"><a href="#可选类型数组" class="headerlink" title="可选类型数组"></a>可选类型数组</h1><p>有时候我们可能会遇到数组元素的类型是可选类型,这时候我们遍历操作数组元素的时候每次进行值判断是很 Low 的,然后我们可以使用 <code>flatMap</code> 来对数组进行变形,同时还能对其进行值操作</p>
+<pre><code>let array : [[Int]?] = [[1,2,3],nil,[4,5,6],nil,[7,8,9],nil]
+
+//此操作可以剔除数组中的 nil
+let temp1 = array.flatMap{$0}
+print(temp1)//[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+//在此基础上可以进行可选链的操作
+let temp2 = array.flatMap{$0?.reduce(&quot;&quot;, combine: {$0+String($1)})}
+print(temp2)//[&quot;123&quot;, &quot;456&quot;, &quot;789&quot;]
+</code></pre><p>当处理一个非可选的元素为集合类型的数组时,其作用是 “拍扁”</p>
+<pre><code>let array2 : [[[Int]]] = [[[1],[2,3]],[[4,5],[6]],[[7,8,9]]]
+let temp3 = array2.flatMap{$0.flatMap{$0}}
+print(temp3)//[1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre><hr>
+<h1 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h1><h2 id="值类型与引用类型"><a href="#值类型与引用类型" class="headerlink" title="值类型与引用类型"></a>值类型与引用类型</h2><ul>
+<li>swift 中所有集合类型(Set,Array,Dictionary)都是值类型容器,值类型在传递赋值过程中需要进行拷贝.但是 swift 对其进行了优化.值类型赋值或传递过程中复制的行为并不是马上发生的,而是只当值发生改变时才会产生复制.Swift 内建的值类型的容器类型在每次操作(增,删,改)时都需要复制一遍，即使是存储的都是引用类型.</li>
+<li>原来 Foundation 框架中的集合类型(NSSet,NSArray,NSDictionary) 都是引用类型的容器.</li>
+<li>在实际开发中按照具体的数据规模和操作特点来决定到时是使用值类型的容器还是引用类型的容器：在<strong>需要处理大量数据</strong>并且<strong>频繁操作 (增减) 其中元素时</strong>，选择 NSMutableArray 和 NSMutableDictionary 会更好，而对于容器内条目小而容器本身数目多的情况，应该使用 Swift 语言内建的 Array 和 Dictionary。</li>
+</ul>
+<h2 id="集合Set"><a href="#集合Set" class="headerlink" title="集合Set"></a>集合Set</h2><p>  一个set无序的存储相同类型的不同的值.当一个数组元素的顺序不重要或者你需要保证这些value只出现一次的时候使用set.</p>
+<h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h3><p><code>Set&lt;SomeType&gt;</code>和<code>Array</code>不同的是,<code>Set</code>没有缩写方式.<code>var someSet =Set&lt;Character&gt;()</code>    或者如果上下文以及提供了类型信息,比如一个函数的参数或者一个已知类型的常量或变量.你可以创建用空的数组字面量创建一个空的集合   </p>
+<pre><code>var someSet =Set&lt;Character&gt;()// someSet现在包含一个Character的值
+someSet.insert(&quot;a&quot;)// someSet现在是一个空的set,但是它仍然是一个存储Character的set.
+var someSet:Set&lt;String&gt; = [&quot;L&quot;,&quot;o&quot;,&quot;v&quot;,&quot;e&quot;]
+</code></pre><p>一个set不能单独的从数组字面量推断类型.所以set必须被明确的定义.然而根据swift的类型推断,当你用数组字面量初始化set的时候,如果包含的所以value是一种类型,你可以不写类型.</p>
+<p>//判断一个set是否包含一个值</p>
+<pre><code>var isContainAValue = someSet.contains(&quot;o&quot;)
+println(&quot;/(isContainAValue)&quot;)
+</code></pre><p>//遍历一个set</p>
+<pre><code>for itemin someSet {
+    println(&quot;/(item)&quot;)
+}
+// 因为set类型没有顺序.所以要按照一个指定的顺序遍历set要使用全局sorted函数.
+for iteminsorted(someSet) {
+    println(&quot;/(item)&quot;)
+}
+</code></pre><h3 id="2-Set关系"><a href="#2-Set关系" class="headerlink" title="2. Set关系"></a>2. Set关系</h3><p>你可以效率很高的进行一下set操作.比如合并两个set.获取两个集合的相同部分.或者判断两个集合包含所以的,一些或者都不包含一些值.</p>
+<pre><code>var firstSet  : Set = [1,2,3,4]
+var secondSet : Set = [1,3,5,7]
+
+//并集: uionSet = A+B
+var uionSet : Set = firstSet.union(secondSet)
+//print(uionSet) [5, 7, 2, 3, 1, 4]
+
+//交集: intersectSet = AB
+var intersectSet : Set = firstSet.intersect(secondSet)
+//print(intersectSet) [3, 1]
+
+//subtract = A - AB
+var subtract : Set = firstSet.subtract(secondSet)
+//print(subtract) [2, 4]
+
+//exclusiveOr = A+B - AB
+var exclusiveOr : Set = firstSet.exclusiveOr(secondSet)
+//print(exclusiveOr) [5, 7, 2, 4]
+</code></pre><h3 id="3-Set-比较"><a href="#3-Set-比较" class="headerlink" title="3. Set 比较"></a>3. Set 比较</h3><pre><code>var firstSet  : Set = [1,2,3,4]
+var secondSet : Set = [1]
+
+//相等 判断
+var equal = (firstSet == secondSet)
+
+//子集/超集 判断
+var sonSet = firstSet.isSubsetOf(secondSet)
+var superSet = firstSet.isSupersetOf(secondSet)
+
+//相交 判断
+var disJion = firstSet.isDisjointWith(secondSet)
+
+//真子集/真超集 判断
+var realSonSet = firstSet.isStrictSubsetOf(secondSet)
+var realFatherSet = firstSet.isStrictSupersetOf(secondSet)
+</code></pre><hr>
+<h1 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组 Array"></a>数组 Array</h1><h3 id="自定义下标"><a href="#自定义下标" class="headerlink" title="自定义下标"></a>自定义下标</h3><pre><code>var array = [111,222,333,444,555]
+
+extension Array{
+    subscript(s inputs:Int...) -&gt; ArraySlice&lt;Element&gt;{
+        get{
+            var newArray = ArraySlice&lt;Element&gt;()
+            let count = self.count
+            for indexNum in inputs
+            {
+                assert(indexNum &lt; count, &quot;Index out of range&quot;)
+                newArray.append(self[indexNum])
+            }
+            return newArray
+        }
+        set{
+            for (index,i) in inputs.enumerate() {
+                assert(i &lt; self.count, &quot;Index out of range&quot;)
+                self[i] = newValue[index]
+            }
+        }
+    }
+}
+
+//使用区间
+array[0...1] = [0,0]
+print(array) // [0, 0, 333, 444, 555]
+
+//使用自定义数组
+array[s:0] = [123456789]
+array[s:1,2,3] = [123,123,123]
+print(array[s:1,2,3,4]) //[123, 123, 123, 555]
+</code></pre><hr>
+<h1 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典 Dictionary"></a>字典 Dictionary</h1><p>当使用系统 json解析器时,会返回Foundation类型,所以没办法用 Swif 值类型进行取值和判断</p>
+<h3 id="对未知-Key-的-Value-的判断"><a href="#对未知-Key-的-Value-的判断" class="headerlink" title="对未知 Key 的 Value 的判断"></a>对未知 Key 的 Value 的判断</h3><h4 id="1-传统判断"><a href="#1-传统判断" class="headerlink" title="1. 传统判断"></a>1. 传统判断</h4><pre><code>var json = &quot;{\&quot;str\&quot;:\&quot;value\&quot;,\&quot;dict\&quot;:{\&quot;subStr\&quot;:\&quot;value\&quot;}}&quot;
+var data = json.dataUsingEncoding(NSUTF8StringEncoding)
+if let jsonData = data
+{
+    do{
+        var dict : NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+        if dict[&quot;str&quot;] != nil &amp;&amp; String(dict[&quot;str&quot;]!) == &quot;value&quot;{
+            print(&quot;equal&quot;)
+        }else{
+            print(&quot;error&quot;)
+        }
+    }catch{
+        print(error)
+    }
+}
+</code></pre><h4 id="2-高阶函数-可选链"><a href="#2-高阶函数-可选链" class="headerlink" title="2.高阶函数+可选链"></a>2.高阶函数+可选链</h4><pre><code>var dict : NSDictionary = [&quot;value&quot;:&quot;key&quot;]
+let result = (dict[&quot;value&quot;] as? NSString).map{String($0) == &quot;key&quot;}
+if result != nil &amp;&amp; result!{
+    print(&quot;Success&quot;)
+}else{
+    print(&quot;Error&quot;)
+}
+</code></pre><h4 id="3-值类型判断"><a href="#3-值类型判断" class="headerlink" title="3. 值类型判断"></a>3. 值类型判断</h4><pre><code>var dict = [&quot;value&quot;:&quot;key&quot;]
+if dict[&quot;values&quot;] == &quot;key&quot;{
+    print(&quot;Success&quot;)
+}else{
+    print(&quot;Error&quot;)
+}
+</code></pre><h4 id="4-where-操作符"><a href="#4-where-操作符" class="headerlink" title="4.where 操作符"></a>4.where 操作符</h4><pre><code>let dict : NSDictionary = [&quot;key&quot;:&quot;value&quot;,&quot;key2&quot;:&quot;values&quot;]
+if let value :NSString = dict[&quot;key&quot;] as? NSString where value.isEqualToString(&quot;value&quot;){
+    print(&quot;Same&quot;)
+}else{
+    print(&quot;Not Same&quot;)
+}
+</code></pre><hr>
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><pre><code>var array = [1,2,3,4,5,6,0]
+var muArray = [[1,2,3],[4,5,6],[7,8,9]]
+</code></pre><h4 id="1-Short-排序"><a href="#1-Short-排序" class="headerlink" title="1. Short:排序"></a>1. Short:排序</h4><pre><code>var sortArray = array.sort({$0&gt;$1})
+//print(sortArray)
+//[6, 5, 4, 3, 2, 1, 0]
+
+
+//InPlace:无返回值,直接改变当前实例
+var sortInPlaceArray = array
+sortInPlaceArray.sortInPlace({$0&gt;$1})
+//print(sortInPlaceArray)
+//[6, 5, 4, 3, 2, 1, 0]
+</code></pre><h4 id="2-Map-转换"><a href="#2-Map-转换" class="headerlink" title="2. Map:转换"></a>2. Map:转换</h4><pre><code>var mapArry = array.map {&quot;No.&quot; + String($0)}
+//print(mapArry)
+//[&quot;No.1&quot;, &quot;No.2&quot;, &quot;No.3&quot;, &quot;No.4&quot;, &quot;No.5&quot;, &quot;No.6&quot;, &quot;No.0&quot;]
+</code></pre><h4 id="3-Filter-过滤"><a href="#3-Filter-过滤" class="headerlink" title="3. Filter:过滤"></a>3. Filter:过滤</h4><pre><code>var filterArray = array.filter {($0%2 == 0)}
+//print(filterArray)
+//[2, 4, 6, 0]
+</code></pre><h4 id="4-Reduce-归纳"><a href="#4-Reduce-归纳" class="headerlink" title="4. Reduce:归纳"></a>4. Reduce:归纳</h4><pre><code>var reduceArray = array.reduce(&quot;&quot;, combine: {$0+&quot;.&quot;+String($1)})
+//print(reduceArray)
+//.1.2.3.4.5.6.0
+</code></pre><h4 id="5-Flatten"><a href="#5-Flatten" class="headerlink" title="5. Flatten"></a>5. Flatten</h4><pre><code>var flattenArray =  muArray.flatten()
+print(flattenArray)
+</code></pre><hr>
+<h1 id="自动闭包"><a href="#自动闭包" class="headerlink" title="自动闭包"></a>自动闭包</h1><p><strong>@autoclosure 做的事情就是把一句表达式自动地封装成一个闭包 (closure)。</strong><br>​    </p>
+<h3 id="例子-自定义逻辑与运算符"><a href="#例子-自定义逻辑与运算符" class="headerlink" title="例子:自定义逻辑与运算符"></a><strong>例子:</strong>自定义逻辑与运算符</h3><pre><code>infix operator ||| { associativity left precedence 140}
+
+//1.**使用自动闭包版**
+​    
+func ||| (@autoclosure left:()-&gt;Bool,@autoclosure right:()-&gt;Bool) -&gt; Bool{
+    if left(){
+        return true
+    }else
+    {
+        return right()
+    }
+}
+​    
+//2.**不使用闭包版**
+​    
+func ||| ( left:Bool, right:Bool) -&gt; Bool{
+    return left || right
+}
+
+//3.**测试**
+</code></pre><p>​<br>    var a = 2<br>    if (++a &gt; 2) ||| (++a &gt; 2){<br>        print(“a= (a)”)<br>    }else<br>    {<br>        print(“a= (a)”)<br>    }<br>    //1.使用闭包: a = 3<br>    //2.不使用闭包: a = 4<br>    //结论: 使用闭包可以减少(延迟)计算,使得计算在真正需要的时候才使用</p>
+<hr>
+<p>​    </p>
+<h1 id="try-catch"><a href="#try-catch" class="headerlink" title="try-catch"></a>try-catch</h1><p>1 .  对于可能抛出错误的函数不能直接调用,一定要用 try<br>​<br>2 . 对于非同步的 API 来说，抛出异常是不可用的 – 异常只是一个同步方法专用的处理机制。Cocoa 框架里对于异步 API 出错时，保留了原来的 NSError 机制<br>但是我们可以采用下列方法解决,创建一个泛型枚举作为容器</p>
+<pre><code>enum Result&lt;T&gt;{
+    case Success(T)
+    case Error(NSError)
+}
+​    
+func doSomeAsyncThing()-&gt; Result&lt;String&gt;{
+    //处理一些非同步的事情
+    var asyncResult = false
+    let asyncValue : String? = nil
+    let asyncError : NSError? = nil
+    if asyncResult{
+        return Result.Success(asyncValue!)
+    }else{
+        return Result.Error(asyncError!)
+    }
+}
+</code></pre><p>​<br>3 . 对于可以忽视错误类型的异常可以采用 if+可选绑定 进行,对于保证不会出错的也可以采用!进行强制解析</p>
+<pre><code>enum CommonError : ErrorType
+{
+    case Error
+    case Warning
+}
+​    
+func doSomeThingMayBeWrong(success:Bool) throws -&gt; String{
+    if success{
+        return &quot;Success&quot;
+    }else{
+        throw CommonError.Error
+    }
+}
+
+
+//1. 强制解析:保证不发生错误情况下使用,当抛出错误时应用会崩溃
+let result = try! doSomeThingMayBeWrong(true)
+print(result)
+​    
+//2. 可选绑定
+if let result = try? doSomeThingMayBeWrong(false){
+    print(result)
+}else{
+    print(&quot;Error&quot;)
+}
+//Success
+//Error
+</code></pre><p>4 . 在可以 throw 的方法中永远不能返回一个可选类型,因为结合 try? 使用的话会产生双重 Optional</p>
+<pre><code>func methodThrowsWhenPassingNegative1(number: Int) throws -&gt; Int? {
+    if number &lt; 0 {
+        throw Error.Negative
+    }
+    if number == 0 {
+        return nil
+    }
+    return number
+}
+​    
+//这里 num 在解包后仍然是一个可选类型
+if let num = try? methodThrowsWhenPassingNegative1(0) {
+    print(num.dynamicType)
+} else {
+    print(&quot;failed&quot;)
+}
+</code></pre><hr>
+<p>​    </p>
+<h1 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h1><p>断言只有在 Debug 编译的时候有效，而在运行时是不被编译执行的，因此断言并不会消耗运行时的性能。这些特点使得断言成为面向程序员的在调试开发阶段非常合适的调试判断，而在代码发布的时候，我们也不需要刻意去将这些断言手动清理掉，非常方便</p>
+<pre><code>func assert(@autoclosure condition: () -&gt; Bool,
+            @autoclosure _ message: () -&gt; String = default,
+                              file: StaticString = default,
+                              line: UInt = default)
+</code></pre><p>​    </p>
+<h1 id="fatalError"><a href="#fatalError" class="headerlink" title="fatalError"></a>fatalError</h1><p>在调试时我们可以使用断言来排除类似s数组越界问题，但是断言只会在 Debug 环境中有效，而在 Release 编译中所有的断言都将被禁用。在遇到确实因为输入的错误无法使程序继续运行的时候，我们一般考虑以产生致命错误 (fatalError) 的方式来终止程序<br><code>@noreturn</code> 表示这个函数可以不要返回值,因为程序整个都将终止。这可以帮助编译器进行一些检查，比如在某些需要返回值的 switch 语句中，我们只希望被 switch 的内容在某些范围内，那么我们在可以在不属于这些范围的 default 块里直接写 fatalError 而不再需要指定返回值<br>假如父类中有必须重写的方法,可以用<code>fatalError</code> 来标识提醒重写</p>
+<pre><code>@noreturn func fatalError(@autoclosure message: () -&gt; String = default,
+                                          file: StaticString = default,
+                                          line: UInt = default
+</code></pre><hr>
+<h1 id="LOCK"><a href="#LOCK" class="headerlink" title="LOCK"></a>LOCK</h1><h3 id="1-Objective-C-版本"><a href="#1-Objective-C-版本" class="headerlink" title="1. Objective-C 版本"></a>1. Objective-C 版本</h3><p> <code>@synchronized</code>，这个关键字可以用来修饰一个变量，并为其自动加上和解除互斥锁。这样，可以保证变量在作用范围内不会被其他线程改变。</p>
+<h4 id="写法1"><a href="#写法1" class="headerlink" title="写法1:"></a><strong>写法1</strong>:</h4><pre><code>- (void)myMethod:(id)anObj {
+    @synchronized(anObj) {
+        // 在括号内 anObj 不会被其他线程改变
+    }
+  }.
+</code></pre><p>  由于@synchronized的实际作用如下</p>
+<h4 id="写法2"><a href="#写法2" class="headerlink" title="写法2:"></a><strong>写法2</strong>:</h4><pre><code>- (void)myMethod:(id)anObj {
+  objc_sync_enter(anObj)
+       // 在 enter 和 exit 之间 anObj 不会被其他线程改变
+  objc_sync_exit(anObj)
+  }
+</code></pre><h3 id="2-Swift-版本"><a href="#2-Swift-版本" class="headerlink" title="2. Swift 版本"></a>2. Swift 版本</h3><p>然后由于<code>@synchronized</code>在swift中已经取消,所以我们可以使用写法2来写,为了方便使用,可以采用闭包封装</p>
+<pre><code>func synchronized(lockObject:AnyObject?,closure:()-&gt;()){
+    objc_sync_enter(lockObject)
+    closure()
+    objc_sync_exit(lockObject)
+}
+//调用时可以采用尾随闭包
+var str = &quot;HelloWord&quot;
+synchronized(str){
+       // 在闭包内str不会被其他线程改变
+}
+</code></pre><hr>
+<h1 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h1><h3 id="GCD-延时实例"><a href="#GCD-延时实例" class="headerlink" title="GCD 延时实例"></a>GCD 延时实例</h3><pre><code>typealias Task = (cancel : Bool) -&gt; Void
+​    
+func dispatch_task_delay(queue:dispatch_queue_t,time:NSTimeInterval, task:dispatch_block_t) -&gt;  Task? {
+​    
+    func dispatch_later(block:dispatch_block_t) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(time * Double(NSEC_PER_SEC))),queue,block)
+    }
+
+    // 实际输入的需要执行的闭包
+    var closure: dispatch_block_t? = task
+    //需要返回的闭包的应用
+    var result: Task?
+
+    //参数为 Bool 返回值为空的闭包队列实际加载的闭包,作为实际返回值,捕获了实际需要执行的闭包,同时也捕获了自身
+    let delayedClosure: Task = { cancel -&gt; Void in
+        if let internalClosure = closure {
+            if (cancel == false) {
+                dispatch_async(queue, internalClosure);
+            }
+        }
+        closure = nil
+        result = nil
+    }
+
+    result = delayedClosure
+
+    //函数体实际执行的代码,
+    dispatch_later {
+        if let delayedClosure = result {
+            delayedClosure(cancel: false)
+        }
+    }
+
+    return result;
+}
+​    
+func dispatch_task_delay_main(time:NSTimeInterval, task:dispatch_block_t) -&gt; Task? {
+    return dispatch_task_delay(dispatch_get_main_queue(), time: time, task: task)
+}
+
+
+func dispatch_task_cancel(task:Task?) {
+    task?(cancel: true)
+}
+</code></pre><hr>
+<h1 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a><strong>Selector</strong></h1><ol>
+<li>可以用字符串直接初始化 <code>let selector : Selector = &quot;viewDidLoad&quot;</code></li>
+<li>不能直接对<code>private</code> 关键词修饰的函数创建<code>Selector</code>,需要在<code>private</code>加@<code>objc</code> 关键词修饰</li>
+</ol>
+<h2 id="方法的动态调用"><a href="#方法的动态调用" class="headerlink" title="方法的动态调用"></a><strong>方法的动态调用</strong></h2><p>通过创建 类/实例 的柯里化函数,实现方法的动态调用</p>
+<pre><code>class TempClass {
+    class func classFunc() {
+        print(&quot;Class Func&quot;)
+    }
+    func instanceFunc(){
+        print(&quot;Instance Func&quot;)
+    }
+}
+​    
+// 获取类型的柯里化函数
+var classMethod = TempClass.classFunc
+//执行类型的柯里化函数 : 类型 + 柯里化函数 + (参数列表)
+TempClass.classFunc()
+
+
+// 获取实例的柯里化函数
+var instanceMethod = TempClass.instanceFunc
+var temp = TempClass()
+​    
+//执行实例的柯里化函数 : 柯里化函数 + (实例) + (参数列表)
+instanceMethod(temp)()
+</code></pre><hr>
+<h1 id="单例"><a href="#单例" class="headerlink" title="单例"></a><strong>单例</strong></h1><p>由于 Swift 支持类存储变量所以无需使用 GCD 即可创建一个线程安全的单例</p>
+<ul>
+<li><code>private</code> 修饰符 : 外界无法通过 Getter 方法获得,只能通过指定类方法获得</li>
+<li><code>static</code>   修饰符 : 表明这是一个类型变量</li>
+<li><code>let</code>        修饰符 : 防止单例被意外修改</li>
+</ul>
+<p>ps: 子类继承父类后 类存储变量仍然为同一份</p>
+<pre><code>class Instance {
+    private static let defaultInstance = Instance()
+    static func shareInstance() -&gt; Instance{
+        return defaultInstance
+    }
+}
+</code></pre>
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift-学习笔记/">Swift 学习笔记</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/29/2015-10-29-RxSwift-note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RxSwift 笔记
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">TBXark</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2017 TBXark<br>
+		Theme by <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script src="/js/script.mini.js"></script>
+
+  </div>
+</body>
+</html>
