@@ -1,5 +1,5 @@
 import Foundation
-let path = "/Users/Tbxark/Desktop/untitled folder/blog"
+let path = "/Users/Tbxark/Desktop/TBXark/Project/tbxark.github.io/blog"
 
 func getAllFilePath(_ dirPath: String) -> [String] {    
     guard let array = try? FileManager.default.contentsOfDirectory(atPath: dirPath) else {
@@ -23,7 +23,7 @@ func getAllFilePath(_ dirPath: String) -> [String] {
 let paths = getAllFilePath(path).filter({ $0.hasSuffix(".md")})
 print(paths)
 
-for subPath in paths {
+for subPath in paths.sorted().reversed() {
     let file = (try? String.init(contentsOfFile: subPath)) ?? ""
     let lines = file.split(separator: "\n")
     let name = lines[0].dropFirst()
@@ -31,3 +31,5 @@ for subPath in paths {
     let fileName = subPath.split(separator: "/").last ?? ""
     print("'<p class=\"command\"> rw-r--r-- 1 Tbxark staff \(time)  <a class=\"file\" href=\"https://github.com/TBXark/tbxark.github.io/blob/master/blog/\(fileName)\">\(name)</a></p>' +")
 }
+
+print(Date().timeIntervalSince1970)
