@@ -19,16 +19,18 @@ function handleCommand(cmd) {
               '<p class=\"command\"> https://github.com/TBXark/Ruler -> <a class=\"file\" href=\"https://github.com/TBXark/Ruler\">Ruler</a></p>' 
           break
       case "blog":
-          html += '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2017-02-18 14:48:00  <a class=\"file\">LeetCode</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-12-08 01:23:00  <a class=\"file\">写 PinterestSegement 中发现的一个问题</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-12-12 01:23:00  <a class=\"file\">让我们细数 iOS 开发中那些坑爹的变量的默认值</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-12-12 01:23:00  <a class=\"file\">Objective-C 的类变量</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-06-10 01:50:10  <a class=\"file\">使用泛型优化 UITableviewCell 的重用</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-08-12 01:30:00  <a class=\"file\">Android - 通用 Viewholder</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-05-18 14:50:00  <a class=\"file\">超快速为自己的 Github 项目创建 Cocoapod 仓库</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2015-10-29 15:08:27  <a class=\"file\">RxSwift 笔记</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2016-07-31 01:23:00  <a class=\"file\">用 Node.js 写简易爬虫</a></p>' +
-              '<p class=\"command\"> rw-r--r-- 1 Tbxark staff 2015-10-19 15:10:10  <a class=\"file\">Swift笔记</a></p>'
+          html += '<p class="command"> rw-r--r-- 1 Tbxark staff  2017-01-27 22:20:55  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-01-27-MinesWeeping.md"> 简易扫雷游戏</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2017-02-18 14:48:00   <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-02-180-My-LeetCode-Project.md"> LeetCode</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-12-08 01:23:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-12-08-Swift-Pinterst.md"> 写 PinterestSegement 中发现的一个问题</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-12-12 01:23:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-12-16-fxxk-property.md"> 让我们细数 iOS 开发中那些坑爹的变量的默认值</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-12-12 01:23:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-12-12-Objective-c-class-property.md"> Objective-C 的类变量</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-06-10 01:50:10  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-06-10-TableViewWithT.md"> 使用泛型优化 UITableviewCell 的重用</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-08-12 01:30:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-08-12-Android-quick-viewholder.md"> Android - 通用 Viewholder</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-05-18 14:50:00   <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-05-18-Make-Cocoapod.md"> 超快速为自己的 Github 项目创建 Cocoapod 仓库</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2015-10-29 15:08:27  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2015-10-29-RxSwift-note.md"> RxSwift 笔记</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-07-31 01:23:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-07-31-Nodejs-Spider.md"> 用 Node.js 写简易爬虫</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  simple AR ruler app can measure length & area  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-09-26-ARuler.md">##### Ruler</a></p>' +
+          '<p class="command"> rw-r--r-- 1 Tbxark staff  2015-10-19 15:10:10  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2015-10-19-Swift-note.md"> Swift笔记</a></p>' 
           break
       case "ls":
           html += '' +
