@@ -19,7 +19,7 @@ function handleCommand(cmd) {
               '<p class=\"command\"> https://github.com/TBXark/Ruler -> <a class=\"file\" href=\"https://github.com/TBXark/Ruler\">Ruler</a></p>' 
           break
       case "blog":
-          html += '<p class="command"> rw-r--r-- 1 Tbxark staff  simple AR ruler app can measure length & area  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-09-26-ARuler.md"> Ruler</a></p>' +
+          html += '<p class="command"> rw-r--r-- 1 Tbxark staff  2017-09-26 12:00:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-09-26-ARuler.md"> Ruler</a></p>' +
           '<p class="command"> rw-r--r-- 1 Tbxark staff  2017-02-18 14:48:00   <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-02-180-My-LeetCode-Project.md"> LeetCode</a></p>' +
           '<p class="command"> rw-r--r-- 1 Tbxark staff  2017-01-27 22:20:55  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2017-01-27-MinesWeeping.md"> 简易扫雷游戏</a></p>' +
           '<p class="command"> rw-r--r-- 1 Tbxark staff  2016-12-12 01:23:00  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/2016-12-16-fxxk-property.md"> 让我们细数 iOS 开发中那些坑爹的变量的默认值</a></p>' +
