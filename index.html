@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,30 +9,33 @@
     <meta name="author" content="tbxark">
     <title>TBXark's Blog</title>
     <link href="./home.css" rel="stylesheet" />
-    <script src="./terminal1558846408.js"></script>
+    <script src="./terminal1558847913.js"></script>
 </head>
+
 <body>
     <div class="stretch-column-container">
         <div class="head-title">TBXark's Blog</div>
         <div class="stretch-column-container">
             <div class="windows bar">
-                <div class="windows-button" style="margin-left: 8px; background-color: #e94b35"></div>
-                <div class="windows-button" style="background-color: #f0f000"></div>
-                <div class="windows-button" style="background-color: #1aaf5c"></div>
+                <div class="windows-button" style="margin-left: 8px; background-color: #ff5a52"></div>
+                <div class="windows-button" style="background-color: #e6c029"></div>
+                <div class="windows-button" style="background-color: #52c22b"></div>
             </div>
-            <div class="windows stretch-column-container screen">
+            <div class="windows stretch-column-container screen" onclick="return startInput()">
                 <div id="cmd-history">
                 </div>
                 <div id="cmd-current" class="stretch-row-container">
                     <p class="command" style="margin-right: 0px">guest@tbxark:~$&nbsp;</p>
-                    <input id="cmdinput" class="command cmdline" style="margin-left: 0px" onkeydown="return handleInput(event)" autofocus />
+                    <input id="cmdinput" class="command cmdline" style="margin-left: 0px"
+                        onkeydown="return handleInput(event)" autofocus />
                 </div>
             </div>
             </di>
-            <div class="copyright">Copyright (c) TBXark</div>
+            <div class="copyright">Copyright&nbsp;<img class="avatar" src="./blog/images/2018-01-22-avatar-round.png">&nbsp;TBXark</div>
         </div>
 </body>
 <script>
     handleCommand("ls")
 </script>
+
 </html>

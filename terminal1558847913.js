@@ -6,6 +6,9 @@ function handleInput(e) {
       handleCommand(argv)
   }
 }
+function startInput() {
+    document.getElementById("cmdinput").focus()
+}
 function handleCommand(cmd) {
   var html = ''
   html += '<p class="command">guest@tbxark:~$ ' + cmd + '</p>'

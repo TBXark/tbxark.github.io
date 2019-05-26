@@ -101,6 +101,10 @@ body {
   font-size: 40px;
   text-align: center;
 }
+.avatar {
+  width: 12px;
+  height: 12px;
+}
 #cmd-current {
   margin-bottom: 20px;
 }
