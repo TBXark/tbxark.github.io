@@ -5,25 +5,22 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  display: -webkit-flex; 
+  display: -webkit-flex;
   display: flex;
 }
 .stretch-row-container {
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  display: -webkit-flex; 
+  display: -webkit-flex;
   display: flex;
 }
-
 .windows {
   max-width: 750px;
   width: 80%;
   align-self: center;
   display: flex;
 }
-
-
 .windows-button {
   border-radius: 100%;
   width: 15px;
@@ -96,7 +93,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-
 .head-title {
   font-family: monospace;
   color: #fff;
@@ -105,11 +101,9 @@ body {
   font-size: 40px;
   text-align: center;
 }
-
 #cmd-current {
   margin-bottom: 20px;
 }
-
 @media only screen and (max-width: 640px) {
   .windows {
     width: 100%;
@@ -118,4 +112,4 @@ body {
   .head-title {
     font-size: 30px;
   }
-} 
+}
