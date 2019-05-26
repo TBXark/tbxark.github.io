@@ -61,19 +61,28 @@ body {
   border-radius: 8px 8px 0px 0px;
   display: flex;
 }
-.screen {
+.screen-container {
   background-color: #292929;
-  min-height: 550px;
-  border-radius: 0px 0px 8px 8px;
-  margin: 0 auto;
+}
+.screen-display {
+  min-height: 450px;
+  max-height: 500px;
   overflow: scroll;
+  margin: 0 auto;
+}
+.screen-bottom {
+  height: 10px;
+  border-radius: 0px 0px 8px 8px;
 }
 .cmdline {
   outline: none;
   background-color: transparent;
-  margin: 0;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
   width: 100%;
+  min-height: 10px;
   border: none;
+  flex-grow: 1;
 }
 .command {
   color: #fff;
@@ -89,7 +98,7 @@ body {
   color: #959595;
   font-size: 10pt;
   text-align: center;
-  margin: 10px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -105,9 +114,7 @@ body {
   width: 12px;
   height: 12px;
 }
-#cmd-current {
-  margin-bottom: 20px;
-}
+
 @media only screen and (max-width: 640px) {
   .windows {
     width: 100%;

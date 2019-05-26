@@ -70,4 +70,6 @@ function handleCommand(cmd) {
 function addCmdResult(html) {
   var origin = document.getElementById("cmd-history").innerHTML
   document.getElementById("cmd-history").innerHTML = origin + html
+  var screen = document.getElementById("screen-container")
+  screen.scrollTop = screen.scrollHeight
 }
