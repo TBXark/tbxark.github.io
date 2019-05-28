@@ -74,7 +74,7 @@ body {
   height: 10px;
   border-radius: 0px 0px 8px 8px;
 }
-.cmdline {
+.cmd-line {
   outline: none;
   background-color: transparent;
   margin-bottom: 50px;
@@ -84,7 +84,7 @@ body {
   border: none;
   flex-grow: 1;
 }
-.command {
+.cmd-text {
   color: #fff;
   font-family: monospace;
   font-size: 12px;
