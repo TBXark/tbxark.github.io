@@ -38,13 +38,16 @@
             Copyright&nbsp;<img class="avatar" src="./images/avatar.png" />&nbsp;TBXark
             <br/>
             <br/>
-            <a  class="beian" href="//www.beian.miit.gov.cn">粤ICP备19071225号-1</a>
+            <a  id="beian" class="beian" href="//www.beian.miit.gov.cn">粤ICP备19071225号-1</a>
         </div>    
     </div>
 </body>
 <script>
     handleCommand("ls");
     handleCommand("blog")
+    if (document.location.host.indexOf(".cn") < 0) {
+        document.getElementById("beian").innerHTML = ""
+    }
 </script>
 
 </html>
