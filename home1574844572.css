@@ -115,6 +115,13 @@ body {
   height: 12px;
 }
 
+.beian {
+  font-size: 10px;
+  color: #959595;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 640px) {
   .windows {
     width: 100%;
