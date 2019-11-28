@@ -24,6 +24,9 @@ function handleCommand(cmd) {
     html += '<p class="cmd-text">guest@tbxark:~$ ' + cmd + '</p>'
     historyList.push(cmd)
     currentHistoryIndex = -1
+    if (cmd === undefined || com === null || cmd.trim().length == 0) {
+        return
+    }
     switch (cmd) {
         case "projects":
             html += '' +
