@@ -1,9 +1,0 @@
-name = "tbxark-com-static-site"
-type = "webpack"
-account_id = "2b411d692aec0f9101d8d198315724e8"
-workers_dev = true
-
-
-[site]
-bucket = "./"
-entry-point = "workers-site"
