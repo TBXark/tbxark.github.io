@@ -91,7 +91,7 @@ function handleCommand(cmd) {
       break;
 
     default:
-      html += '<p class="cmd-text">ERROR: unknow command</p>';
+      html += '<p class="cmd-text">ERROR: unknown command</p>';
       break;
   }
 
