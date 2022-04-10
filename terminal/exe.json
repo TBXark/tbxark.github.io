@@ -1,0 +1,27 @@
+[
+    {
+        "name": "github",
+        "type": "link",
+        "url": "https://github.com/tbxark"
+    },
+    {
+        "name": "twitter",
+        "type": "link",
+        "url": "https://twitter.com/tbxark"
+    },
+    {
+        "name": "weibo",
+        "type": "link",
+        "url": "https://weibo.com/tbxark"
+    },
+    {
+        "name": "blogs",
+        "type": "render",
+        "url": "./blogs.json"
+    },
+    {
+        "name": "projects",
+        "type": "render",
+        "url": "./projects.json"
+    }
+]
