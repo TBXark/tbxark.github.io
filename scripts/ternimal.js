@@ -77,7 +77,11 @@ async function loadResource() {
         target.innerHTML = "";
     };
 
-    const exe = await fetch("./terminal/exe.json").then((res) => res.json());
+    commandsHandler.pwd = () => {
+        addCmdResult('<p class="cmd-text">guest@tbxark:~$ ' + window.location.hostname + "</p>");
+    }
+
+    const exe = await fetch("./database/exe.json").then((res) => res.json());
     commandsHandler.ls = () => {
         const html = `<p class="cmd-text">${exe
             .map((e) => {
@@ -98,7 +102,7 @@ async function loadResource() {
     handleCommand("ls");
 
 
-    const blogs = await fetch("./terminal/blogs.json").then((res) => res.json());
+    const blogs = await fetch("./database/blogs.json").then((res) => res.json());
 
     commandsHandler.blogs = () => {
         const html = blogs
@@ -110,7 +114,7 @@ async function loadResource() {
     };
     handleCommand("blogs");
 
-    const projects = await fetch("./terminal/projects.json").then((res) =>
+    const projects = await fetch("./database/projects.json").then((res) =>
         res.json()
     );
     commandsHandler.projects = () => {
