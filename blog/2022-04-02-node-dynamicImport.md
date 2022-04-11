@@ -184,5 +184,38 @@ function dynamicImport(path, ...modules) {
 
 最后发现`vm`的代码要简洁很多，`Function`要许多奇技淫巧才能实现的功能，`vm`直接就能用。由于测试案例不够多，所以这个最终版的`Function`中不知道还有什么BUG，所以我还是选择了`vm`的版本
 
+### 后续
+
+在阅读Node.js过后得到导入临时模块的新思路。Node.js 目前有 `cjs`和`esm`两套模块系统，其中`cjs`可以进行操作缓存，`esm`目前不能操作缓存但是能自定义`loader`并在node启动时以参数的形式传入。
+
+所以我写了两种新的加载模块的方式。
+
+```js
+export function dynamicImportCjs(uri) {
+   const require = createRequire(import.meta.url);
+   const modulePath = path.resolve(uri);
+   if (require.cache[modulePath]) {
+     delete require.cache[modulePath];
+   } 
+   return require(modulePath);
+ }
+
+ export async function dynamicImportWithTempFile(uri) {
+   const raw = fs.readFileSync(uri, 'utf8');
+   const fileName = `temp-import-${new Date().getTime()}.js`;
+   const filePath = path.join(os.tmpdir(), fileName);
+   fs.writeFileSync(filePath, raw);
+   const module = await import(filePath);
+   fs.unlinkSync(filePath);
+   return module;
+ }
+
+```
+
+`cjs`每次加载模块前尝试清除缓存，`esm`则是每次创建一个临时文件进行模块导入，确保每次都是最新的代码。
+
+但是`esm`这种创建临时文件这种方法，因为旧的模块缓存没有清除，可能会导致内存泄露。所以最后在rmock中只保留了动态加载`cjs`的方法.
+
+
 
 
