@@ -107,7 +107,7 @@ async function loadResource() {
     commandsHandler.blogs = () => {
         const html = blogs
             .map((b) => {
-                return `<p class="cmd-text"> rw-r--r-- 1 Tbxark staff  ${b.date}  <a class="file" href="${b.fileName}"><strong>${b.title}</strong></a></p>`;
+                return `<p class="cmd-text"> rw-r--r-- 1 Tbxark staff  ${b.date}  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></p>`;
             })
             .join("\n");
         addCmdResult(html);
