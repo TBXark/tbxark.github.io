@@ -116,7 +116,7 @@ async function loadResource() {
     commandsHandler.projects = () => {
         const html = projects
             .map((p) => {
-                return `<p class="cmd-text"> ${p.link} -> <a class="file" href="${p.link}"><strong>${p.name}</strong></a></p>`;
+                return `<p class="cmd-text"> <a class="file" href="${p.link}"><strong>${p.name}</strong></a> -> ${p.link}</p>`;
             })
             .join("\n");
         addCmdResult(html);
