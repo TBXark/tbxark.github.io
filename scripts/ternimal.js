@@ -1,80 +1,90 @@
 const historyList = [];
 const commandsHandler = {};
-let currentHistoryIndex = -1;
+let currentHistoryIndex = 0;
+
+const cmdInput = document.getElementById("cmd-input");
+const cmdHistory = document.getElementById("cmd-history");
+const screenContainer = document.getElementById("screen-container");
+
+const template = {
+    cmdText: (text) => {
+        return `<p class="cmd-text">${text}</p>`;
+    },
+    blog: (b) => {
+        return `<p class="cmd-text"> rw-r--r-- 1 Tbxark staff  ${b.date}  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></p>`;
+    },
+    project: (p) => {
+        return `<p class="cmd-text"> <a class="file" href="${p.link}"><strong>${p.name}</strong></a> -> ${p.link}</p>`;
+    }
+}
 
 function startInput() {
-    document.getElementById("cmd-input").focus();
+    cmdInput.focus();
 }
 
 function addCmdResult(html) {
-    const origin = document.getElementById("cmd-history").innerHTML;
-    document.getElementById("cmd-history").innerHTML = origin + html;
-    const screen = document.getElementById("screen-container");
-    screen.scrollTop = screen.scrollHeight;
+    cmdHistory.innerHTML += html;
+    screenContainer.scrollTop = screenContainer.scrollHeight;
 }
 
 function handleShowHistory(isNext) {
-    const index =
-        currentHistoryIndex < 0 && !isNext
-            ? 0
-            : currentHistoryIndex + (isNext ? -1 : 1);
-
-    if (index < 0 || historyList.length == 0 || index >= historyList.length) {
+    if (historyList.length == 0) {
         return;
     }
-
-    const value = historyList[historyList.length - index - 1];
-    currentHistoryIndex = index;
-    const inputbar = document.getElementById("cmd-input");
-    inputbar.value = value;
-    inputbar.selectionEnd = value.length;
+    currentHistoryIndex = (historyList.length + (isNext ? 1 : -1) + currentHistoryIndex) % historyList.length;
+    cmdInput.value = historyList[currentHistoryIndex];
+    cmdInput.selectionEnd = cmdInput.value.length;
 }
 
 function handleCommand(cmd) {
-    addCmdResult('<p class="cmd-text">guest@tbxark:~$ ' + cmd + "</p>");
-    historyList.push(cmd);
-    currentHistoryIndex = -1;
     if (cmd === undefined || cmd === null || cmd.trim().length == 0) {
-        addCmdResult(html);
         return;
     }
+    addCmdResult(template.cmdText(`guest@tbxark:~$ ${cmd}`));
+    historyList.push(cmd);
+    currentHistoryIndex = 0;
     if (commandsHandler[cmd] !== undefined) {
         commandsHandler[cmd]();
     } else {
-        addCmdResult('<p class="cmd-text">ERROR: unknown command</p>');
+        addCmdResult(template.cmdText(`command not found: ${cmd}`));
     }
 }
 
 function handleAutoComplete() {
-    const inputbar = document.getElementById("cmd-input");
-    const argv = inputbar.value;
-
+    const argv = cmdInput.value;
     for (const c of Object.keys(commandsHandler)) {
         if (c.startsWith(argv)) {
-            inputbar.value = c;
+            cmdInput.value = c;
             break;
         }
     }
 }
 
 function handleInput(e) {
-    if (e.keyCode == 13) {
-        const inputbar = document.getElementById("cmd-input");
-        const argv = inputbar.value;
-        inputbar.value = "";
-        handleCommand(argv);
-    } else if (e.keyCode == 9) {
-        e.preventDefault();
-        handleAutoComplete();
-    } else if (e.keyCode == 38 || e.keyCode == 40) {
-        handleShowHistory(e.keyCode == 40);
+    switch (e.keyCode) {
+        case 38:
+        case 40: {
+            handleShowHistory(e.keyCode == 40);
+            break;
+        }
+        case 9: {
+            e.preventDefault();
+            handleAutoComplete();
+            break;
+        }
+        case 13: {
+            const inputbar = cmdInput;
+            const argv = inputbar.value;
+            inputbar.value = "";
+            handleCommand(argv);
+            break;
+        }
     }
 }
 
 async function loadResource() {
     commandsHandler.clear = () => {
-        const target = document.getElementById("cmd-history");
-        target.innerHTML = "";
+        cmdHistory.innerHTML = "";
     };
 
     commandsHandler.pwd = () => {
@@ -83,7 +93,7 @@ async function loadResource() {
 
     const exe = await fetch("./database/exe.json").then((res) => res.json());
     commandsHandler.ls = () => {
-        const html = `<p class="cmd-text">${exe
+        const html = exe
             .map((e) => {
                 if (e.type === "link") {
                     return `<a class="exe" href="${e.url}">${e.name}</a>`;
@@ -91,8 +101,8 @@ async function loadResource() {
                     return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;
                 }
             })
-            .join("\n")}</p>`;
-        addCmdResult(html);
+            .join("\n");
+        addCmdResult(template.cmdText(html));
     };
     for (const l of exe.filter((e) => e.type === "link")) {
         commandsHandler[l.name] = () => {
@@ -106,28 +116,31 @@ async function loadResource() {
 
     commandsHandler.blogs = () => {
         const html = blogs
-            .map((b) => {
-                return `<p class="cmd-text"> rw-r--r-- 1 Tbxark staff  ${b.date}  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></p>`;
-            })
+            .map((b) => template.blog(b))
             .join("\n");
         addCmdResult(html);
     };
     handleCommand("blogs");
 
-    const projects = await fetch("./database/projects.json").then((res) =>
-        res.json()
-    );
+    const projects = await fetch("./database/projects.json").then((res) => res.json());
     commandsHandler.projects = () => {
         const html = projects
-            .map((p) => {
-                return `<p class="cmd-text"> <a class="file" href="${p.link}"><strong>${p.name}</strong></a> -> ${p.link}</p>`;
-            })
+            .map((p) => template.project(p))
             .join("\n");
         addCmdResult(html);
     };
-
 }
 
+
+if (document.location.host.indexOf(".cn") > 0) {
+    document.getElementById("beian").style.display = "block";
+}
+screenContainer.addEventListener("click", function () {
+    startInput()
+});
+cmdInput.addEventListener("keydown", function (e) {
+    handleInput(event)
+});
 (async () => {
     await loadResource()
 })()
