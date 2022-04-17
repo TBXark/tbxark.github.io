@@ -1,90 +1,67 @@
 [
   {
     "name": "TKRubberIndicator",
-    "link": "https://github.com/TBXark/TKRubberIndicator"
+    "link": "https://github.com/TBXark/TKRubberIndicator",
+    "description": "A rubber animation pagecontrol"
   },
   {
     "name": "TKSwitcherCollection",
-    "link": "https://github.com/TBXark/TKSwitcherCollection"
+    "link": "https://github.com/TBXark/TKSwitcherCollection",
+    "description": "An animation switch collection"
   },
   {
     "name": "PinterestSegment",
-    "link": "https://github.com/TBXark/PinterestSegment"
+    "link": "https://github.com/TBXark/PinterestSegment",
+    "description": "A Pinterest-like segment control with masking animation."
   },
   {
     "name": "Ruler",
-    "link": "https://github.com/TBXark/Ruler"
-  },
-  {
-    "name": "TKRadarChart",
-    "link": "https://github.com/TBXark/TKRadarChart"
-  },
-  {
-    "name": "TKDotSegment",
-    "link": "https://github.com/TBXark/TKDotSegment"
+    "link": "https://github.com/TBXark/Ruler",
+    "description": "An AR ruler app can measure length & area"
   },
   {
     "name": "PasswordX",
-    "link": "https://github.com/TBXark/PasswordX"
-  },
-  {
-    "name": "github-backup",
-    "link": "https://github.com/TBXark/github-backup"
+    "link": "https://github.com/TBXark/PasswordX",
+    "description": "Offline password manager for iOS/macOS"
   },
   {
     "name": "JsonMapper",
-    "link": "https://github.com/TBXark/JsonMapper"
+    "link": "https://github.com/TBXark/JsonMapper",
+    "description": "JSONMapper/JSONElement makes it easier and safer to use JSON"
   },
   {
     "name": "swift-telegram-bot-api",
-    "link": "https://github.com/TBXark/swift-telegram-bot-api"
+    "link": "https://github.com/TBXark/swift-telegram-bot-api",
+    "description": "Swift Telegram Bot API and Telegram Bot API Generator"
   },
   {
     "name": "TrieRouter",
-    "link": "https://github.com/TBXark/TrieRouter"
-  },
-  {
-    "name": "autorun",
-    "link": "https://github.com/TBXark/autorun"
-  },
-  {
-    "name": "Either",
-    "link": "https://github.com/TBXark/Either"
+    "link": "https://github.com/TBXark/TrieRouter",
+    "description": "Simple application routing framework"
   },
   {
     "name": "rmock",
-    "link": "https://github.com/TBXark/rmock"
-  },
-  {
-    "name": "sqlmap-docker",
-    "link": "https://github.com/TBXark/sqlmap-docker"
+    "link": "https://github.com/TBXark/rmock",
+    "description": "Modify the http json response, no need for http capture and MitM."
   },
   {
     "name": "xcode-tool",
-    "link": "https://github.com/TBXark/xcode-tool"
+    "link": "https://github.com/TBXark/xcode-tool",
+    "description": "A collection of useful tools for xcode project"
   },
   {
     "name": "mweb-export",
-    "link": "https://github.com/TBXark/mweb-export"
+    "link": "https://github.com/TBXark/mweb-export",
+    "description": "MWeb libiary catalog generation tool"
   },
   {
     "name": "FlexLayout",
-    "link": "https://github.com/TBXark/FlexLayout"
-  },
-  {
-    "name": "cloudflare-worker-adapter",
-    "link": "https://github.com/TBXark/cloudflare-worker-adapter"
-  },
-  {
-    "name": "testmail-viewer",
-    "link": "https://github.com/TBXark/testmail-viewer"
-  },
-  {
-    "name": "vercel-api-demo",
-    "link": "https://github.com/TBXark/vercel-api-demo"
+    "link": "https://github.com/TBXark/FlexLayout",
+    "description": "Flex layout library similar to SwiftUI"
   },
   {
     "name": "proxy-render",
-    "link": "https://github.com/TBXark/proxy-render"
+    "link": "https://github.com/TBXark/proxy-render",
+    "description": "This is a tool to convert ss/ssr/vmess/trojan subscription links into config"
   }
 ]

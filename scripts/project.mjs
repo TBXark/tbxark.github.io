@@ -50,6 +50,7 @@ for (const repo of repos) {
     visableRepos.push({
       name: repo.name,
       link: repo.html_url,
+      description: repo.description,
     });
   }
 }

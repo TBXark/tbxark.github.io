@@ -7,14 +7,17 @@ const cmdHistory = document.getElementById("cmd-history");
 const screenContainer = document.getElementById("screen-container");
 
 const template = {
+    cmdWithUser: (text, cmdClass) => {
+        return `<p class="cmd-text"><a class="user">guest@tbxark:~$</a> <a class="${cmdClass || "input-exe"}">${text}</a></p>`;
+    },
     cmdText: (text) => {
         return `<p class="cmd-text">${text}</p>`;
     },
     blog: (b) => {
-        return `<p class="cmd-text"> rw-r--r-- 1 Tbxark staff  ${b.date}  <a class="file" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></p>`;
+        return `<p class="cmd-text"> rw-r--r-- Tbxark ${b.date}  <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></p>`;
     },
     project: (p) => {
-        return `<p class="cmd-text"> <a class="file" href="${p.link}"><strong>${p.name}</strong></a> -> ${p.link}</p>`;
+        return `<p class="cmd-text"> <a class="file link" href="${p.link}"><strong>${p.name}</strong></a>: ${p.description}</p>`;
     }
 }
 
@@ -40,7 +43,8 @@ function handleCommand(cmd) {
     if (cmd === undefined || cmd === null || cmd.trim().length == 0) {
         return;
     }
-    addCmdResult(template.cmdText(`guest@tbxark:~$ ${cmd}`));
+    const cmdClass = commandsHandler[cmd] === undefined ? "input-exe-error" : "input-exe"
+    addCmdResult(template.cmdWithUser(cmd, cmdClass));
     historyList.push(cmd);
     currentHistoryIndex = 0;
     if (commandsHandler[cmd] !== undefined) {
@@ -65,20 +69,31 @@ function handleInput(e) {
         case 38:
         case 40: {
             handleShowHistory(e.keyCode == 40);
+            checkInputStatus(cmdInput.value);
             break;
         }
         case 9: {
             e.preventDefault();
             handleAutoComplete();
+            checkInputStatus(cmdInput.value);
             break;
         }
         case 13: {
-            const inputbar = cmdInput;
-            const argv = inputbar.value;
-            inputbar.value = "";
+            const argv = cmdInput.value;
+            cmdInput.value = "";
             handleCommand(argv);
             break;
         }
+    }
+}
+
+function checkInputStatus(value) {
+    if (commandsHandler[value || cmdInput.value] !== undefined) {
+        cmdInput.classList.remove("input-exe-error");
+        cmdInput.classList.add("input-exe");
+    } else {
+        cmdInput.classList.remove("input-exe");
+        cmdInput.classList.add("input-exe-error");
     }
 }
 
@@ -88,7 +103,7 @@ async function loadResource() {
     };
 
     commandsHandler.pwd = () => {
-        addCmdResult('<p class="cmd-text">guest@tbxark:~$ ' + window.location.hostname + "</p>");
+        addCmdResult(template.cmdWithUser(window.location.hostname));
     }
 
     const exe = await fetch("./database/exe.json").then((res) => res.json());
@@ -96,7 +111,7 @@ async function loadResource() {
         const html = exe
             .map((e) => {
                 if (e.type === "link") {
-                    return `<a class="exe" href="${e.url}">${e.name}</a>`;
+                    return `<a class="exe link" href="${e.url}">${e.name}</a>`;
                 } else {
                     return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;
                 }
@@ -111,9 +126,7 @@ async function loadResource() {
     }
     handleCommand("ls");
 
-
     const blogs = await fetch("./database/blogs.json").then((res) => res.json());
-
     commandsHandler.blogs = () => {
         const html = blogs
             .map((b) => template.blog(b))
@@ -135,12 +148,9 @@ async function loadResource() {
 if (document.location.host.indexOf(".cn") > 0) {
     document.getElementById("beian").style.display = "block";
 }
-screenContainer.addEventListener("click", function () {
-    startInput()
-});
-cmdInput.addEventListener("keydown", function (e) {
-    handleInput(event)
-});
+screenContainer.onclick = () => startInput();
+cmdInput.onkeydown = (e) => handleInput(e);
+cmdInput.oninput = (e) => checkInputStatus(e.target.value);
 (async () => {
     await loadResource()
 })()

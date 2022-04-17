@@ -122,6 +122,22 @@ body {
   margin-top: 10px;
 }
 
+.link {
+  color:#69A2F8
+}
+
+.user {
+  color: #4C807F
+}
+
+.input-exe {
+  color: #9BA859 
+}
+
+.input-exe-error {
+  color: #E94034 
+}
+
 @media only screen and (max-width: 640px) {
   .windows {
     width: 100%;
