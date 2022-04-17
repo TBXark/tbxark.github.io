@@ -8,16 +8,16 @@ const screenContainer = document.getElementById("screen-container");
 
 const template = {
     cmdWithUser: (text, cmdClass) => {
-        return `<p class="cmd-text"><a class="user">guest@tbxark:~$</a> <a class="${cmdClass || "input-exe"}">${text}</a></p>`;
+        return `<div class="cmd-text"><span class="user">guest@tbxark:~$</span> <span class="${cmdClass || "input-exe"}" style="display: inline">${text}</span></div>`;
     },
     cmdText: (text) => {
-        return `<p class="cmd-text">${text}</p>`;
+        return `<div class="cmd-text">${text}</div>`;
     },
     blog: (b) => {
-        return `<p class="cmd-text"> rw-r--r-- Tbxark ${b.date}  <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></p>`;
+        return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark ${b.date}</span>  <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></div>`;
     },
     project: (p) => {
-        return `<p class="cmd-text"> <a class="file link" href="${p.link}"><strong>${p.name}</strong></a>: ${p.description}</p>`;
+        return `<div class="cmd-text"> <a class="file link" href="${p.link}"><strong>${p.name}</strong></a><span class="full-mode">: ${p.description}</span></div>`;
     }
 }
 

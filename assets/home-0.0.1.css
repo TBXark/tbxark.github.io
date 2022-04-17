@@ -143,6 +143,9 @@ body {
     width: 100%;
     margin: 0px 20px 0px 20px;
   }
+  .full-mode {
+    display: none;
+  }
   .head-title {
     font-size: 30px;
   }
