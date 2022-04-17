@@ -14,7 +14,7 @@ const template = {
         return `<div class="cmd-text">${text}</div>`;
     },
     blog: (b) => {
-        return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark ${b.date}</span>  <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></div>`;
+        return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(" ")[0]} <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></div>`;
     },
     project: (p) => {
         return `<div class="cmd-text"> <a class="file link" href="${p.link}"><strong>${p.name}</strong></a><span class="full-mode">: ${p.description}</span></div>`;
@@ -40,11 +40,11 @@ function handleShowHistory(isNext) {
 }
 
 function handleCommand(cmd) {
+    const cmdClass = commandsHandler[cmd] === undefined ? "input-exe-error" : "input-exe"
+    addCmdResult(template.cmdWithUser(cmd, cmdClass));
     if (cmd === undefined || cmd === null || cmd.trim().length == 0) {
         return;
     }
-    const cmdClass = commandsHandler[cmd] === undefined ? "input-exe-error" : "input-exe"
-    addCmdResult(template.cmdWithUser(cmd, cmdClass));
     historyList.push(cmd);
     currentHistoryIndex = 0;
     if (commandsHandler[cmd] !== undefined) {
@@ -141,7 +141,7 @@ async function loadResource() {
             .map((p) => template.project(p))
             .join("\n");
         addCmdResult(html);
-    };
+    }; 
 }
 
 
