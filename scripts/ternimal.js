@@ -21,6 +21,11 @@ const template = {
     }
 }
 
+
+function encodeHTML(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function startInput() {
     cmdInput.focus();
 }
@@ -50,7 +55,7 @@ function handleCommand(cmd) {
     if (commandsHandler[cmd] !== undefined) {
         commandsHandler[cmd]();
     } else {
-        addCmdResult(template.cmdText(`command not found: ${cmd}`));
+        addCmdResult(template.cmdText(`command not found: ${encodeHTML(cmd)}`));
     }
 }
 
