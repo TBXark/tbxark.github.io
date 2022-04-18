@@ -108,7 +108,7 @@ async function loadResource() {
     };
 
     commandsHandler.pwd = () => {
-        addCmdResult(template.cmdWithUser(window.location.hostname));
+        addCmdResult(template.cmdText(window.location.hostname));
     }
 
     const exe = await fetch("./database/exe.json").then((res) => res.json());
