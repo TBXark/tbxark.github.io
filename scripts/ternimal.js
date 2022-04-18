@@ -18,6 +18,13 @@ const template = {
     },
     project: (p) => {
         return `<div class="cmd-text"> <a class="file link" href="${p.link}"><strong>${p.name}</strong></a><span class="full-mode">: ${p.description}</span></div>`;
+    },
+    exe: (e) => {
+        if (e.type === "link") {
+            return `<a class="exe link" href="${e.url}">${e.name}</a>`;
+        } else {
+            return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;
+        }
     }
 }
 
@@ -113,17 +120,9 @@ async function loadResource() {
 
     const exe = await fetch("./database/exe.json").then((res) => res.json());
     commandsHandler.ls = () => {
-        const html = exe
-            .map((e) => {
-                if (e.type === "link") {
-                    return `<a class="exe link" href="${e.url}">${e.name}</a>`;
-                } else {
-                    return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;
-                }
-            })
-            .join("\n");
-        addCmdResult(template.cmdText(html));
+        addCmdResult(template.cmdText(exe.map(template.exe).join("\n")));
     };
+
     for (const l of exe.filter((e) => e.type === "link")) {
         commandsHandler[l.name] = () => {
             window.location = l.url;
@@ -133,19 +132,13 @@ async function loadResource() {
 
     const blogs = await fetch("./database/blogs.json").then((res) => res.json());
     commandsHandler.blogs = () => {
-        const html = blogs
-            .map((b) => template.blog(b))
-            .join("\n");
-        addCmdResult(html);
+        addCmdResult(blogs.map(template.blog).join("\n"));
     };
     handleCommand("blogs");
 
     const projects = await fetch("./database/projects.json").then((res) => res.json());
     commandsHandler.projects = () => {
-        const html = projects
-            .map((p) => template.project(p))
-            .join("\n");
-        addCmdResult(html);
+        addCmdResult(projects.map(template.project).join("\n"));
     }; 
 }
 
