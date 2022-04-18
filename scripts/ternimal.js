@@ -14,10 +14,10 @@ const template = {
         return `<div class="cmd-text">${text}</div>`;
     },
     blog: (b) => {
-        return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(" ")[0]} <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><strong>${b.title}</strong></a></div>`;
+        return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(" ")[0]} <a class="file link" href="https://github.com/TBXark/tbxark.github.io/blob/master/blog/${b.fileName}"><span>${b.title}</span></a></div>`;
     },
     project: (p) => {
-        return `<div class="cmd-text"> <a class="file link" href="${p.link}"><strong>${p.name}</strong></a><span class="full-mode">: ${p.description}</span></div>`;
+        return `<div class="cmd-text"> <a class="file link" href="${p.link}"><span>${p.name}</span></a><span class="full-mode">: ${p.description}</span></div>`;
     },
     exe: (e) => {
         if (e.type === "link") {
