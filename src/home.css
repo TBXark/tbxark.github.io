@@ -92,6 +92,7 @@ body {
   text-align: left;
   position: static;
   margin: 10px 10px 0px 10px;
+  font-weight: 500;
 }
 .copyright {
   width: 100%;
@@ -112,6 +113,8 @@ body {
   text-align: center;
 }
 .avatar {
+  margin-left: 8px;
+  margin-right: 8px;
   width: 12px;
   height: 12px;
 }

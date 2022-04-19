@@ -1,5 +1,5 @@
-import { argv } from "zx";
-import "zx/globals";
+// import { argv } from "zx";
+// import "zx/globals";
 
 
 async function fetchRepos(username, token) {

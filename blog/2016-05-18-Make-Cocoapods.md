@@ -1,4 +1,4 @@
-# 超快速为自己的 Github 项目创建 Cocoapod 仓库
+# 超快速为自己的 Github 项目创建 Cocoapods 仓库
 > 2016-05-18 14:50:00 
 
 ---
