@@ -1,12 +1,11 @@
 {
   "scripts": {
-      "preview": "serve -l 5000",
-      "blogs": "zx ./bin/blog.mjs -b ./blog -t ./api/blogs.json",
-      "projects": "zx ./bin/project.mjs -t ./api/projects.json",
-      "build": "zx ./bin/build.mjs"
+    "preview": "serve -l 5000",
+    "blogs": "zx ./bin/blog.mjs -b ./blog -t ./api/blogs.json",
+    "projects": "zx ./bin/project.mjs -t ./api/projects.json",
+    "build": "node ./bin/build.js"
   },
   "devDependencies": {
-    "serve": "^13.0.2",
-    "zx": "^6.1.0"
+    "fs": "^0.0.1-security"
   }
 }
