@@ -118,7 +118,7 @@ async function loadResource() {
         addCmdResult(template.cmdText(window.location.hostname));
     }
 
-    const exe = await fetch("./database/exe.json").then((res) => res.json());
+    const exe = await fetch("./api/exe.json").then((res) => res.json());
     commandsHandler.ls = () => {
         addCmdResult(template.cmdText(exe.map(template.exe).join("\n")));
     };
@@ -130,13 +130,13 @@ async function loadResource() {
     }
     handleCommand("ls");
 
-    const blogs = await fetch("./database/blogs.json").then((res) => res.json());
+    const blogs = await fetch("./api/blogs.json").then((res) => res.json());
     commandsHandler.blogs = () => {
         addCmdResult(blogs.map(template.blog).join("\n"));
     };
     handleCommand("blogs");
 
-    const projects = await fetch("./database/projects.json").then((res) => res.json());
+    const projects = await fetch("./api/projects.json").then((res) => res.json());
     commandsHandler.projects = () => {
         addCmdResult(projects.map(template.project).join("\n"));
     }; 
