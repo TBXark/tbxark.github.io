@@ -3,7 +3,7 @@
     "preview": "serve -l 5000",
     "blogs": "zx ./bin/blog.mjs -b ./blog -t ./api/blogs.json",
     "projects": "zx ./bin/project.mjs -t ./api/projects.json",
-    "build": "node ./bin/build.mjs"
+    "build": "node --harmony-top-level-await ./bin/build.mjs"
   },
   "devDependencies": {
     "fs": "^0.0.1-security"
