@@ -1,5 +1,3 @@
-#!/usr/bin/env zx
-
 import { argv } from "zx";
 import "zx/globals";
 
