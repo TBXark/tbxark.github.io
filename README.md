@@ -12,7 +12,7 @@ make projects # create /api/projects.json
 ```
 
 
-### Future
+### Feature
 - Support `tab` to complete the command
 - Support `up` and `down` to navigate the command history
 
