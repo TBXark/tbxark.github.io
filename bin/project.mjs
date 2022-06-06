@@ -4,13 +4,11 @@
 
 async function fetchRepos(username, token) {
   const store = {};
+  const un = encodeURIComponent(username);
   let page = 0;
-
   while (true) {
     let response = await fetch(
-        `https://api.github.com/search/repositories?q=user%3A${encodeURIComponent(
-            username,
-        )}&page=${page}`,
+        `https://api.github.com/search/repositories?q=user%3A${un}&page=${page}`,
         {
           method: 'GET',
           headers: {Authorization: `token ${token}`},
