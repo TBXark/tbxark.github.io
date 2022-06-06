@@ -5,10 +5,10 @@
 
 ### Usage
 ```bash
-make serve # serve on localhost:8080
-make build # build the site for cloudflare page
-make blogs # create /api/blogs.json
-make projects # create /api/projects.json
+npm run serve # serve on localhost:8080
+npm run build # build the site for cloudflare page
+npm run blogs # create /api/blogs.json
+npm run projects # create /api/projects.json
 ```
 
 
