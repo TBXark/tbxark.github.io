@@ -3,18 +3,18 @@
 
 
 async function fetchRepos(username, token) {
-  let store = {};
+  const store = {};
   let page = 0;
 
   while (true) {
     let response = await fetch(
-      `https://api.github.com/search/repositories?q=user%3A${encodeURIComponent(
-        username
-      )}&page=${page}`,
-      {
-        method: "GET",
-        headers: { Authorization: `token ${token}` },
-      }
+        `https://api.github.com/search/repositories?q=user%3A${encodeURIComponent(
+            username,
+        )}&page=${page}`,
+        {
+          method: 'GET',
+          headers: {Authorization: `token ${token}`},
+        },
     );
     response = await response.json();
     const total = response.total_count;
@@ -35,21 +35,20 @@ async function fetchRepos(username, token) {
 }
 
 
-let t = argv.t
+let t = argv.t;
 
 if (t) {
+  t = path.resolve(t);
 
-  t = path.resolve(t)
-
-  let repos = await fetchRepos("tbxark", process.env.HOMEBREW_GITHUB_API_TOKEN);
+  let repos = await fetchRepos('tbxark', process.env.HOMEBREW_GITHUB_API_TOKEN);
   repos = Object.values(repos)
-    .filter((repo) => repo.visibility === "public")
-    .filter((repo) => repo.archived === false)
-    .sort((a, b) => {
-      return b.stargazers_count - a.stargazers_count;
-    });
-  const yesOrNoChoices = { choices: ["y", "Y", "n", "N"] };
-  const yesOrNoToBoolean = { y: true, n: false, Y: true, N: false };
+      .filter((repo) => repo.visibility === 'public')
+      .filter((repo) => repo.archived === false)
+      .sort((a, b) => {
+        return b.stargazers_count - a.stargazers_count;
+      });
+  const yesOrNoChoices = {choices: ['y', 'Y', 'n', 'N']};
+  const yesOrNoToBoolean = {y: true, n: false, Y: true, N: false};
   const visableRepos = [];
   for (const repo of repos) {
     const show = await question(`Show ${repo.name}? (y/n): `, yesOrNoChoices);
@@ -64,5 +63,4 @@ if (t) {
 
   const fileContent = JSON.stringify(visableRepos, null, 2);
   fs.writeFileSync(t, fileContent);
-
 }

@@ -5,10 +5,10 @@
 
 ### Usage
 ```bash
-npm run preview # serve on localhost
-npm run build # build the site for cloudflare page
-npm run blogs # create /api/blogs.json
-npm run projects # create /api/projects.json
+make preview # serve on localhost
+make build # build the site for cloudflare page
+make blogs # create /api/blogs.json
+make projects # create /api/projects.json
 ```
 
 
