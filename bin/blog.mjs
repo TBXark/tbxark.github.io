@@ -11,9 +11,9 @@ if (b) {
 
   for (const file of files) {
     const content = await fs.readFile(`${b}/${file}`, 'utf8');
-    const lines = content.split('\n');
-    const title = lines[0].startsWith('#') ? lines[0].replace(/# */g, '') : null;
-    const date = lines[1].startsWith('>') ? lines[1].replace(/> */g, '') : null;
+    const l = content.split('\n');
+    const title = l[0].startsWith('#') ? l[0].replace(/# */g, '') : null;
+    const date = l[1].startsWith('>') ? l[1].replace(/> */g, '') : null;
     if (title && date) {
       blogs.push({
         title: title,
