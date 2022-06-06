@@ -5,7 +5,7 @@
 
 ### Usage
 ```bash
-npm run serve # serve on localhost:8080
+npm run preview # serve on localhost
 npm run build # build the site for cloudflare page
 npm run blogs # create /api/blogs.json
 npm run projects # create /api/projects.json
