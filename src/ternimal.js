@@ -141,6 +141,8 @@ async function loadResource() {
   commandsHandler.projects = () => {
     addCmdResult(projects.map(template.project).join('\n'));
   };
+
+  console.log("This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io")
 }
 
 
