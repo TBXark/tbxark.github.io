@@ -17,7 +17,7 @@ async function fetchRepos(username, token) {
     response = await response.json();
     const total = response.total_count;
     response = response.items;
-    if (response.length == 0) {
+    if (response.length === 0) {
       break;
     }
     for (const repo of response) {

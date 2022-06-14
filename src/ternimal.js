@@ -44,7 +44,7 @@ function addCmdResult(html) {
 }
 
 function handleShowHistory(isNext) {
-  if (historyList.length == 0) {
+  if (historyList.length === 0) {
     return;
   }
   currentHistoryIndex = (historyList.length + (isNext ? 1 : -1) + currentHistoryIndex) % historyList.length; //eslint-disable-line
@@ -55,7 +55,7 @@ function handleShowHistory(isNext) {
 function handleCommand(cmd) {
   const cmdClass = commandsHandler[cmd] === undefined ? 'input-exe-error' : 'input-exe'; //eslint-disable-line
   addCmdResult(template.cmdWithUser(cmd, cmdClass));
-  if (cmd === undefined || cmd === null || cmd.trim().length == 0) {
+  if (cmd === undefined || cmd === null || cmd.trim().length === 0) {
     return;
   }
   historyList.push(cmd);
@@ -81,7 +81,7 @@ function handleInput(e) {
   switch (e.keyCode) {
     case 38:
     case 40: {
-      handleShowHistory(e.keyCode == 40);
+      handleShowHistory(e.keyCode === 40);
       checkInputStatus(cmdInput.value);
       break;
     }
@@ -142,7 +142,7 @@ async function loadResource() {
     addCmdResult(projects.map(template.project).join('\n'));
   };
 
-  console.log("This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io")
+  console.log('This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io');
 }
 
 
