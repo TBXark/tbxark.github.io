@@ -31,6 +31,6 @@ projects # list projects
 
 ### Links
 
-Origin: https://tbxark.com
+Origin: https://www.tbxark.com
 
-China Mirrors: https://tbxark.cn
+China Mirrors: https://www.tbxark.cn
