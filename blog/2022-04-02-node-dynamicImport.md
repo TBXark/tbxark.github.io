@@ -217,5 +217,11 @@ export function dynamicImportCjs(uri) {
 但是`esm`这种创建临时文件这种方法，因为旧的模块缓存没有清除，可能会导致内存泄露。所以最后在rmock中只保留了动态加载`cjs`的方法.
 
 
+### 后续的后续
+
+最后通过替换中间件的方法解决了替换路由
+https://github.com/TBXark/rmock/blob/9ae2f1cbc781c7bf8fd38c23b4143719ca4f4730/lib/server.mjs#L30
+
+
 
 
