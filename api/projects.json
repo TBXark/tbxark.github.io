@@ -25,16 +25,6 @@
     "description": "An AR ruler app can measure length & area"
   },
   {
-    "name": "TKRadarChart",
-    "link": "https://github.com/TBXark/TKRadarChart",
-    "description": "A customizable radar chart  in Swift"
-  },
-  {
-    "name": "TKDotSegment",
-    "link": "https://github.com/TBXark/TKDotSegment",
-    "description": "TKDotSegment is a segment with dot animation"
-  },
-  {
     "name": "PasswordX",
     "link": "https://github.com/TBXark/PasswordX",
     "description": "Offline password manager for iOS/macOS"
@@ -43,11 +33,6 @@
     "name": "github-backup",
     "link": "https://github.com/TBXark/github-backup",
     "description": "A tool for backing up all GitHub repositories locally."
-  },
-  {
-    "name": "ScrollViewThumbnail",
-    "link": "https://github.com/TBXark/ScrollViewThumbnail",
-    "description": "Quickly create thumbnails for zoomed views in UIScrollview with just a single line of code."
   },
   {
     "name": "JSONElement",
@@ -85,11 +70,6 @@
     "description": "Run your script without Cloudflare Workers."
   },
   {
-    "name": "Either",
-    "link": "https://github.com/TBXark/Either",
-    "description": "An implementation of Either type in Swift"
-  },
-  {
     "name": "rmock",
     "link": "https://github.com/TBXark/rmock",
     "description": "Modify HTTP JSON responses without needing HTTP capture and MitM."
@@ -108,11 +88,6 @@
     "name": "xcode-tool",
     "link": "https://github.com/TBXark/xcode-tool",
     "description": "A collection of useful tools for Xcode projects."
-  },
-  {
-    "name": "ResizeableScrollView",
-    "link": "https://github.com/TBXark/ResizeableScrollView",
-    "description": null
   },
   {
     "name": "testmail-viewer",
