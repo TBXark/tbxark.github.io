@@ -20,29 +20,9 @@
     "description": "A Pinterest-like segment control with masking animation."
   },
   {
-    "name": "Ruler",
-    "link": "https://github.com/TBXark/Ruler",
-    "description": "An AR ruler app can measure length & area"
-  },
-  {
-    "name": "PasswordX",
-    "link": "https://github.com/TBXark/PasswordX",
-    "description": "Offline password manager for iOS/macOS"
-  },
-  {
     "name": "github-backup",
     "link": "https://github.com/TBXark/github-backup",
     "description": "A tool for backing up all GitHub repositories locally."
-  },
-  {
-    "name": "JSONElement",
-    "link": "https://github.com/TBXark/JSONElement",
-    "description": "JSONElement makes it easier and safer to use JSON"
-  },
-  {
-    "name": "chatgpt-prompt-helper",
-    "link": "https://github.com/TBXark/chatgpt-prompt-helper",
-    "description": "A Tampermonkey script for quickly copying prompts in the web version of ChatGPT."
   },
   {
     "name": "FlexLayout",
@@ -50,19 +30,9 @@
     "description": "Flex layout library similar to SwiftUI"
   },
   {
-    "name": "poe-telegram-bot",
-    "link": "https://github.com/TBXark/poe-telegram-bot",
-    "description": "A lightweight poe chatbot for telegram"
-  },
-  {
     "name": "TrieRouter",
     "link": "https://github.com/TBXark/TrieRouter",
     "description": "A simple framework for application routing."
-  },
-  {
-    "name": "mweb-export",
-    "link": "https://github.com/TBXark/mweb-export",
-    "description": "A tool for generating directories from MWeb files."
   },
   {
     "name": "cloudflare-worker-adapter",
@@ -70,28 +40,8 @@
     "description": "Run your script without Cloudflare Workers."
   },
   {
-    "name": "rmock",
-    "link": "https://github.com/TBXark/rmock",
-    "description": "Modify HTTP JSON responses without needing HTTP capture and MitM."
-  },
-  {
-    "name": "temporary-encrypted-clipboard",
-    "link": "https://github.com/TBXark/temporary-encrypted-clipboard",
-    "description": "Clipboard encryption script for secure password transfer across devices."
-  },
-  {
     "name": "chat-bot-go",
     "link": "https://github.com/TBXark/chat-bot-go",
     "description": "A lightweight chatgpt bot for telegram"
-  },
-  {
-    "name": "xcode-tool",
-    "link": "https://github.com/TBXark/xcode-tool",
-    "description": "A collection of useful tools for Xcode projects."
-  },
-  {
-    "name": "testmail-viewer",
-    "link": "https://github.com/TBXark/testmail-viewer",
-    "description": "An online preview tool for Testmail."
   }
 ]
