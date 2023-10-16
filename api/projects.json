@@ -20,9 +20,34 @@
     "description": "A Pinterest-like segment control with masking animation."
   },
   {
+    "name": "Ruler",
+    "link": "https://github.com/TBXark/Ruler",
+    "description": "An AR ruler app can measure length & area"
+  },
+  {
+    "name": "TKRadarChart",
+    "link": "https://github.com/TBXark/TKRadarChart",
+    "description": "A customizable radar chart  in Swift"
+  },
+  {
+    "name": "TKDotSegment",
+    "link": "https://github.com/TBXark/TKDotSegment",
+    "description": "TKDotSegment is a segment with dot animation"
+  },
+  {
+    "name": "PasswordX",
+    "link": "https://github.com/TBXark/PasswordX",
+    "description": "Offline password manager for iOS/macOS"
+  },
+  {
     "name": "github-backup",
     "link": "https://github.com/TBXark/github-backup",
     "description": "A tool for backing up all GitHub repositories locally."
+  },
+  {
+    "name": "numberbarn2telegram",
+    "link": "https://github.com/TBXark/numberbarn2telegram",
+    "description": "Forward the text message from NumberBarn to Telegram."
   },
   {
     "name": "FlexLayout",
@@ -35,13 +60,43 @@
     "description": "A simple framework for application routing."
   },
   {
+    "name": "swift-telegram-bot-api",
+    "link": "https://github.com/TBXark/swift-telegram-bot-api",
+    "description": "Swift Telegram Bot API and Telegram Bot API Generator"
+  },
+  {
     "name": "cloudflare-worker-adapter",
     "link": "https://github.com/TBXark/cloudflare-worker-adapter",
     "description": "Run your script without Cloudflare Workers."
   },
   {
-    "name": "chat-bot-go",
-    "link": "https://github.com/TBXark/chat-bot-go",
-    "description": "A lightweight chatgpt bot for telegram"
+    "name": "mail2telegram",
+    "link": "https://github.com/TBXark/mail2telegram",
+    "description": "Forward email to telegram"
+  },
+  {
+    "name": "testmail-viewer",
+    "link": "https://github.com/TBXark/testmail-viewer",
+    "description": "An online preview tool for Testmail."
+  },
+  {
+    "name": "rmock",
+    "link": "https://github.com/TBXark/rmock",
+    "description": "Modify HTTP JSON responses without needing HTTP capture and MitM."
+  },
+  {
+    "name": "dart_router",
+    "link": "https://github.com/TBXark/dart_router",
+    "description": "A simple framework for application routing."
+  },
+  {
+    "name": "mweb-export",
+    "link": "https://github.com/TBXark/mweb-export",
+    "description": "A tool for generating directories from MWeb files."
+  },
+  {
+    "name": "xcode-tool",
+    "link": "https://github.com/TBXark/xcode-tool",
+    "description": "A collection of useful tools for Xcode projects."
   }
 ]
