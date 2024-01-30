@@ -23,5 +23,9 @@
         "name": "projects",
         "type": "render",
         "url": "./projects.json"
+    },
+    {
+        "name": "help",
+        "type": "command"
     }
 ]

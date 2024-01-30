@@ -1,5 +1,10 @@
 const historyList = [];
 const commandsHandler = {};
+const remoteDataCache = {
+  exe: null,
+  blogs: null,
+  projects: null,
+};
 let currentHistoryIndex = 0;
 
 const cmdInput = document.getElementById('cmd-input');
@@ -110,7 +115,7 @@ function checkInputStatus(value) {
   }
 }
 
-async function loadResource() {
+function bindCommand() {
   commandsHandler.clear = () => {
     cmdHistory.innerHTML = '';
   };
@@ -119,39 +124,63 @@ async function loadResource() {
     addCmdResult(template.cmdText(window.location.hostname));
   };
 
-  const exe = await fetch('./api/exe.json').then((res) => res.json());
+
+  commandsHandler.help = () => {
+    const space = '&nbsp;&nbsp;&nbsp;&nbsp;';
+    addCmdResult(template.cmdText('Welcome to tbxark\'s blog!'));
+    addCmdResult(template.cmdText('Usage:'));
+    addCmdResult(template.cmdText(`${space}<strong>ls</strong> - list all commands`));
+    addCmdResult(template.cmdText(`${space}<strong>pwd</strong> - show current location`));
+    addCmdResult(template.cmdText(`${space}<strong>clear</strong> - clear screen`));
+    addCmdResult(template.cmdText(`${space}<strong>blogs</strong> - list all blogs`));
+    addCmdResult(template.cmdText(`${space}<strong>projects</strong> - list all projects`));
+    addCmdResult(template.cmdText(`${space}<strong>help</strong> - show help`));
+
+  };
+
   commandsHandler.ls = () => {
+    const exe = remoteDataCache.exe || [];
     addCmdResult(template.cmdText(exe.map(template.exe).join('\n')));
   };
 
+
+  commandsHandler.blogs = () => {
+    const blogs = remoteDataCache.blogs || [];
+    addCmdResult(blogs.map(template.blog).join('\n'));
+  };
+
+  commandsHandler.projects = () => {
+    const projects = remoteDataCache.projects || [];
+    addCmdResult(projects.map(template.project).join('\n'));
+  };
+
+
+  console.log('This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io');
+}
+
+function initTerminal() {
+  if (document.location.host.indexOf('.cn') > 0) {
+    document.getElementById('beian').style.display = 'block';
+  }
+  bindCommand()
+  screenContainer.onclick = () => startInput();
+  cmdInput.onkeydown = (e) => handleInput(e);
+  cmdInput.oninput = (e) => checkInputStatus(e.target.value);
+}
+
+(async () => {
+  initTerminal()
+  const exe = await fetch('./api/exe.json').then((res) => res.json()).catch((e) => []);
+  const blogs = await fetch('./api/blogs.json').then((res) => res.json()).catch((e) => []);
+  const projects = await fetch('./api/projects.json').then((res) => res.json()).catch((e) => []);
   for (const l of exe.filter((e) => e.type === 'link')) {
     commandsHandler[l.name] = () => {
       window.location = l.url;
     };
   }
+  remoteDataCache.exe = exe;
+  remoteDataCache.blogs = blogs;
+  remoteDataCache.projects = projects;
   handleCommand('ls');
-
-  const blogs = await fetch('./api/blogs.json').then((res) => res.json());
-  commandsHandler.blogs = () => {
-    addCmdResult(blogs.map(template.blog).join('\n'));
-  };
   handleCommand('blogs');
-
-  const projects = await fetch('./api/projects.json').then((res) => res.json());
-  commandsHandler.projects = () => {
-    addCmdResult(projects.map(template.project).join('\n'));
-  };
-
-  console.log('This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io');
-}
-
-
-if (document.location.host.indexOf('.cn') > 0) {
-  document.getElementById('beian').style.display = 'block';
-}
-screenContainer.onclick = () => startInput();
-cmdInput.onkeydown = (e) => handleInput(e);
-cmdInput.oninput = (e) => checkInputStatus(e.target.value);
-(async () => {
-  await loadResource();
 })();
