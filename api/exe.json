@@ -16,13 +16,11 @@
     },
     {
         "name": "blogs",
-        "type": "render",
-        "url": "./blogs.json"
+        "type": "command"
     },
     {
         "name": "projects",
-        "type": "render",
-        "url": "./projects.json"
+        "type": "command"
     },
     {
         "name": "help",
