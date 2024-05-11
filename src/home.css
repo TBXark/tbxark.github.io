@@ -64,6 +64,10 @@ body {
 }
 .screen-container {
   background-color: #292929;
+  scrollbar-width: none;
+}
+.screen-container::-webkit-scrollbar {
+    display: none;
 }
 .screen-display {
   min-height: 450px;
