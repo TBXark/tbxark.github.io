@@ -3,12 +3,13 @@
     "preview": "serve -l 5000",
     "blogs": "zx ./bin/blog.mjs -b ./blog -t ./api/blogs.json",
     "projects": "zx ./bin/project.mjs -t ./api/projects.json",
-    "lint": "eslint --fix --ext .js,.mjs .",
+    "lint": "eslint --fix src bin",
     "build": "node ./bin/build.mjs"
   },
   "devDependencies": {
-    "eslint": ">=5.16.0",
-    "eslint-config-google": "^0.14.0",
+    "@eslint/js": "^9.3.0",
+    "eslint": "9.x",
+    "globals": "^15.3.0",
     "serve": "^13.0.2",
     "zx": "^6.2.3"
   }

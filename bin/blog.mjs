@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // import { argv } from "zx";
 // import "zx/globals";
 

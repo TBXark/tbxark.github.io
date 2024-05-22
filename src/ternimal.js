@@ -13,23 +13,23 @@ const screenContainer = document.getElementById('screen-container');
 
 const template = {
   cmdWithUser: (text, cmdClass) => {
-    return `<div class="cmd-text"><span class="user">guest@tbxark:~$</span> <span class="${cmdClass || 'input-exe'}" style="display: inline">${text}</span></div>`; //eslint-disable-line
+    return `<div class="cmd-text"><span class="user">guest@tbxark:~$</span> <span class="${cmdClass || 'input-exe'}" style="display: inline">${text}</span></div>`;  
   },
   cmdText: (text) => {
     return `<div class="cmd-text">${text}</div>`;
   },
   blog: (b) => {
     const blogHost = 'https://github.com/TBXark/tbxark.github.io/blob/master/blog';
-    return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(' ')[0]} <a class="file link" href="${blogHost}/${b.fileName}"><span>${b.title}</span></a></div>`; //eslint-disable-line
+    return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(' ')[0]} <a class="file link" href="${blogHost}/${b.fileName}"><span>${b.title}</span></a></div>`;  
   },
   project: (p) => {
-    return `<div class="cmd-text"> <a class="file link" href="${p.link}"><span>${p.name}</span></a><span class="full-mode">: ${p.description}</span></div>`; //eslint-disable-line
+    return `<div class="cmd-text"> <a class="file link" href="${p.link}"><span>${p.name}</span></a><span class="full-mode">: ${p.description}</span></div>`;  
   },
   exe: (e) => {
     if (e.type === 'link') {
       return `<a class="exe link" href="${e.url}">${e.name}</a>`;
     } else {
-      return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`; //eslint-disable-line
+      return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;  
     }
   },
 };
@@ -52,13 +52,13 @@ function handleShowHistory(isNext) {
   if (historyList.length === 0) {
     return;
   }
-  currentHistoryIndex = (historyList.length + (isNext ? 1 : -1) + currentHistoryIndex) % historyList.length; //eslint-disable-line
+  currentHistoryIndex = (historyList.length + (isNext ? 1 : -1) + currentHistoryIndex) % historyList.length;  
   cmdInput.value = historyList[currentHistoryIndex];
   cmdInput.selectionEnd = cmdInput.value.length;
 }
 
 function handleCommand(cmd) {
-  const cmdClass = commandsHandler[cmd] === undefined ? 'input-exe-error' : 'input-exe'; //eslint-disable-line
+  const cmdClass = commandsHandler[cmd] === undefined ? 'input-exe-error' : 'input-exe';  
   addCmdResult(template.cmdWithUser(cmd, cmdClass));
   if (cmd === undefined || cmd === null || cmd.trim().length === 0) {
     return;
@@ -170,9 +170,9 @@ function initTerminal() {
 
 (async () => {
   initTerminal()
-  const exe = await fetch('./api/exe.json').then((res) => res.json()).catch((e) => []);
-  const blogs = await fetch('./api/blogs.json').then((res) => res.json()).catch((e) => []);
-  const projects = await fetch('./api/projects.json').then((res) => res.json()).catch((e) => []);
+  const exe = await fetch('./api/exe.json').then((res) => res.json()).catch(() => []);
+  const blogs = await fetch('./api/blogs.json').then((res) => res.json()).catch(() => []);
+  const projects = await fetch('./api/projects.json').then((res) => res.json()).catch(() => []);
   for (const l of exe.filter((e) => e.type === 'link')) {
     commandsHandler[l.name] = () => {
       window.location = l.url;
