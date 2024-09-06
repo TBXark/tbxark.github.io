@@ -10,4 +10,4 @@ projects:
 	npm run projects
 
 build:
-	node ./bin/build.mjs
+	node ./bin/build.js
