@@ -13,23 +13,39 @@ const screenContainer = document.getElementById('screen-container');
 
 const template = {
   cmdWithUser: (text, cmdClass) => {
-    return `<div class="cmd-text"><span class="user">guest@tbxark:~$</span> <span class="${cmdClass || 'input-exe'}" style="display: inline">${text}</span></div>`;  
+    return `
+    <div class="cmd-text">
+      <span class="user">guest@tbxark:~$</span>
+      <span class="${cmdClass || 'input-exe'}" style="display: inline">${text}</span>
+    </div>`;
   },
   cmdText: (text) => {
     return `<div class="cmd-text">${text}</div>`;
   },
   blog: (b) => {
     const blogHost = 'https://github.com/TBXark/tbxark.github.io/blob/master/blog';
-    return `<div class="cmd-text"> <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(' ')[0]} <a class="file link" href="${blogHost}/${b.fileName}"><span>${b.title}</span></a></div>`;  
+    return `
+    <div class="cmd-text">
+      <span class="full-mode">rw-r--r-- Tbxark </span>${b.date.split(' ')[0]} 
+      <a class="file link" href="${blogHost}/${b.fileName}">
+        <span>${b.title}</span>
+      </a>
+    </div>`;
   },
   project: (p) => {
-    return `<div class="cmd-text"> <a class="file link" href="${p.link}"><span>${p.name}</span></a><span class="full-mode">: ${p.description}</span></div>`;  
+    return `
+      <div class="cmd-text">
+        <a class="file link" href="${p.link}">
+          <span>${p.name}</span>
+        </a>
+        <span class="full-mode">: ${p.description}</span>
+      </div>`;
   },
   exe: (e) => {
     if (e.type === 'link') {
       return `<a class="exe link" href="${e.url}">${e.name}</a>`;
     } else {
-      return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;  
+      return `<a class="exe" onclick="return handleCommand('${e.name}')">${e.name}</a>`;
     }
   },
 };
@@ -52,13 +68,13 @@ function handleShowHistory(isNext) {
   if (historyList.length === 0) {
     return;
   }
-  currentHistoryIndex = (historyList.length + (isNext ? 1 : -1) + currentHistoryIndex) % historyList.length;  
+  currentHistoryIndex = (historyList.length + (isNext ? 1 : -1) + currentHistoryIndex) % historyList.length;
   cmdInput.value = historyList[currentHistoryIndex];
   cmdInput.selectionEnd = cmdInput.value.length;
 }
 
 function handleCommand(cmd) {
-  const cmdClass = commandsHandler[cmd] === undefined ? 'input-exe-error' : 'input-exe';  
+  const cmdClass = commandsHandler[cmd] === undefined ? 'input-exe-error' : 'input-exe';
   addCmdResult(template.cmdWithUser(cmd, cmdClass));
   if (cmd === undefined || cmd === null || cmd.trim().length === 0) {
     return;
@@ -153,7 +169,6 @@ function bindCommand() {
     const projects = remoteDataCache.projects || [];
     addCmdResult(projects.map(template.project).join('\n'));
   };
-
 
   console.log('This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io');
 }

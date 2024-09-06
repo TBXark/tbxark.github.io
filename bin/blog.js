@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
-// import { argv } from "zx";
-// import "zx/globals";
+import { argv } from "zx";
+import "zx/globals";
 
 let b = argv.b;
 let t = argv.t;

@@ -1,4 +1,4 @@
- 
+
 import fs from 'fs';
 import https from 'https';
 
@@ -35,7 +35,7 @@ const styleSHA = await fetchFileSHA(repo, 'src/home.css');
 const scriptSHA = await fetchFileSHA(repo, 'src/ternimal.js');
 
 const indexHTML = fs.readFileSync('index.html', 'utf8')
-    .replace('__STYLE_SHA__', styleSHA)
-    .replace('__SCRIPT_SHA__', scriptSHA);
+  .replace('__STYLE_SHA__', styleSHA)
+  .replace('__SCRIPT_SHA__', scriptSHA);
 
 fs.writeFileSync('index.html', indexHTML);
