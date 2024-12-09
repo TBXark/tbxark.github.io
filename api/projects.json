@@ -2,7 +2,7 @@
   {
     "name": "ChatGPT-Telegram-Workers",
     "link": "https://github.com/TBXark/ChatGPT-Telegram-Workers",
-    "description": "Deploy your own Telegram ChatGPT bot on Cloudflare Workers with ease."
+    "description": "Easily deploy your Telegram ChatGPT bot on Cloudflare Workers (or Vercel, Docker...)."
   },
   {
     "name": "TKRubberIndicator",
@@ -30,6 +30,16 @@
     "description": "Forward email to telegram with Cloudflare Email Routing"
   },
   {
+    "name": "rmtrash",
+    "link": "https://github.com/TBXark/rmtrash",
+    "description": "rmtrash is a small utility that will move the file to macOS's Trash rather than obliterating the file (as rm does)."
+  },
+  {
+    "name": "shell-ask",
+    "link": "https://github.com/TBXark/shell-ask",
+    "description": "Ask LLM directly from your terminal using a pure bash script"
+  },
+  {
     "name": "github-backup",
     "link": "https://github.com/TBXark/github-backup",
     "description": "A simple tool to backup github repository to gitea or other provider."
@@ -45,8 +55,23 @@
     "description": "A simple framework for application routing."
   },
   {
-    "name": "shell-ask",
-    "link": "https://github.com/TBXark/shell-ask",
-    "description": "Ask LLM directly from your terminal using a pure bash script"
+    "name": "sphere",
+    "link": "https://github.com/TBXark/sphere",
+    "description": "A multi-server application template"
+  },
+  {
+    "name": "cloudflare-worker-adapter",
+    "link": "https://github.com/TBXark/cloudflare-worker-adapter",
+    "description": "Running your Cloudflare Workers application locally."
+  },
+  {
+    "name": "github-status",
+    "link": "https://github.com/TBXark/github-status",
+    "description": "Generate SVG cards showing your GitHub statistics and programming language distribution"
+  },
+  {
+    "name": "telegram-bot-api-types",
+    "link": "https://github.com/TBXark/telegram-bot-api-types",
+    "description": "This is a project of a type definition file for the Telegram Bot API that generates multilingual automatically."
   }
 ]
