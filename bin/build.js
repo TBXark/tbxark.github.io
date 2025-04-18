@@ -32,7 +32,7 @@ function fetchFileSHA(repo, filePath) {
 
 const repo = 'TBXark/tbxark.github.io';
 const styleSHA = await fetchFileSHA(repo, 'src/home.css');
-const scriptSHA = await fetchFileSHA(repo, 'src/ternimal.js');
+const scriptSHA = await fetchFileSHA(repo, 'src/terminal.js');
 
 const indexHTML = fs.readFileSync('index.html', 'utf8')
   .replace('__STYLE_SHA__', styleSHA)
