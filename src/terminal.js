@@ -34,12 +34,13 @@ const template = {
   },
   project: (p) => {
     return `
-      <div class="cmd-text">
-        <a class="file link" href="${p.link}">
-          <span>${p.name}</span>
-        </a>
-        <span class="full-mode">: ${p.description}</span>
-      </div>`;
+    <div class="cmd-text project-line">
+      <span class="terminal-prompt">├──</span>
+      <a class="file link" href="${p.link}" target="_blank">
+        <span>${p.name}</span>
+      </a>
+      <span class="project-desc"> - ${p.description}</span>
+    </div>`;
   },
   exe: (e) => {
     if (e.type === 'link') {

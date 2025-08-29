@@ -1,5 +1,10 @@
 [
   {
+    "name": "sphere",
+    "link": "https://github.com/go-sphere/sphere",
+    "description": "Monolithic-first toolkit with codegen for contracts, errors, stubs, and clients"
+  },
+  {
     "name": "ChatGPT-Telegram-Workers",
     "link": "https://github.com/TBXark/ChatGPT-Telegram-Workers",
     "description": "Easily deploy your Telegram ChatGPT bot on Cloudflare Workers (or Vercel, Docker...)."
@@ -10,19 +15,9 @@
     "description": "A rubber animation pagecontrol"
   },
   {
-    "name": "TKSwitcherCollection",
-    "link": "https://github.com/TBXark/TKSwitcherCollection",
-    "description": "An animation switch collection"
-  },
-  {
-    "name": "PinterestSegment",
-    "link": "https://github.com/TBXark/PinterestSegment",
-    "description": "A Pinterest-like segment control with masking animation."
-  },
-  {
-    "name": "Ruler",
-    "link": "https://github.com/TBXark/Ruler",
-    "description": "An AR ruler app can measure length & area"
+    "name": "mcp-proxy",
+    "link": "https://github.com/TBXark/mcp-proxy",
+    "description": "An MCP proxy server that aggregates and serves multiple MCP resource servers through a single HTTP server."
   },
   {
     "name": "mail2telegram",
@@ -35,19 +30,14 @@
     "description": "rmtrash is a small utility that will move the file to macOS's Trash rather than obliterating the file (as rm does)."
   },
   {
-    "name": "shell-ask",
-    "link": "https://github.com/TBXark/shell-ask",
-    "description": "Ask LLM directly from your terminal using a pure bash script"
-  },
-  {
     "name": "github-backup",
     "link": "https://github.com/TBXark/github-backup",
     "description": "A simple tool to backup github repository to gitea or other provider."
   },
   {
-    "name": "FlexLayout",
-    "link": "https://github.com/TBXark/FlexLayout",
-    "description": "Flex layout library similar to SwiftUI"
+    "name": "shell-ask",
+    "link": "https://github.com/TBXark/shell-ask",
+    "description": "Ask LLM directly from your terminal using a pure bash script"
   },
   {
     "name": "TrieRouter",
@@ -55,14 +45,9 @@
     "description": "A simple framework for application routing."
   },
   {
-    "name": "sphere",
-    "link": "https://github.com/TBXark/sphere",
-    "description": "A multi-server application template"
-  },
-  {
-    "name": "cloudflare-worker-adapter",
-    "link": "https://github.com/TBXark/cloudflare-worker-adapter",
-    "description": "Running your Cloudflare Workers application locally."
+    "name": "telegram-bot-api-types",
+    "link": "https://github.com/TBXark/telegram-bot-api-types",
+    "description": "This is a project of a type definition file for the Telegram Bot API that generates multilingual automatically."
   },
   {
     "name": "github-status",
@@ -70,8 +55,8 @@
     "description": "Generate SVG cards showing your GitHub statistics and programming language distribution"
   },
   {
-    "name": "telegram-bot-api-types",
-    "link": "https://github.com/TBXark/telegram-bot-api-types",
-    "description": "This is a project of a type definition file for the Telegram Bot API that generates multilingual automatically."
+    "name": "gbvm",
+    "link": "https://github.com/TBXark/gbvm",
+    "description": "A command line tool to manage Go binaries installed in GOPATH/bin"
   }
 ]

@@ -1,4 +1,6 @@
 import { argv } from "zx";
+import fs from "fs";
+import path from "path";
 import "zx/globals";
 
 let b = argv.b;
