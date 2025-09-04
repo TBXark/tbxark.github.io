@@ -1,40 +1,25 @@
 import fs from 'fs';
-import https from 'https';
+import { fetchFileSHA } from './utils.js';
 
+const styleSHA = await fetchFileSHA('src/home.css');
+const scriptSHA = await fetchFileSHA('src/terminal.js');
+const dataSHA = await fetchFileSHA('src/data.js');
 
-function fetchFileSHA(repo, filePath) {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname: 'api.github.com',
-      path: `/repos/${repo}/commits?path=/${filePath}`,
-      method: 'GET',
-      headers: {
-        'User-Agent': 'Webkit',
-      },
-    }; ``;
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
-      res.on('end', () => {
-        data = JSON.parse(data);
-        resolve(data[0].sha.substring(0, 7));
-      });
-    });
-    req.on('error', (err) => {
-      reject(err);
-    });
-    req.end();
-  });
-}
+let indexHTML = fs.readFileSync('index.html', 'utf8');
 
-const repo = 'TBXark/tbxark.github.io';
-const styleSHA = await fetchFileSHA(repo, 'src/home.css');
-const scriptSHA = await fetchFileSHA(repo, 'src/terminal.js');
+indexHTML = indexHTML.replace(
+  /(src\/home\.css\?sha=)(__STYLE_SHA__|[a-f0-9]{7})/g,
+  `$1${styleSHA}`
+);
 
-const indexHTML = fs.readFileSync('index.html', 'utf8')
-  .replace('__STYLE_SHA__', styleSHA)
-  .replace('__SCRIPT_SHA__', scriptSHA);
+indexHTML = indexHTML.replace(
+  /(src\/terminal\.js\?sha=)(__SCRIPT_SHA__|[a-f0-9]{7})/g,
+  `$1${scriptSHA}`
+);
+
+indexHTML = indexHTML.replace(
+  /(src\/data\.js\?sha=)(__DATA_SHA__|[a-f0-9]{7})/g,
+  `$1${dataSHA}`
+);
 
 fs.writeFileSync('index.html', indexHTML);

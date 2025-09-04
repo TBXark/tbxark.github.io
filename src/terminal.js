@@ -1,9 +1,9 @@
 const historyList = [];
 const commandsHandler = {};
 const remoteDataCache = {
-  exe: null,
-  blogs: null,
-  projects: null,
+  exe: window.exe || [],
+  blogs: window.blogs || [],
+  projects: window.projects || [],
 };
 let currentHistoryIndex = 0;
 
@@ -184,19 +184,16 @@ function initTerminal() {
   cmdInput.oninput = (e) => checkInputStatus(e.target.value);
 }
 
-(async () => {
-  initTerminal()
-  const exe = await fetch('./api/exe.json').then((res) => res.json()).catch(() => []);
-  const blogs = await fetch('./api/blogs.json').then((res) => res.json()).catch(() => []);
-  const projects = await fetch('./api/projects.json').then((res) => res.json()).catch(() => []);
-  for (const l of exe.filter((e) => e.type === 'link')) {
-    commandsHandler[l.name] = () => {
-      window.location = l.url;
-    };
-  }
-  remoteDataCache.exe = exe;
-  remoteDataCache.blogs = blogs;
-  remoteDataCache.projects = projects;
-  handleCommand('ls');
-  handleCommand('blogs');
-})();
+function main() {
+    initTerminal();  
+    for (const l of (window.exe || []).filter((e) => e.type === 'link')) {
+      commandsHandler[l.name] = () => {
+        window.location = l.url;
+      };
+    }
+    handleCommand('ls');
+    handleCommand('blogs');
+}
+
+
+main();

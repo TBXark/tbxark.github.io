@@ -8,16 +8,17 @@
   "repository": "git@github.com:TBXark/tbxark.github.io.git",
   "scripts": {
     "preview": "serve -l 23400",
-    "blogs": "node ./bin/blog.js -b ./blog -t ./api/blogs.json",
-    "projects": "node ./bin/project.js -t ./api/projects.json",
+    "blogs": "node ./bin/blogs.js",
+    "repos": "node ./bin/repos.js",
+    "merge": "node ./bin/merge.js",
+    "build": "npm run merge && node ./bin/build.js",
     "lint": "eslint --fix src bin",
-    "build": "node ./bin/build.js"
+    "dev": "npm run preview"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "eslint": "^9.9.1",
     "globals": "^15.9.0",
-    "serve": "^14.2.3",
-    "zx": "^8.1.5"
+    "serve": "^14.2.3"
   }
 }

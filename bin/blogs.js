@@ -1,18 +1,18 @@
-import { argv } from "zx";
 import fs from "fs";
 import path from "path";
-import "zx/globals";
+import { parseArgs } from "./utils.js";
 
-let b = argv.b;
-let t = argv.t;
+const argv = parseArgs();
+let blogOption = argv.b || './blog';
+let targetOption = argv.t || './api/blogs.json';
 let blogs = [];
 
-if (b) {
-  b = path.resolve(b);
-  const files = fs.readdirSync(b).filter((file) => file.endsWith('.md'));
+if (blogOption) {
+  blogOption = path.resolve(blogOption);
+  const files = fs.readdirSync(blogOption).filter((file) => file.endsWith('.md'));
 
   for (const file of files) {
-    const content = await fs.readFile(`${b}/${file}`, 'utf8');
+    const content = fs.readFileSync(`${blogOption}/${file}`, 'utf8');
     const l = content.split('\n');
     const title = l[0].startsWith('#') ? l[0].replace(/# */g, '') : null;
     const date = l[1].startsWith('>') ? l[1].replace(/> */g, '') : null;
@@ -33,12 +33,11 @@ if (b) {
   for (const blog of blogs) {
     readme += `* [${blog.title}](${blog.fileName})\t${blog.date}\n`;
   }
-  fs.writeFileSync(`${b}/README.md`, readme);
+  fs.writeFileSync(`${blogOption}/README.md`, readme);
 }
 
-
-if (t) {
-  t = path.resolve(t);
+if (targetOption) {
+  targetOption = path.resolve(targetOption);
   const fileContent = JSON.stringify(blogs, null, 2);
-  fs.writeFileSync(t, fileContent);
+  fs.writeFileSync(targetOption, fileContent);
 }

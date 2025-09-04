@@ -1,44 +1,12 @@
-import { argv, question } from "zx";
 import fs from "fs";
 import path from "path";
-import "zx/globals";
+import { parseArgs, question, fetchRepos } from "./utils.js";
 
+const argv = parseArgs();
+let targetOption = argv.t || './api/repos.json';
 
-async function fetchRepos(username, token) {
-  username = encodeURIComponent(username);
-  const store = {};
-  let page = 0;
-  while (true) {
-    let response = await fetch(
-      `https://api.github.com/search/repositories?q=user%3A${username}&page=${page}`,
-      {
-        method: 'GET',
-        headers: { Authorization: `token ${token}` },
-      },
-    );
-    response = await response.json();
-    const total = response.total_count;
-    response = response.items;
-    if (response.length === 0) {
-      break;
-    }
-    for (const repo of response) {
-      store[repo.name] = repo;
-    }
-    page += 1;
-    if (Object.keys(store).length >= total) {
-      break;
-    }
-  }
-
-  return store;
-}
-
-
-let t = argv.t;
-
-if (t) {
-  t = path.resolve(t);
+if (targetOption) {
+  targetOption = path.resolve(targetOption);
 
   let repos = await fetchRepos('tbxark', process.env.HOMEBREW_GITHUB_API_TOKEN);
   repos = Object.values(repos)
@@ -62,5 +30,5 @@ if (t) {
   }
 
   const fileContent = JSON.stringify(visableRepos, null, 2);
-  fs.writeFileSync(t, fileContent);
+  fs.writeFileSync(targetOption, fileContent);
 }
