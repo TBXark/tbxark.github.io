@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": "git@github.com:TBXark/tbxark.github.io.git",
   "scripts": {
-    "preview": "serve -l 5000",
+    "preview": "serve -l 23400",
     "blogs": "node ./bin/blog.js -b ./blog -t ./api/blogs.json",
     "projects": "node ./bin/project.js -t ./api/projects.json",
     "lint": "eslint --fix src bin",
