@@ -180,7 +180,6 @@ body {
   text-overflow: ellipsis;
   max-width: 60ch;
   display: inline-block;
-  vertical-align: top;
 }
 
 .project-line {

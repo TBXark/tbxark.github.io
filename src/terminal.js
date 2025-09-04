@@ -1,9 +1,9 @@
 const historyList = [];
 const commandsHandler = {};
-const remoteDataCache = {
-  exe: window.exe || [],
+const dataSource = {
+  exes: window.exes || [],
   blogs: window.blogs || [],
-  projects: window.projects || [],
+  repos: window.repos || [],
 };
 let currentHistoryIndex = 0;
 
@@ -156,19 +156,19 @@ function bindCommand() {
   };
 
   commandsHandler.ls = () => {
-    const exe = remoteDataCache.exe || [];
-    addCmdResult(template.cmdText(exe.map(template.exe).join('\n')));
+    const exes = dataSource.exes || [];
+    addCmdResult(template.cmdText(exes.map(template.exe).join('\n')));
   };
 
 
   commandsHandler.blogs = () => {
-    const blogs = remoteDataCache.blogs || [];
+    const blogs = dataSource.blogs || [];
     addCmdResult(blogs.map(template.blog).join('\n'));
   };
 
   commandsHandler.projects = () => {
-    const projects = remoteDataCache.projects || [];
-    addCmdResult(projects.map(template.project).join('\n'));
+    const repos = dataSource.repos || [];
+    addCmdResult(repos.map(template.project).join('\n'));
   };
 
   console.log('This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io');
