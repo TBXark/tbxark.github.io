@@ -56,6 +56,27 @@ function encodeHTML(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function parseArgs(cmd) {
+  const parts = cmd.trim().split(/\s+/);
+  const command = parts[0];
+  const args = {};
+  const flags = [];
+  
+  for (let i = 1; i < parts.length; i++) {
+    if (parts[i].startsWith('-')) {
+      const flag = parts[i].replace(/^-+/, '');
+      if (i + 1 < parts.length && !parts[i + 1].startsWith('-')) {
+        args[flag] = parts[i + 1];
+        i++;
+      } else {
+        flags.push(flag);
+      }
+    }
+  }
+  
+  return { command, args, flags };
+}
+
 function startInput() {
   cmdInput.focus();
 }
@@ -75,17 +96,20 @@ function handleShowHistory(isNext) {
 }
 
 function handleCommand(cmd) {
-  const cmdClass = commandsHandler[cmd] === undefined ? 'input-exe-error' : 'input-exe';
-  addCmdResult(template.cmdWithUser(cmd, cmdClass));
   if (cmd === undefined || cmd === null || cmd.trim().length === 0) {
     return;
   }
+  
+  const { command, args, flags } = parseArgs(cmd);
+  const cmdClass = commandsHandler[command] === undefined ? 'input-exe-error' : 'input-exe';
+  addCmdResult(template.cmdWithUser(cmd, cmdClass));
+  
   historyList.push(cmd);
   currentHistoryIndex = 0;
-  if (commandsHandler[cmd] !== undefined) {
-    commandsHandler[cmd]();
+  if (commandsHandler[command] !== undefined) {
+    commandsHandler[command](args, flags);
   } else {
-    addCmdResult(template.cmdText(`command not found: ${encodeHTML(cmd)}`));
+    addCmdResult(template.cmdText(`command not found: ${encodeHTML(command)}`));
   }
 }
 
@@ -123,7 +147,9 @@ function handleInput(e) {
 }
 
 function checkInputStatus(value) {
-  if (commandsHandler[value || cmdInput.value] !== undefined) {
+  const input = value || cmdInput.value;
+  const { command } = parseArgs(input);
+  if (commandsHandler[command] !== undefined) {
     cmdInput.classList.remove('input-exe-error');
     cmdInput.classList.add('input-exe');
   } else {
@@ -150,7 +176,11 @@ function bindCommand() {
     addCmdResult(template.cmdText(`${space}<strong>pwd</strong> - show current location`));
     addCmdResult(template.cmdText(`${space}<strong>clear</strong> - clear screen`));
     addCmdResult(template.cmdText(`${space}<strong>blogs</strong> - list all blogs`));
+    addCmdResult(template.cmdText(`${space}${space}<strong>-p &lt;page&gt;</strong> - page number (default: 0)`));
+    addCmdResult(template.cmdText(`${space}${space}<strong>-s &lt;size&gt;</strong> - page size (default: all)`));
     addCmdResult(template.cmdText(`${space}<strong>projects</strong> - list all projects`));
+    addCmdResult(template.cmdText(`${space}${space}<strong>-p &lt;page&gt;</strong> - page number (default: 0)`));
+    addCmdResult(template.cmdText(`${space}${space}<strong>-s &lt;size&gt;</strong> - page size (default: all)`));
     addCmdResult(template.cmdText(`${space}<strong>help</strong> - show help`));
 
   };
@@ -161,14 +191,48 @@ function bindCommand() {
   };
 
 
-  commandsHandler.blogs = () => {
+  commandsHandler.blogs = (args = {}) => {
     const blogs = dataSource.blogs || [];
-    addCmdResult(blogs.map(template.blog).join('\n'));
+    const page = parseInt(args.p || args.page || 0);
+    const size = parseInt(args.s || args.size || blogs.length);
+    
+    const start = page * size;
+    const end = start + size;
+    const paginatedBlogs = blogs.slice(start, end);
+    
+    if (paginatedBlogs.length === 0) {
+      addCmdResult(template.cmdText('No blogs found for the specified page.'));
+      return;
+    }
+    
+    addCmdResult(paginatedBlogs.map(template.blog).join('\n'));
+    
+    if (size < blogs.length) {
+      const totalPages = Math.ceil(blogs.length / size);
+      addCmdResult(template.cmdText(`\nShowing page ${page + 1} of ${totalPages} (${paginatedBlogs.length} of ${blogs.length} blogs)`));
+    }
   };
 
-  commandsHandler.projects = () => {
+  commandsHandler.projects = (args = {}) => {
     const repos = dataSource.repos || [];
-    addCmdResult(repos.map(template.project).join('\n'));
+    const page = parseInt(args.p || args.page || 0);
+    const size = parseInt(args.s || args.size || repos.length);
+    
+    const start = page * size;
+    const end = start + size;
+    const paginatedRepos = repos.slice(start, end);
+    
+    if (paginatedRepos.length === 0) {
+      addCmdResult(template.cmdText('No projects found for the specified page.'));
+      return;
+    }
+    
+    addCmdResult(paginatedRepos.map(template.project).join('\n'));
+    
+    if (size < repos.length) {
+      const totalPages = Math.ceil(repos.length / size);
+      addCmdResult(template.cmdText(`\nShowing page ${page + 1} of ${totalPages} (${paginatedRepos.length} of ${repos.length} projects)`));
+    }
   };
 
   console.log('This website is open source, you can find it on github: https://github.com/TBXark/tbxark.github.io');
@@ -192,7 +256,7 @@ function main() {
       };
     }
     handleCommand('ls');
-    handleCommand('blogs');
+    handleCommand('blogs -p 0 -s 5');
 }
 
 
